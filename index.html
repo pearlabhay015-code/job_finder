@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#070709] text-slate-300 antialiased selection:bg-sky-500/30 selection:text-sky-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helping Hands - Social Sector Opportunities</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            appleBg: '#070709',
+            appleDarkCard: '#0d0d12',
+            appleLightCard: '#f4f4f7',
+            appleBlue: '#2997ff',
+            appleGreen: '#30d158',
+            appleAmber: '#ff9f0a',
+            applePurple: '#bf5af2'
+          }
+        }
+      }
+    }
+  </script>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-appleBg font-sans text-slate-300 min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- Top Header Navigation -->
+  <header class="sticky top-0 z-40 w-full border-b border-white/10 apple-glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between text-sm font-medium">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center space-x-3 cursor-pointer group" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-appleBlue to-sky-400 flex items-center justify-center text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-globe text-base"></i>
+        </div>
+        <div class="flex items-center space-x-1">
+          <span class="text-lg font-bold tracking-tight text-slate-100">Helping</span>
+          <span class="text-sm font-medium text-slate-400">Hands</span>
+        </div>
+      </div>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-slate-300 font-medium">
+        <a href="#jobs-section" class="soft-link hover:text-slate-100 transition-colors text-base">Opportunities</a>
+        <a href="#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
+        <a href="#pricing-section" class="soft-link hover:text-slate-100 transition-colors text-base">Value Pass</a>
+        <a href="#roster-section" class="soft-link hover:text-slate-100 transition-colors text-base">Talent Directory</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Switch to light theme" class="theme-toggle w-10 h-10 rounded-full bg-white/10 hover:bg-white/15 text-slate-300 border border-white/10 transition-all active:scale-95">
+          <i class="fa-solid fa-sun text-sm"></i>
+        </button>
+        <button onclick="openModal('post-job-modal')" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition-all active:scale-95">
+          <i class="fa-solid fa-plus text-xs text-appleBlue"></i>
+          <span>Post Job</span>
+        </button>
+        
+        <button onclick="scrollToPricing()" class="inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-semibold bg-appleBlue hover:bg-blue-500 text-white shadow-md shadow-appleBlue/20 transition-all active:scale-95">
+          <span>Get Value Pass</span>
+          <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-16 sm:pt-24 pb-16 overflow-hidden">
+    <!-- Ambient Radial Background Glow -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[350px] bg-gradient-to-tr from-appleBlue/15 via-sky-500/10 to-emerald-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+    <!-- Hero portraits: kept outside the main copy for a clear reading area. -->
+    <figure class="hero-portrait hero-portrait--man" aria-hidden="true">
+      <img src="assets/images/hero-man-new.png" alt="">
+    </figure>
+    <figure class="hero-portrait hero-portrait--recruitment" aria-hidden="true">
+      <img src="assets/images/hero-recruitment.png" alt="">
+    </figure>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      
+      <!-- Top Badge -->
+      <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-white/[0.05] border border-white/10 backdrop-blur-md mb-6">
+        <span class="w-2.5 h-2.5 rounded-full bg-appleGreen"></span>
+        <span class="text-slate-200">Next-Gen Development & NGO Portal</span>
+        <span class="text-slate-500">|</span>
+        <span class="text-appleBlue font-medium">India & Global</span>
+      </div>
+
+      <!-- Main Softened Headline -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-100 leading-[1.1]">
+        Purpose-driven careers. <br>
+        <span class="apple-soft-gradient">Engineered to perfection.</span>
+      </h1>
+
+      <p class="mt-6 text-slate-300 text-lg sm:text-xl max-w-3xl mx-auto font-normal leading-relaxed">
+        Discover verified opportunities across UN Agencies, Top NGOs, ESG Foundations, and CSR Tenders. Designed with smooth, glare-free readability.
+      </p>
+
+      <!-- Apple Search Bar Container -->
+      <div class="mt-10 max-w-4xl mx-auto">
+        <div class="apple-dark-card p-3 rounded-2xl sm:rounded-full shadow-2xl transition-all border border-white/10 focus-within:border-appleBlue/50">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+            
+            <!-- Search Keyword Input -->
+            <div class="sm:col-span-5 relative flex items-center px-4">
+              <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm mr-3"></i>
+              <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Job title, keyword, or organization..." 
+                     class="w-full bg-transparent text-sm sm:text-base text-slate-200 placeholder-slate-400 border-none outline-none">
+            </div>
+
+            <!-- Sector Dropdown -->
+            <div class="sm:col-span-3 border-t sm:border-t-0 sm:border-l border-white/10 px-4 py-2 sm:py-0">
+              <select id="sector-filter" onchange="handleSearch()" class="w-full bg-transparent text-sm text-slate-300 border-none outline-none cursor-pointer">
+                <option value="" class="bg-slate-900 text-slate-200">All Sectors</option>
+                <option value="Health" class="bg-slate-900 text-slate-200">Public Health</option>
+                <option value="Climate" class="bg-slate-900 text-slate-200">Climate & ESG</option>
+                <option value="Education" class="bg-slate-900 text-slate-200">Education & Youth</option>
+                <option value="CSR" class="bg-slate-900 text-slate-200">CSR & Governance</option>
+              </select>
+            </div>
+
+            <!-- Location Dropdown -->
+            <div class="sm:col-span-2 border-t sm:border-t-0 sm:border-l border-white/10 px-4 py-2 sm:py-0">
+              <select id="location-filter" onchange="handleSearch()" class="w-full bg-transparent text-sm text-slate-300 border-none outline-none cursor-pointer">
+                <option value="" class="bg-slate-900 text-slate-200">Location</option>
+                <option value="New Delhi" class="bg-slate-900 text-slate-200">New Delhi</option>
+                <option value="Mumbai" class="bg-slate-900 text-slate-200">Mumbai</option>
+                <option value="Bengaluru" class="bg-slate-900 text-slate-200">Bengaluru</option>
+                <option value="Remote" class="bg-slate-900 text-slate-200">Remote</option>
+              </select>
+            </div>
+
+            <!-- Search Action Button -->
+            <div class="sm:col-span-2">
+              <button onclick="handleSearch()" class="w-full py-3 bg-slate-200 hover:bg-white text-slate-950 font-bold rounded-xl sm:rounded-full text-sm transition-all shadow-md active:scale-95">
+                Search
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mt-5 text-sm text-slate-400">
+          <span class="text-slate-400 font-semibold">Quick Filters:</span>
+          <button onclick="setQuickSearch('UNICEF')" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">UNICEF</button>
+          <button onclick="setQuickSearch('Climate')" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">Climate Lead</button>
+          <button onclick="setQuickSearch('RFP')" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">CSR RFPs</button>
+          <button onclick="setQuickSearch('ESG')" class="px-3.5 py-1.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">ESG Consultant</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bento Box Platform Features Section -->
+  <section id="bento-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-sm uppercase font-extrabold tracking-widest text-appleBlue">Platform Architecture</h2>
+      <p class="text-3xl sm:text-5xl font-black text-slate-100 mt-3 tracking-tight">Designed for maximum impact.</p>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Bento Item 1: High Contrast Primary Card -->
+      <div class="md:col-span-2 apple-dark-card p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all">
+        <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-appleBlue/15 rounded-full blur-3xl group-hover:bg-appleBlue/25 transition-all pointer-events-none"></div>
+        <div>
+          <span class="inline-flex items-center space-x-2 text-sm font-bold text-appleBlue mb-3">
+            <i class="fa-solid fa-bolt text-xs"></i>
+            <span>Instant Dispatch</span>
+          </span>
+          <h3 class="text-3xl sm:text-4xl font-black text-slate-100 leading-tight">Direct Resume Broadcast</h3>
+          <p class="text-slate-300 text-base sm:text-lg mt-3 max-w-xl leading-relaxed">
+            Value members get their resumes automatically broadcasted to over 500+ top multilateral NGOs, CSR funds, and hiring managers across India.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-100">500+</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Recruiters</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold text-appleGreen">98%</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Delivery Rate</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+            <div class="text-2xl sm:text-3xl font-extrabold text-appleAmber">24hr</div>
+            <div class="text-xs sm:text-sm text-slate-400 font-medium mt-1">Daily Alerts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Item 2: Verified Listings -->
+      <div class="apple-dark-card p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-appleGreen/15 border border-appleGreen/30 text-appleGreen flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-100">100% Verified NGOs</h3>
+          <p class="text-slate-300 text-base mt-3 leading-relaxed">
+            Every job posting is manually reviewed by our moderation queue to filter out non-genuine posts and recruitment scams.
+          </p>
+        </div>
+        <div class="mt-8 flex items-center text-sm text-appleGreen font-bold">
+          <span>Verified Badge Guarantee</span>
+          <i class="fa-solid fa-circle-check ml-2 text-sm"></i>
+        </div>
+      </div>
+
+      <!-- Bento Item 3: RFPs & CSR Tenders -->
+      <div class="apple-dark-card p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-appleAmber/15 border border-appleAmber/30 text-appleAmber flex items-center justify-center text-xl mb-6">
+            <i class="fa-solid fa-file-contract"></i>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-100">CSR Grants & RFPs</h3>
+          <p class="text-slate-300 text-base mt-3 leading-relaxed">
+            Dedicated portal for consultancy assignments, institutional grants, and corporate funding calls for non-profit entities.
+          </p>
+        </div>
+        <div class="mt-8 text-sm text-slate-400 font-medium">
+          Updated daily with high-value tenders.
+        </div>
+      </div>
+
+      <!-- Bento Item 4: Smart Matching -->
+      <div class="md:col-span-2 apple-dark-card p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+          <div>
+            <span class="text-xs font-bold text-applePurple uppercase tracking-wider">AI Powered</span>
+            <h3 class="text-2xl sm:text-3xl font-black text-slate-100 mt-1">Smart Candidate Matching</h3>
+            <p class="text-slate-300 text-base mt-2 max-w-xl leading-relaxed">
+              Our semantic matching engine connects developmental specialists with tailored roles based on sector expertise and field experience.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <span class="px-5 py-2.5 rounded-full bg-applePurple/15 border border-applePurple/40 text-applePurple text-sm font-black">
+              94% Match Accuracy
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Jobs & Opportunities Feed Section -->
+  <section id="jobs-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+    
+    <!-- Section Header & Tab Switcher -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-10">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight">Active Opportunities</h2>
+        <p class="text-slate-300 text-base sm:text-lg mt-2">Filter and inspect active verified sector postings.</p>
+      </div>
+
+      <!-- Segmented Filter Tab Controls -->
+      <div class="p-1.5 rounded-full apple-dark-card border border-white/10 inline-flex items-center space-x-1 overflow-x-auto self-start lg:self-auto">
+        <button onclick="switchTab('all')" id="tab-all" class="tab-pill px-5 py-2 rounded-full text-sm font-bold bg-slate-200 text-slate-950 transition-all shadow-sm">
+          All Postings (<span id="count-all">0</span>)
+        </button>
+        <button onclick="switchTab('standard')" id="tab-standard" class="tab-pill px-5 py-2 rounded-full text-sm font-semibold text-slate-300 hover:text-slate-100 transition-all">
+          Standard (<span id="count-standard">0</span>)
+        </button>
+        <button onclick="switchTab('premium')" id="tab-premium" class="tab-pill px-5 py-2 rounded-full text-sm font-semibold text-slate-300 hover:text-slate-100 transition-all flex items-center space-x-1.5">
+          <i class="fa-solid fa-crown text-appleAmber text-xs"></i>
+          <span>Value Member (<span id="count-premium">0</span>)</span>
+        </button>
+        <button onclick="switchTab('rfp')" id="tab-rfp" class="tab-pill px-5 py-2 rounded-full text-sm font-semibold text-slate-300 hover:text-slate-100 transition-all">
+          RFPs (<span id="count-rfp">0</span>)
+        </button>
+      </div>
+    </div>
+
+    <!-- Jobs Grid Container (Alternating White and Black Cards JS Injected) -->
+    <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamic Injected Opportunities Cards -->
+    </div>
+
+  </section>
+
+  <!-- Featured Jobseekers / Talent Roster Section -->
+  <section id="roster-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+    <div class="apple-dark-card p-8 sm:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
+        <div>
+          <span class="text-xs uppercase font-extrabold tracking-widest text-appleGreen">Value Member Spotlight</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-100 mt-1">Featured Development Experts</h2>
+          <p class="text-slate-300 text-base mt-2">Direct candidate profile broadcast directory for recruiters and UN agencies.</p>
+        </div>
+        <button onclick="scrollToPricing()" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition self-start sm:self-auto">
+          Broadcast Your Resume
+        </button>
+      </div>
+
+      <!-- Talent Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="experts-container">
+        <!-- Injected Experts -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section: Apple Fitness+ / iCloud+ Style Cards -->
+  <section id="pricing-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-xs uppercase font-extrabold tracking-widest text-appleAmber">Membership Plans</h2>
+      <p class="text-3xl sm:text-5xl font-black text-slate-100 mt-3 tracking-tight">Invest in your impact.</p>
+      <p class="text-slate-300 text-base sm:text-lg mt-3">Access exclusive opportunities, instant daily broadcasts, and priority support.</p>
+      
+      <!-- Billing Toggle Switch -->
+      <div class="mt-8 inline-flex items-center p-1.5 rounded-full apple-dark-card border border-white/10 text-sm font-semibold">
+        <button id="toggle-monthly" onclick="setBilling('monthly')" class="px-5 py-2 rounded-full bg-slate-200 text-slate-950 font-bold transition">6 Months Pass</button>
+        <button id="toggle-annual" onclick="setBilling('annual')" class="px-5 py-2 rounded-full text-slate-300 hover:text-slate-100 transition">Annual Pass (Save 25%)</button>
+      </div>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      
+      <!-- Free Tier Card (Dark Glass) -->
+      <div class="apple-dark-card p-8 sm:p-10 rounded-3xl border border-white/10 flex flex-col justify-between hover:border-white/20 transition-all">
+        <div>
+          <h3 class="text-2xl font-black text-slate-200">Basic Access</h3>
+          <p class="text-slate-400 text-sm mt-1">For casual sector browsing</p>
+          <div class="mt-6 flex items-baseline">
+            <span class="text-5xl font-black text-slate-100">₹0</span>
+            <span class="text-sm text-slate-400 ml-2">/ forever</span>
+          </div>
+
+          <ul class="mt-8 space-y-4 text-sm text-slate-300">
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>Browse Standard Jobs & RFPs</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>Standard Search Filters</span>
+            </li>
+            <li class="flex items-center space-x-3 text-slate-500">
+              <i class="fa-solid fa-xmark text-base"></i>
+              <span>Instant Value Member Job Links</span>
+            </li>
+            <li class="flex items-center space-x-3 text-slate-500">
+              <i class="fa-solid fa-xmark text-base"></i>
+              <span>Daily Automated Email Broadcasts</span>
+            </li>
+          </ul>
+        </div>
+
+        <button onclick="alert('You are exploring in Free Member Mode.')" class="mt-10 w-full py-3.5 rounded-full border border-white/10 text-slate-300 hover:bg-white/5 font-bold text-sm transition">
+          Current Tier
+        </button>
+      </div>
+
+      <!-- Value Member Tier Card (Soft White Contrast Highlight) -->
+      <div class="bg-[#f4f4f7] p-8 sm:p-10 rounded-3xl relative flex flex-col justify-between shadow-2xl shadow-sky-500/10 border-2 border-appleBlue hover:scale-[1.02] transition-all">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1 rounded-full bg-appleBlue text-white font-black text-xs tracking-wider uppercase shadow-md">
+          Recommended Pass
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <h3 class="text-2xl font-black text-slate-900">Value Member</h3>
+            <i class="fa-solid fa-crown text-appleAmber text-lg"></i>
+          </div>
+          <p class="text-slate-600 text-sm mt-1 font-medium">Maximum visibility for professionals</p>
+          <div class="mt-6 flex items-baseline">
+            <span id="price-value" class="text-5xl font-black text-slate-950">₹1,499</span>
+            <span id="period-value" class="text-sm text-slate-600 font-semibold ml-2">/ 6 months</span>
+          </div>
+
+          <ul class="mt-8 space-y-4 text-sm text-slate-800 font-medium">
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-circle-check text-appleBlue text-base"></i>
+              <span><strong>Unlock Premium & Value Member Postings</strong></span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-circle-check text-appleBlue text-base"></i>
+              <span>Daily Custom Email Job Digest</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-circle-check text-appleBlue text-base"></i>
+              <span>Resume Broadcast to 500+ Hiring NGOs</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-circle-check text-appleBlue text-base"></i>
+              <span>Featured Spot in Candidate Directory</span>
+            </li>
+          </ul>
+        </div>
+
+        <button onclick="openMembershipCheckout()" class="mt-10 w-full py-3.5 rounded-full bg-appleBlue hover:bg-blue-600 text-white font-bold text-sm shadow-lg shadow-appleBlue/30 transition active:scale-95">
+          Upgrade to Value Pass
+        </button>
+      </div>
+
+      <!-- Recruiter / Employer Tier Card (Dark Glass) -->
+      <div class="apple-dark-card p-8 sm:p-10 rounded-3xl border border-white/10 flex flex-col justify-between hover:border-white/20 transition-all">
+        <div>
+          <h3 class="text-2xl font-black text-slate-200">Employer / NGO</h3>
+          <p class="text-slate-400 text-sm mt-1">Post opportunities & RFPs</p>
+          <div class="mt-6 flex items-baseline">
+            <span class="text-5xl font-black text-slate-100">₹4,999</span>
+            <span class="text-sm text-slate-400 ml-2">/ per listing</span>
+          </div>
+
+          <ul class="mt-8 space-y-4 text-sm text-slate-300">
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>30-Day Active Featured Job Post</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>Newsletter Broadcast to 100k+ Readers</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>Access to Candidate Roster Search</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <i class="fa-solid fa-check text-appleGreen text-base"></i>
+              <span>Dedicated Account Support</span>
+            </li>
+          </ul>
+        </div>
+
+        <button onclick="openModal('post-job-modal')" class="mt-10 w-full py-3.5 rounded-full border border-white/10 text-slate-300 hover:bg-white/5 font-bold text-sm transition">
+          Post an Opportunity
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-white/10 bg-appleBg text-slate-400 text-sm py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="text-slate-200 font-bold">Helping Hands</span> &copy; 2026. Social Sector Career Portal.
+      </div>
+      <div class="flex space-x-6 text-slate-300">
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Terms of Service</a>
+        <a href="#" class="hover:text-white transition">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SLIDE-OVER DRAWER: Apple-Style Job Detail Panel -->
+  <div id="job-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none">
+    <div onclick="closeDrawer()" id="drawer-backdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-300 pointer-events-auto hidden"></div>
+    
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 pointer-events-none">
+      <div id="drawer-panel" class="w-screen max-w-2xl drawer-transition translate-x-full apple-dark-card border-l border-white/10 p-8 sm:p-10 flex flex-col justify-between overflow-y-auto pointer-events-auto">
+        
+        <!-- Drawer Header -->
+        <div>
+          <div class="flex items-center justify-between pb-6 border-b border-white/10">
+            <span id="drawer-badge" class="px-3 py-1 rounded-full text-xs font-black bg-white/10 text-slate-200">STANDARD</span>
+            <button onclick="closeDrawer()" class="w-9 h-9 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+              <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+          </div>
+
+          <!-- Job Header Info -->
+          <div class="mt-8">
+            <h2 id="drawer-title" class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight leading-tight">Job Title Placeholder</h2>
+            <p id="drawer-org" class="text-slate-300 text-lg font-semibold mt-2">Organization Name</p>
+          </div>
+
+          <!-- Quick Meta Stats Strip -->
+          <div class="grid grid-cols-3 gap-4 my-8 p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-sm">
+            <div>
+              <span class="text-slate-400 block text-xs">Location</span>
+              <span id="drawer-location" class="font-bold text-slate-200 text-base">New Delhi</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-xs">Experience</span>
+              <span id="drawer-exp" class="font-bold text-slate-200 text-base">5+ Years</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-xs">Deadline</span>
+              <span id="drawer-deadline" class="font-bold text-appleGreen text-base">12 Days</span>
+            </div>
+          </div>
+
+          <!-- Value Member Gate Box -->
+          <div id="drawer-gate-box" class="p-5 rounded-2xl bg-appleAmber/15 border border-appleAmber/40 mb-8 hidden">
+            <div class="flex items-start space-x-3">
+              <i class="fa-solid fa-lock text-appleAmber text-xl mt-0.5"></i>
+              <div>
+                <h4 class="text-sm font-bold text-appleAmber">Value Member Exclusive Opportunity</h4>
+                <p class="text-xs text-amber-200/90 mt-1 leading-relaxed">Application links and recruiter contact details are locked for basic accounts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="space-y-4">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-400">Role Overview & Responsibilities</h4>
+            <p id="drawer-desc" class="text-base text-slate-300 leading-relaxed">
+              Full detail description content goes here...
+            </p>
+          </div>
+        </div>
+
+        <!-- Drawer Footer Actions -->
+        <div class="pt-8 border-t border-white/10 flex items-center justify-between mt-10">
+          <button onclick="closeDrawer()" class="px-5 py-2.5 rounded-full text-sm font-bold text-slate-400 hover:text-white transition">
+            Close
+          </button>
+          <div id="drawer-action-container">
+            <!-- Injected Action Button -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Post Job Form -->
+  <div id="post-job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-2xl hidden">
+    <div class="apple-dark-card max-w-xl w-full rounded-3xl border border-white/10 p-8 sm:p-10 relative shadow-2xl">
+      <button onclick="closeModal('post-job-modal')" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+
+      <h3 class="text-2xl font-black text-slate-100">Post an Opportunity</h3>
+      <p class="text-slate-300 text-sm mt-1">Reach 100,000+ social sector professionals across India.</p>
+
+      <form onsubmit="handlePostSubmit(event)" class="mt-6 space-y-5 text-sm">
+        <div>
+          <label class="block text-slate-300 mb-2 font-semibold">Job Title or RFP Subject</label>
+          <input type="text" required placeholder="e.g. Program Director - Public Health" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-slate-300 mb-2 font-semibold">Organization</label>
+            <input type="text" required placeholder="e.g. Save The Children" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-2 font-semibold">Posting Category</label>
+            <select class="w-full bg-slate-900 border border-white/10 rounded-xl p-3.5 text-slate-200 outline-none focus:border-appleBlue">
+              <option>Standard Job Posting</option>
+              <option>Value Member Exclusive</option>
+              <option>RFP / Consultancy</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-2 font-semibold">Description Summary</label>
+          <textarea rows="4" required placeholder="Provide key responsibilities..." class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-full bg-appleBlue hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-appleBlue/20">
+          Submit Post (₹4,999)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
