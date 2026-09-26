@@ -561,51 +561,155 @@
     </div>
   </div>
 
-  <!-- MODAL: Post Job Form -->
-  <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-2xl hidden">
-    <div class="apple-dark-card max-w-md w-full rounded-3xl border border-white/10 p-8 relative shadow-2xl">
-      <button onclick="closeModal('auth-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 text-slate-300"><i class="fa-solid fa-xmark"></i></button>
-      <h3 id="auth-title" class="text-2xl font-black text-slate-100">Welcome back</h3><p id="auth-copy" class="text-sm text-slate-300 mt-1">Log in to manage your job postings.</p>
-      <div class="flex gap-2 mt-6"><button onclick="setAuthMode('login')" id="auth-login-tab" class="auth-tab flex-1 py-2 rounded-full text-sm font-semibold">Log in</button><button onclick="setAuthMode('signup')" id="auth-signup-tab" class="auth-tab flex-1 py-2 rounded-full text-sm font-semibold">Sign up</button></div>
-      <form onsubmit="submitAuth(event)" class="mt-6 space-y-4"><input id="auth-name" class="auth-name hidden w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Your name"><input id="auth-email" required type="email" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Email address"><input id="auth-password" required type="password" minlength="8" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Password (8+ characters)"><p id="auth-message" class="text-sm"></p><button id="auth-submit" class="w-full py-3 rounded-full bg-appleBlue text-white font-bold">Log in</button></form>
+  <!-- MODAL: Authentication (Login / Signup) -->
+  <div id="auth-modal" onclick="handleModalBackdropClick(event, 'auth-modal')" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div onclick="event.stopPropagation()" class="modal-dialog max-w-md w-full">
+      <!-- Close Button -->
+      <button onclick="closeModal('auth-modal')" type="button" aria-label="Close modal" class="modal-close-btn">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="pr-8">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-appleBlue/10 text-appleBlue border border-appleBlue/20 mb-3">
+          <i class="fa-solid fa-shield-halved text-[11px]"></i>
+          <span>Secure Recruiter Access</span>
+        </div>
+        <h3 id="auth-title" class="text-2xl font-semibold text-slate-900 dark:text-slate-100 tracking-tight">Welcome back</h3>
+        <p id="auth-copy" class="text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Log in to manage your job postings.</p>
+      </div>
+
+      <!-- Segmented Tab Switcher -->
+      <div class="mt-6 auth-segmented-track" role="tablist">
+        <button type="button" onclick="setAuthMode('login')" id="auth-login-tab" role="tab" aria-selected="true" class="auth-segmented-btn is-active">
+          <span>Log in</span>
+        </button>
+        <button type="button" onclick="setAuthMode('signup')" id="auth-signup-tab" role="tab" aria-selected="false" class="auth-segmented-btn">
+          <span>Sign up</span>
+        </button>
+      </div>
+
+      <!-- Auth Form -->
+      <form onsubmit="submitAuth(event)" class="mt-6 space-y-4">
+        <!-- Full Name (shown on signup) -->
+        <div id="auth-name-group" class="hidden space-y-1.5 transition-all duration-200">
+          <label for="auth-name" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Full Name / Organization</label>
+          <div class="modal-input-wrap">
+            <i class="fa-solid fa-user modal-input-icon"></i>
+            <input id="auth-name" type="text" class="modal-input" placeholder="e.g. Aditi Sharma or UNICEF India" autocomplete="name">
+          </div>
+        </div>
+
+        <!-- Work Email -->
+        <div class="space-y-1.5">
+          <label for="auth-email" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Email Address</label>
+          <div class="modal-input-wrap">
+            <i class="fa-solid fa-envelope modal-input-icon"></i>
+            <input id="auth-email" required type="email" class="modal-input" placeholder="name@organization.org" autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password with Eye Toggle -->
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label for="auth-password" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Password</label>
+            <span id="auth-pwd-hint" class="text-[11px] text-slate-400 font-medium">8+ characters</span>
+          </div>
+          <div class="modal-input-wrap">
+            <i class="fa-solid fa-lock modal-input-icon"></i>
+            <input id="auth-password" required type="password" minlength="8" class="modal-input pr-10" placeholder="Enter secure password" autocomplete="current-password">
+            <button type="button" onclick="togglePasswordVisibility('auth-password', this)" class="modal-input-toggle" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Alert Container -->
+        <div id="auth-message-box" class="hidden p-3 rounded-xl text-xs font-medium transition-all">
+          <p id="auth-message"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="auth-submit" type="submit" class="w-full mt-2 py-3.5 px-6 rounded-full bg-appleBlue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg shadow-sky-500/25 active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+          <span id="auth-submit-text">Log in</span>
+        </button>
+
+        <p class="text-center text-[12px] text-slate-400 dark:text-slate-500 pt-1">
+          By continuing, you agree to our <a href="#" class="underline hover:text-slate-600 dark:hover:text-slate-300">Terms of Service</a> &amp; <a href="#" class="underline hover:text-slate-600 dark:hover:text-slate-300">Privacy Policy</a>.
+        </p>
+      </form>
     </div>
   </div>
 
-  <div id="post-job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-2xl hidden">
-    <div class="apple-dark-card max-w-xl w-full rounded-3xl border border-white/10 p-8 sm:p-10 relative shadow-2xl">
-      <button onclick="closeModal('post-job-modal')" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
-        <i class="fa-solid fa-xmark text-base"></i>
+  <!-- MODAL: Post Job Form -->
+  <div id="post-job-modal" onclick="handleModalBackdropClick(event, 'post-job-modal')" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
+    <div onclick="event.stopPropagation()" class="modal-dialog max-w-xl w-full">
+      <!-- Close Button -->
+      <button onclick="closeModal('post-job-modal')" type="button" aria-label="Close modal" class="modal-close-btn">
+        <i class="fa-solid fa-xmark text-sm"></i>
       </button>
 
-      <h3 class="text-2xl font-black text-slate-100">Post an Opportunity</h3>
-      <p class="text-slate-300 text-sm mt-1">Reach 100,000+ social sector professionals across India.</p>
-
-      <form onsubmit="handlePostSubmit(event)" class="mt-6 space-y-5 text-sm">
-        <div>
-          <label class="block text-slate-300 mb-2 font-semibold">Job Title or RFP Subject</label>
-          <input type="text" required placeholder="e.g. Program Director - Public Health" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
+      <!-- Modal Header -->
+      <div class="pr-8">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 mb-3">
+          <i class="fa-solid fa-gift text-[11px]"></i>
+          <span>First Listing 100% Free</span>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-slate-300 mb-2 font-semibold">Organization</label>
-            <input type="text" required placeholder="e.g. Save The Children" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
-          </div>
-          <div>
-            <label class="block text-slate-300 mb-2 font-semibold">Posting Category</label>
-            <select class="w-full bg-slate-900 border border-white/10 rounded-xl p-3.5 text-slate-200 outline-none focus:border-appleBlue">
-              <option>Standard Job Posting</option>
-              <option>Value Member Exclusive</option>
-              <option>RFP / Consultancy</option>
-            </select>
+        <h3 id="post-modal-title" class="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-slate-100 tracking-tight">Post an Opportunity</h3>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Reach 100,000+ verified social sector professionals across India.</p>
+      </div>
+
+      <!-- Form -->
+      <form onsubmit="handlePostSubmit(event)" id="post-job-form" class="mt-6 space-y-4 text-sm">
+        <!-- Job Title -->
+        <div class="space-y-1.5">
+          <label for="post-job-title" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Job Title or RFP Subject</label>
+          <div class="modal-input-wrap">
+            <i class="fa-solid fa-briefcase modal-input-icon"></i>
+            <input id="post-job-title" type="text" required placeholder="e.g. Program Director - Public Health & Nutrition" class="modal-input">
           </div>
         </div>
-        <div>
-          <label class="block text-slate-300 mb-2 font-semibold">Description Summary</label>
-          <textarea rows="4" required placeholder="Provide key responsibilities..." class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue"></textarea>
+
+        <!-- Org & Category Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1.5">
+            <label for="post-job-org" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Organization Name</label>
+            <div class="modal-input-wrap">
+              <i class="fa-solid fa-building modal-input-icon"></i>
+              <input id="post-job-org" type="text" required placeholder="e.g. Save The Children" class="modal-input">
+            </div>
+          </div>
+          <div class="space-y-1.5">
+            <label for="post-job-category" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Posting Category</label>
+            <div class="modal-input-wrap">
+              <i class="fa-solid fa-shapes modal-input-icon"></i>
+              <select id="post-job-category" class="modal-input modal-select cursor-pointer appearance-none pr-10">
+                <option value="Standard Job Posting">Standard Job Posting</option>
+                <option value="Value Member Exclusive">Value Member Exclusive</option>
+                <option value="RFP / Consultancy">RFP / Consultancy</option>
+                <option value="Fellowship / Internship">Fellowship / Internship</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-3.5 text-xs text-slate-400 pointer-events-none"></i>
+            </div>
+          </div>
         </div>
 
-        <button type="submit" class="w-full py-4 rounded-full bg-appleBlue hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-appleBlue/20">
-          Submit Post for Free
+        <!-- Description Summary -->
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between">
+            <label for="post-desc" class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Description Summary</label>
+            <span class="text-[11px] text-slate-400"><span id="post-desc-count">0</span> / 1,000 characters</span>
+          </div>
+          <textarea id="post-desc" rows="4" maxlength="1000" oninput="updatePostDescCount()" required placeholder="Provide key responsibilities, qualifications, and application details..." class="modal-input modal-input-no-icon resize-none"></textarea>
+        </div>
+
+        <!-- Form Status Notice Container -->
+        <div id="post-job-status" class="hidden p-3 rounded-xl text-xs font-medium transition-all"></div>
+
+        <!-- Submit Button -->
+        <button id="post-job-submit" type="submit" class="w-full py-4 px-6 rounded-full bg-appleBlue hover:bg-blue-600 text-white font-semibold text-sm transition-all shadow-lg shadow-sky-500/25 active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer">
+          <span id="post-job-submit-text">Submit Post for Free</span>
+          <i id="post-job-submit-icon" class="fa-solid fa-arrow-right text-xs"></i>
         </button>
       </form>
     </div>
