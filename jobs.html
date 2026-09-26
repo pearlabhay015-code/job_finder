@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opportunities | Helping Hands - Social Sector Career & RFP Portal</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            appleBg: '#070709',
+            appleDarkCard: '#0d0d12',
+            appleLightCard: '#f4f4f7',
+            appleBlue: '#2997ff',
+            appleGreen: '#30d158',
+            appleAmber: '#ff9f0a',
+            applePurple: '#bf5af2'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-appleBg font-sans text-slate-300 min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- Top Header Navigation -->
+  <header class="sticky top-0 z-40 w-full border-b border-white/10 apple-glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4 text-sm font-medium">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center space-x-3 cursor-pointer group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-appleBlue to-sky-400 flex items-center justify-center text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-globe text-base"></i>
+        </div>
+        <div class="flex items-center space-x-1">
+          <span class="text-lg font-bold tracking-tight text-slate-100">Helping</span>
+          <span class="text-sm font-medium text-slate-400">Hands</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden md:flex flex-1 justify-center items-center gap-6 whitespace-nowrap text-slate-300 font-medium">
+        <a href="jobs.html" class="soft-link is-active hover:text-slate-100 transition-colors text-base font-semibold">Opportunities</a>
+                <a href="index.html#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
+                <a href="index.html#roster-section" class="soft-link hover:text-slate-100 transition-colors text-base">Talent Directory</a>
+                <a href="index.html#pricing-section" class="soft-link hover:text-slate-100 transition-colors text-base">Value Pass</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="hidden md:flex shrink-0 items-center space-x-3 whitespace-nowrap">
+        <button onclick="openModal('post-job-modal')" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition-all active:scale-95">
+          <i class="fa-solid fa-plus text-xs text-appleBlue"></i>
+          <span>Post Job</span>
+        </button>
+        
+        <div class="theme-menu-wrap relative">
+          <button id="theme-toggle" onclick="toggleThemeMenu(event)" type="button" aria-label="Choose colour theme" aria-expanded="false" aria-haspopup="true" class="theme-toggle inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 text-slate-300 border border-white/10 px-3.5 py-2 text-sm font-semibold transition-all active:scale-95">
+            <span id="theme-toggle-icon" class="inline-flex items-center justify-center w-4 h-4 text-sky-400">
+              <i class="fa-solid fa-circle-half-stroke text-xs"></i>
+            </span>
+            <span id="theme-toggle-label">Theme</span>
+            <i class="theme-chevron fa-solid fa-chevron-down text-[10px] text-slate-400 transition-transform duration-200"></i>
+          </button>
+          <div id="theme-menu" class="theme-menu hidden" role="menu" aria-label="Theme selection">
+            <button data-theme-option="system" onclick="setTheme('system')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <i class="fa-solid fa-circle-half-stroke text-xs w-4 text-center"></i>
+                <span>System</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button data-theme-option="light" onclick="setTheme('light')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <span class="w-4 text-center inline-flex items-center justify-center text-amber-500">
+                  <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                </span>
+                <span>Light</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button data-theme-option="dark" onclick="setTheme('dark')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <i class="fa-solid fa-moon text-xs w-4 text-center"></i>
+                <span>Dark</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+          </div>
+        </div>
+        <button onclick="openAuthModal('login')" class="login-button px-4 py-2 rounded-full text-sm font-semibold transition-all active:scale-95">Log in / Sign up</button>
+      </div>
+
+      <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" type="button" aria-label="Open navigation menu" aria-expanded="false" class="md:hidden w-10 h-10 rounded-full bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition-all active:scale-95">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Mobile navigation -->
+  <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" class="mobile-menu-backdrop hidden"></div>
+  <aside id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation">
+    <div class="flex items-center justify-between mb-6">
+      <span class="font-semibold text-slate-100">Menu</span>
+      <button onclick="closeMobileMenu()" type="button" aria-label="Close navigation menu" class="w-9 h-9 rounded-full bg-white/10 text-slate-300"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="flex flex-col gap-2">
+      <a href="jobs.html" onclick="closeMobileMenu()" class="font-bold text-sky-400">Opportunities</a>
+              <a href="index.html#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
+              <a href="index.html#roster-section" onclick="closeMobileMenu()">Talent Directory</a>
+              <a href="index.html#pricing-section" onclick="closeMobileMenu()">Value Pass</a>
+    </nav>
+    <div class="mobile-menu-divider"></div>
+    <button onclick="closeMobileMenu(); openModal('post-job-modal')" class="mobile-menu-action">Post Job</button>
+    <div class="mobile-menu-divider"></div>
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Theme</p>
+    <div class="grid grid-cols-3 gap-2">
+      <button data-mobile-theme-option="system" onclick="setTheme('system')" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2 px-1">
+        <i class="fa-solid fa-circle-half-stroke text-xs"></i>
+        <span>System</span>
+      </button>
+      <button data-mobile-theme-option="light" onclick="setTheme('light')" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2 px-1">
+        <svg class="w-3.5 h-3.5 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+        <span>Light</span>
+      </button>
+      <button data-mobile-theme-option="dark" onclick="setTheme('dark')" class="flex flex-col sm:flex-row items-center justify-center gap-1.5 py-2 px-1">
+        <i class="fa-solid fa-moon text-xs"></i>
+        <span>Dark</span>
+      </button>
+    </div>
+    <button onclick="closeMobileMenu(); openAuthModal('login')" class="mobile-menu-action mobile-menu-action-primary mt-5">Log in / Sign up</button>
+  </aside>
+
+  <!-- MAIN CONTENT: DEDICATED OPPORTUNITIES STREAM -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 w-full">
+
+    <!-- Compact Breadcrumb Header -->
+    <div class="mb-5 flex items-center justify-between">
+      <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400">
+        <a href="index.html" class="hover:text-slate-200 transition-colors flex items-center gap-1.5">
+          <i class="fa-solid fa-arrow-left text-[11px]"></i>
+          <span>Home</span>
+        </a>
+        <span>/</span>
+        <span class="text-slate-200 font-medium">Opportunities</span>
+      </nav>
+      <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/[0.05] border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-appleGreen"></span>
+        <span class="text-slate-200">100% Verified Openings</span>
+      </div>
+    </div>
+
+    <!-- Search & Filter Bar (Matching Apple Glass Search) -->
+    <div class="w-full mb-8">
+      <div class="apple-dark-card p-3 rounded-2xl sm:rounded-full shadow-xl border border-white/10 focus-within:border-appleBlue/50 transition-all">
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+          
+          <!-- Keyword Input -->
+          <div class="sm:col-span-4 relative flex items-center px-4">
+            <i class="fa-solid fa-magnifying-glass text-slate-400 hover:text-slate-200 text-sm mr-3 cursor-pointer transition-colors" onclick="handleSearch()" title="Search"></i>
+            <input type="text" id="search-input" oninput="handleSearch()" onkeyup="handleSearch()" onkeydown="if(event.key==='Enter') handleSearch()" placeholder="Job title, keyword, or organization..." 
+                   class="w-full bg-transparent text-sm sm:text-base text-slate-200 placeholder-slate-400 border-none outline-none">
+          </div>
+
+          <!-- Sector Dropdown -->
+          <div class="sm:col-span-3 border-t sm:border-t-0 sm:border-l border-white/10 px-3 sm:px-4 py-2 sm:py-0 relative search-dropdown-wrap">
+            <button id="sector-select-btn" onclick="toggleSearchDropdown('sector', event)" type="button" aria-haspopup="true" aria-expanded="false" class="search-select-trigger flex items-center justify-between w-full text-sm text-slate-300 hover:text-slate-100 transition-colors py-1 cursor-pointer">
+              <span class="flex items-center gap-2 truncate">
+                <i id="sector-display-icon" class="fa-solid fa-shapes text-xs text-sky-400 shrink-0"></i>
+                <span id="sector-display-label" class="truncate font-medium">All Sectors</span>
+              </span>
+              <i class="search-chevron fa-solid fa-chevron-down text-[10px] text-slate-400 shrink-0 ml-1 transition-transform duration-200"></i>
+            </button>
+
+            <div id="sector-dropdown-menu" class="search-dropdown-menu hidden" role="menu">
+              <button type="button" onclick="selectSector('', 'All Sectors', 'fa-shapes', event)" class="search-option is-selected" data-sector-val="">
+                <span class="search-option-left"><i class="fa-solid fa-shapes text-xs w-4 text-center text-sky-400"></i><span>All Sectors</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Agriculture', 'Agriculture & Rural', 'fa-wheat-awn', event)" class="search-option" data-sector-val="Agriculture">
+                <span class="search-option-left"><i class="fa-solid fa-wheat-awn text-xs w-4 text-center text-lime-400"></i><span>Agriculture & Rural</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Animal Welfare', 'Animal Welfare & Wildlife', 'fa-paw', event)" class="search-option" data-sector-val="Animal Welfare">
+                <span class="search-option-left"><i class="fa-solid fa-paw text-xs w-4 text-center text-amber-400"></i><span>Animal Welfare & Wildlife</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Child Rights', 'Child Rights & Protection', 'fa-child-reaching', event)" class="search-option" data-sector-val="Child Rights">
+                <span class="search-option-left"><i class="fa-solid fa-child-reaching text-xs w-4 text-center text-pink-400"></i><span>Child Rights & Protection</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Climate', 'Climate Change & ESG', 'fa-leaf', event)" class="search-option" data-sector-val="Climate">
+                <span class="search-option-left"><i class="fa-solid fa-leaf text-xs w-4 text-center text-emerald-400"></i><span>Climate Change & ESG</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('CSR', 'CSR & Foundations', 'fa-building-columns', event)" class="search-option" data-sector-val="CSR">
+                <span class="search-option-left"><i class="fa-solid fa-building-columns text-xs w-4 text-center text-indigo-400"></i><span>CSR & Foundations</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Disaster Relief', 'Disaster & Humanitarian Aid', 'fa-kit-medical', event)" class="search-option" data-sector-val="Disaster Relief">
+                <span class="search-option-left"><i class="fa-solid fa-kit-medical text-xs w-4 text-center text-red-400"></i><span>Disaster & Humanitarian Aid</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Education', 'Education & Youth', 'fa-graduation-cap', event)" class="search-option" data-sector-val="Education">
+                <span class="search-option-left"><i class="fa-solid fa-graduation-cap text-xs w-4 text-center text-amber-400"></i><span>Education & Youth</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Gender Rights', 'Gender Rights & Women', 'fa-venus', event)" class="search-option" data-sector-val="Gender Rights">
+                <span class="search-option-left"><i class="fa-solid fa-venus text-xs w-4 text-center text-fuchsia-400"></i><span>Gender Rights & Women</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Health', 'Public Health & Nutrition', 'fa-heart-pulse', event)" class="search-option" data-sector-val="Health">
+                <span class="search-option-left"><i class="fa-solid fa-heart-pulse text-xs w-4 text-center text-rose-400"></i><span>Public Health & Nutrition</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Human Rights', 'Human Rights & Legal Aid', 'fa-scale-balanced', event)" class="search-option" data-sector-val="Human Rights">
+                <span class="search-option-left"><i class="fa-solid fa-scale-balanced text-xs w-4 text-center text-sky-400"></i><span>Human Rights & Legal Aid</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Livelihoods', 'Livelihoods & Skilling', 'fa-hammer', event)" class="search-option" data-sector-val="Livelihoods">
+                <span class="search-option-left"><i class="fa-solid fa-hammer text-xs w-4 text-center text-teal-400"></i><span>Livelihoods & Skilling</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Mental Health', 'Mental Health & Well-being', 'fa-brain', event)" class="search-option" data-sector-val="Mental Health">
+                <span class="search-option-left"><i class="fa-solid fa-brain text-xs w-4 text-center text-violet-400"></i><span>Mental Health & Well-being</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Microfinance', 'Microfinance & Inclusion', 'fa-hand-holding-dollar', event)" class="search-option" data-sector-val="Microfinance">
+                <span class="search-option-left"><i class="fa-solid fa-hand-holding-dollar text-xs w-4 text-center text-green-400"></i><span>Microfinance & Inclusion</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Public Policy', 'Public Policy & Governance', 'fa-landmark', event)" class="search-option" data-sector-val="Public Policy">
+                <span class="search-option-left"><i class="fa-solid fa-landmark text-xs w-4 text-center text-blue-400"></i><span>Public Policy & Governance</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Renewable Energy', 'Renewable Energy & CleanTech', 'fa-solar-panel', event)" class="search-option" data-sector-val="Renewable Energy">
+                <span class="search-option-left"><i class="fa-solar-panel text-xs w-4 text-center text-yellow-400"></i><span>Renewable Energy & CleanTech</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Social Enterprise', 'Social Enterprise & Impact', 'fa-rocket', event)" class="search-option" data-sector-val="Social Enterprise">
+                <span class="search-option-left"><i class="fa-solid fa-rocket text-xs w-4 text-center text-orange-400"></i><span>Social Enterprise & Impact</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Tech4Good', 'Tech for Good & GovTech', 'fa-microchip', event)" class="search-option" data-sector-val="Tech4Good">
+                <span class="search-option-left"><i class="fa-solid fa-microchip text-xs w-4 text-center text-cyan-400"></i><span>Tech for Good & GovTech</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('Urban Planning', 'Urban Planning & Housing', 'fa-city', event)" class="search-option" data-sector-val="Urban Planning">
+                <span class="search-option-left"><i class="fa-solid fa-city text-xs w-4 text-center text-slate-400"></i><span>Urban Planning & Housing</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectSector('WASH', 'WASH (Water & Sanitation)', 'fa-faucet-drip', event)" class="search-option" data-sector-val="WASH">
+                <span class="search-option-left"><i class="fa-solid fa-faucet-drip text-xs w-4 text-center text-blue-400"></i><span>WASH (Water & Sanitation)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+            </div>
+            <input type="hidden" id="sector-filter" value="">
+          </div>
+
+          <!-- Location Dropdown -->
+          <div class="sm:col-span-3 border-t sm:border-t-0 sm:border-l border-white/10 px-3 sm:px-4 py-2 sm:py-0 relative search-dropdown-wrap">
+            <button id="location-select-btn" onclick="toggleSearchDropdown('location', event)" type="button" aria-haspopup="true" aria-expanded="false" class="search-select-trigger flex items-center justify-between w-full text-sm text-slate-300 hover:text-slate-100 transition-colors py-1 cursor-pointer">
+              <span class="flex items-center gap-2 truncate">
+                <i id="location-display-icon" class="fa-solid fa-earth-americas text-xs text-rose-400 shrink-0"></i>
+                <span id="location-display-label" class="truncate font-medium">All Locations</span>
+              </span>
+              <i class="search-chevron fa-solid fa-chevron-down text-[10px] text-slate-400 shrink-0 ml-1 transition-transform duration-200"></i>
+            </button>
+
+            <div id="location-dropdown-menu" class="search-dropdown-menu hidden" role="menu">
+              <button type="button" onclick="selectLocation('', 'All Locations', 'fa-earth-americas', event)" class="search-option is-selected" data-location-val="">
+                <span class="search-option-left"><i class="fa-solid fa-earth-americas text-xs w-4 text-center text-rose-400"></i><span>All Locations</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Remote', 'Remote', 'fa-house-laptop', event)" class="search-option" data-location-val="Remote">
+                <span class="search-option-left"><i class="fa-solid fa-house-laptop text-xs w-4 text-center text-purple-400"></i><span>Remote</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Andhra Pradesh', 'Andhra Pradesh', 'fa-location-dot', event)" class="search-option" data-location-val="Andhra Pradesh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Andhra Pradesh</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Arunachal Pradesh', 'Arunachal Pradesh', 'fa-location-dot', event)" class="search-option" data-location-val="Arunachal Pradesh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Arunachal Pradesh</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Assam', 'Assam (Guwahati)', 'fa-location-dot', event)" class="search-option" data-location-val="Assam">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Assam (Guwahati)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Bihar', 'Bihar (Patna)', 'fa-location-dot', event)" class="search-option" data-location-val="Bihar">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Bihar (Patna)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Chandigarh', 'Chandigarh', 'fa-location-dot', event)" class="search-option" data-location-val="Chandigarh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Chandigarh</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Chhattisgarh', 'Chhattisgarh (Raipur)', 'fa-location-dot', event)" class="search-option" data-location-val="Chhattisgarh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Chhattisgarh (Raipur)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Delhi', 'Delhi NCR', 'fa-location-dot', event)" class="search-option" data-location-val="Delhi">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Delhi NCR</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Goa', 'Goa', 'fa-location-dot', event)" class="search-option" data-location-val="Goa">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Goa</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Gujarat', 'Gujarat (Ahmedabad)', 'fa-location-dot', event)" class="search-option" data-location-val="Gujarat">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Gujarat (Ahmedabad)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Haryana', 'Haryana (Gurugram)', 'fa-location-dot', event)" class="search-option" data-location-val="Haryana">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Haryana (Gurugram)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Himachal Pradesh', 'Himachal Pradesh (Shimla)', 'fa-location-dot', event)" class="search-option" data-location-val="Himachal Pradesh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Himachal Pradesh (Shimla)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Jammu and Kashmir', 'Jammu & Kashmir (Srinagar)', 'fa-location-dot', event)" class="search-option" data-location-val="Jammu and Kashmir">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Jammu & Kashmir (Srinagar)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Jharkhand', 'Jharkhand (Ranchi)', 'fa-location-dot', event)" class="search-option" data-location-val="Jharkhand">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Jharkhand (Ranchi)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Karnataka', 'Karnataka (Bengaluru)', 'fa-location-dot', event)" class="search-option" data-location-val="Karnataka">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Karnataka (Bengaluru)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Kerala', 'Kerala (Kochi)', 'fa-location-dot', event)" class="search-option" data-location-val="Kerala">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Kerala (Kochi)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Ladakh', 'Ladakh (Leh)', 'fa-location-dot', event)" class="search-option" data-location-val="Ladakh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Ladakh (Leh)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Madhya Pradesh', 'Madhya Pradesh (Bhopal)', 'fa-location-dot', event)" class="search-option" data-location-val="Madhya Pradesh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Madhya Pradesh</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Maharashtra', 'Maharashtra (Mumbai)', 'fa-location-dot', event)" class="search-option" data-location-val="Maharashtra">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Maharashtra (Mumbai)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Manipur', 'Manipur', 'fa-location-dot', event)" class="search-option" data-location-val="Manipur">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Manipur</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Meghalaya', 'Meghalaya', 'fa-location-dot', event)" class="search-option" data-location-val="Meghalaya">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Meghalaya</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Mizoram', 'Mizoram', 'fa-location-dot', event)" class="search-option" data-location-val="Mizoram">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Mizoram</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Nagaland', 'Nagaland', 'fa-location-dot', event)" class="search-option" data-location-val="Nagaland">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Nagaland</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Odisha', 'Odisha', 'fa-location-dot', event)" class="search-option" data-location-val="Odisha">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Odisha</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Puducherry', 'Puducherry', 'fa-location-dot', event)" class="search-option" data-location-val="Puducherry">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Puducherry</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Punjab', 'Punjab (Ludhiana)', 'fa-location-dot', event)" class="search-option" data-location-val="Punjab">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Punjab (Ludhiana)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Rajasthan', 'Rajasthan (Jaipur)', 'fa-location-dot', event)" class="search-option" data-location-val="Rajasthan">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Rajasthan (Jaipur)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Sikkim', 'Sikkim (Gangtok)', 'fa-location-dot', event)" class="search-option" data-location-val="Sikkim">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Sikkim (Gangtok)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Tamil Nadu', 'Tamil Nadu (Chennai)', 'fa-location-dot', event)" class="search-option" data-location-val="Tamil Nadu">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Tamil Nadu (Chennai)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Telangana', 'Telangana (Hyderabad)', 'fa-location-dot', event)" class="search-option" data-location-val="Telangana">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Telangana (Hyderabad)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Tripura', 'Tripura', 'fa-location-dot', event)" class="search-option" data-location-val="Tripura">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Tripura</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Uttar Pradesh', 'Uttar Pradesh (Lucknow)', 'fa-location-dot', event)" class="search-option" data-location-val="Uttar Pradesh">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Uttar Pradesh (Lucknow)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('Uttarakhand', 'Uttarakhand (Dehradun)', 'fa-location-dot', event)" class="search-option" data-location-val="Uttarakhand">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>Uttarakhand</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+              <button type="button" onclick="selectLocation('West Bengal', 'West Bengal (Kolkata)', 'fa-location-dot', event)" class="search-option" data-location-val="West Bengal">
+                <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-sky-400"></i><span>West Bengal (Kolkata)</span></span>
+                <i class="fa-solid fa-check search-check"></i>
+              </button>
+            </div>
+            <input type="hidden" id="location-filter" value="">
+          </div>
+
+          <!-- Search Action Button -->
+          <div class="sm:col-span-2">
+            <button onclick="handleSearch()" class="w-full py-3 bg-slate-200 hover:bg-white text-slate-950 font-bold rounded-xl sm:rounded-full text-sm transition-all shadow-md active:scale-95">
+              Search
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2 mt-4 text-xs sm:text-sm text-slate-400">
+        <span class="font-semibold text-slate-400 mr-1">Quick Filters:</span>
+        <button onclick="setQuickSearch('UNICEF')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">UNICEF</button>
+        <button onclick="setQuickSearch('Climate')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">Climate Lead</button>
+        <button onclick="setQuickSearch('RFP')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">CSR RFPs</button>
+        <button onclick="setQuickSearch('ESG')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">ESG Consultant</button>
+        <button onclick="setQuickSearch('Health')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">Public Health</button>
+        <button onclick="setQuickSearch('Remote')" class="px-3 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-slate-300 border border-white/10 transition">Remote</button>
+      </div>
+
+      <!-- Active Filters Tag Strip -->
+      <div id="active-filters-wrap" class="mt-4 flex flex-wrap items-center gap-2 hidden">
+        <span class="text-xs font-semibold text-slate-400">Active Filters:</span>
+        <div id="active-filters-container" class="flex flex-wrap items-center gap-2"></div>
+        <button onclick="clearAllFilters()" class="text-xs text-sky-400 hover:text-sky-300 underline font-medium ml-2 cursor-pointer">Clear all</button>
+      </div>
+    </div>
+
+    <!-- Results Header Strip -->
+    <div class="flex items-center justify-between pb-4 pt-1 border-b border-white/10 mb-8">
+      <div class="flex items-center gap-2 text-sm text-slate-400">
+        <span class="w-2 h-2 rounded-full bg-appleGreen"></span>
+        <span>Showing <span id="results-count" class="font-bold text-slate-100">0</span> verified opportunities (newest first)</span>
+      </div>
+    </div>
+
+    <!-- Jobs Grid Stream (Only Job Opportunities Visible) -->
+    <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamic Injected Opportunities Cards -->
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-white/10 bg-appleBg text-slate-400 text-sm py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="text-slate-200 font-bold">Helping Hands</span> &copy; 2026. Social Sector Career Portal.
+      </div>
+      <div class="flex space-x-6 text-slate-300">
+        <a href="index.html" class="hover:text-white transition">Home</a>
+        <a href="jobs.html" class="hover:text-white transition">Opportunities</a>
+        <a href="index.html#pricing-section" class="hover:text-white transition">Value Pass</a>
+        <a href="#" class="hover:text-white transition">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SLIDE-OVER DRAWER: Apple-Style Job Detail Panel -->
+  <div id="job-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none">
+    <div onclick="closeDrawer()" id="drawer-backdrop" class="absolute inset-0 bg-slate-950/80 backdrop-blur-md opacity-0 transition-opacity duration-300 pointer-events-auto hidden"></div>
+    
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 pointer-events-none">
+      <div id="drawer-panel" class="w-screen max-w-2xl drawer-transition translate-x-full apple-dark-card border-l border-white/10 p-8 sm:p-10 flex flex-col justify-between overflow-y-auto pointer-events-auto">
+        
+        <!-- Drawer Header -->
+        <div>
+          <div class="flex items-center justify-between pb-6 border-b border-white/10">
+            <span id="drawer-badge" class="px-3 py-1 rounded-full text-xs font-black bg-white/10 text-slate-200">STANDARD</span>
+            <button onclick="closeDrawer()" class="w-9 h-9 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+              <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+          </div>
+
+          <!-- Job Header Info -->
+          <div class="mt-8">
+            <h2 id="drawer-title" class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight leading-tight">Job Title Placeholder</h2>
+            <p id="drawer-org" class="text-slate-300 text-lg font-semibold mt-2">Organization Name</p>
+          </div>
+
+          <!-- Quick Meta Stats Strip -->
+          <div class="grid grid-cols-3 gap-4 my-8 p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-sm">
+            <div>
+              <span class="text-slate-400 block text-xs">Location</span>
+              <span id="drawer-location" class="font-bold text-slate-200 text-base">New Delhi</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-xs">Experience</span>
+              <span id="drawer-exp" class="font-bold text-slate-200 text-base">5+ Years</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-xs">Deadline</span>
+              <span id="drawer-deadline" class="font-bold text-appleGreen text-base">12 Days</span>
+            </div>
+          </div>
+
+          <!-- Value Member Gate Box -->
+          <div id="drawer-gate-box" class="p-5 rounded-2xl bg-appleAmber/15 border border-appleAmber/40 mb-8 hidden">
+            <div class="flex items-start space-x-3">
+              <i class="fa-solid fa-lock text-appleAmber text-xl mt-0.5"></i>
+              <div>
+                <h4 class="text-sm font-bold text-appleAmber">Value Member Exclusive Opportunity</h4>
+                <p class="text-xs text-amber-200/90 mt-1 leading-relaxed">Application links and recruiter contact details are locked for basic accounts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="space-y-4">
+            <h4 class="text-xs font-black uppercase tracking-wider text-slate-400">Role Overview & Responsibilities</h4>
+            <p id="drawer-desc" class="text-base text-slate-300 leading-relaxed">
+              Full detail description content goes here...
+            </p>
+          </div>
+        </div>
+
+        <!-- Drawer Footer Actions -->
+        <div class="pt-8 border-t border-white/10 flex items-center justify-between mt-10">
+          <button onclick="closeDrawer()" class="px-5 py-2.5 rounded-full text-sm font-bold text-slate-400 hover:text-white transition">
+            Close
+          </button>
+          <div id="drawer-action-container">
+            <!-- Injected Action Button -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Post Job Form -->
+  <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-2xl hidden">
+    <div class="apple-dark-card max-w-md w-full rounded-3xl border border-white/10 p-8 relative shadow-2xl">
+      <button onclick="closeModal('auth-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 text-slate-300"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="auth-title" class="text-2xl font-black text-slate-100">Welcome back</h3><p id="auth-copy" class="text-sm text-slate-300 mt-1">Log in to manage your job postings.</p>
+      <div class="flex gap-2 mt-6"><button onclick="setAuthMode('login')" id="auth-login-tab" class="auth-tab flex-1 py-2 rounded-full text-sm font-semibold">Log in</button><button onclick="setAuthMode('signup')" id="auth-signup-tab" class="auth-tab flex-1 py-2 rounded-full text-sm font-semibold">Sign up</button></div>
+      <form onsubmit="submitAuth(event)" class="mt-6 space-y-4"><input id="auth-name" class="auth-name hidden w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Your name"><input id="auth-email" required type="email" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Email address"><input id="auth-password" required type="password" minlength="8" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3 text-slate-200" placeholder="Password (8+ characters)"><p id="auth-message" class="text-sm"></p><button id="auth-submit" class="w-full py-3 rounded-full bg-appleBlue text-white font-bold">Log in</button></form>
+    </div>
+  </div>
+
+  <div id="post-job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-2xl hidden">
+    <div class="apple-dark-card max-w-xl w-full rounded-3xl border border-white/10 p-8 sm:p-10 relative shadow-2xl">
+      <button onclick="closeModal('post-job-modal')" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-base"></i>
+      </button>
+
+      <h3 class="text-2xl font-black text-slate-100">Post an Opportunity</h3>
+      <p class="text-slate-300 text-sm mt-1">Reach 100,000+ social sector professionals across India.</p>
+
+      <form onsubmit="handlePostSubmit(event)" class="mt-6 space-y-5 text-sm">
+        <div>
+          <label class="block text-slate-300 mb-2 font-semibold">Job Title or RFP Subject</label>
+          <input type="text" required placeholder="e.g. Program Director - Public Health" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-slate-300 mb-2 font-semibold">Organization</label>
+            <input type="text" required placeholder="e.g. Save The Children" class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-2 font-semibold">Posting Category</label>
+            <select class="w-full bg-slate-900 border border-white/10 rounded-xl p-3.5 text-slate-200 outline-none focus:border-appleBlue">
+              <option>Standard Job Posting</option>
+              <option>Value Member Exclusive</option>
+              <option>RFP / Consultancy</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-2 font-semibold">Description Summary</label>
+          <textarea rows="4" required placeholder="Provide key responsibilities..." class="w-full bg-white/[0.05] border border-white/10 rounded-xl p-3.5 text-slate-200 placeholder-slate-500 outline-none focus:border-appleBlue"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-full bg-appleBlue hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-appleBlue/20">
+          Submit Post for Free
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
