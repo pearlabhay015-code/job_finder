@@ -25,7 +25,6 @@ const initialData = {
   users: [],
   applications: [],
   resumes: [],
-  experts: [],
   sectors: ['Health', 'Climate', 'Education', 'CSR'],
   locations: ['New Delhi', 'Mumbai', 'Bengaluru', 'Remote']
 };
@@ -152,7 +151,7 @@ http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`); const pathname = url.pathname;
   try {
     if (req.method === 'GET' && pathname === '/api/public') {
-      const data = loadData(); return send(res, 200, { settings: data.settings, sectors: data.sectors, locations: data.locations, experts: data.experts });
+      const data = loadData(); return send(res, 200, { settings: data.settings, sectors: data.sectors, locations: data.locations });
     }
     if (req.method === 'GET' && pathname === '/api/jobs') {
       const data = loadData();

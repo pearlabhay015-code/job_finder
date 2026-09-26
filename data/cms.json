@@ -247,32 +247,6 @@
   "users": [],
   "applications": [],
   "resumes": [],
-  "experts": [
-    {
-      "name": "Dr. Ananya Sharma",
-      "role": "Public Health Lead",
-      "exp": "11 Yrs Exp",
-      "tags": ["USAID", "Epidemiology"]
-    },
-    {
-      "name": "Rajesh K. Verma",
-      "role": "Climate Finance Advisor",
-      "exp": "9 Yrs Exp",
-      "tags": ["ESG", "GEF Grants"]
-    },
-    {
-      "name": "Priya Menon",
-      "role": "M&E Director",
-      "exp": "14 Yrs Exp",
-      "tags": ["World Bank", "SPSS"]
-    },
-    {
-      "name": "Arjun Mehta",
-      "role": "CSR Policy Lead",
-      "exp": "7 Yrs Exp",
-      "tags": ["Section 135", "CSR"]
-    }
-  ],
   "sectors": [
     "Health",
     "Climate",

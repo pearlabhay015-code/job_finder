@@ -218,13 +218,6 @@
       }
     ];
 
-    const sampleExperts = [
-      { name: "Dr. Ananya Sharma", role: "Public Health Lead", exp: "11 Yrs Exp", tags: ["USAID", "Epidemiology"] },
-      { name: "Rajesh K. Verma", role: "Climate Finance Advisor", exp: "9 Yrs Exp", tags: ["ESG", "GEF Grants"] },
-      { name: "Priya Menon", role: "M&E Director", exp: "14 Yrs Exp", tags: ["World Bank", "SPSS"] },
-      { name: "Arjun Mehta", role: "CSR Policy Lead", exp: "7 Yrs Exp", tags: ["Section 135", "CSR"] }
-    ];
-
     const locationAliases = {
       'delhi': ['delhi', 'new delhi', 'ncr', 'noida', 'gurugram', 'gurgaon'],
       'maharashtra': ['maharashtra', 'mumbai', 'pune', 'nagpur', 'thane', 'navi mumbai'],
@@ -414,7 +407,6 @@
       applySavedTheme();
       initJobsPageFromUrl();
       handleSearch();
-      renderExperts(sampleExperts);
       initStickySearchBar();
       document.body.classList.add('page-ready');
       enablePageTransitions();
@@ -445,36 +437,27 @@
 
         const rect = sentinel.getBoundingClientRect();
         const shouldDock = rect.top <= dockThreshold;
-
-        if (shouldDock) {
-          if (!isDocked) {
-            isDocked = true;
-            if (placeholder) {
-              placeholder.style.height = `${bar.offsetHeight}px`;
-              placeholder.classList.remove('hidden');
-            }
-            bar.classList.add('is-docked');
+        if (shouldDock && !isDocked) {
+          isDocked = true;
+          if (placeholder) {
+            placeholder.style.height = `${bar.offsetHeight}px`;
+            placeholder.classList.remove('hidden');
           }
-        } else {
-          if (isDocked) {
-            isDocked = false;
-            if (placeholder) {
-              placeholder.classList.add('hidden');
-              placeholder.style.height = '0px';
-            }
-            bar.classList.remove('is-docked');
+          bar.classList.add('is-docked');
+        } else if (!shouldDock && isDocked) {
+          isDocked = false;
+          if (placeholder) {
+            placeholder.classList.add('hidden');
+            placeholder.style.height = '0px';
           }
+          bar.classList.remove('is-docked');
         }
       }
 
       window.addEventListener('scroll', updateDock, { passive: true });
       window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
-          closeMobileSearch();
-        }
-        if (isDocked && placeholder) {
-          placeholder.style.height = `${bar.offsetHeight}px`;
-        }
+        if (window.innerWidth >= 768) closeMobileSearch();
+        if (isDocked && placeholder) placeholder.style.height = `${bar.offsetHeight}px`;
         updateDock();
       }, { passive: true });
       updateDock();
@@ -595,66 +578,6 @@
             </div>
           `;
         }
-      }).join('');
-    }
-
-    // Render Experts Roster
-    function renderExperts(experts) {
-      const container = document.getElementById('experts-container');
-      if (!container) return;
-
-      container.innerHTML = experts.map((exp) => {
-        const initials = exp.name.replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.)\s*/i, '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'EX';
-
-        return `
-          <div class="expert-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between group">
-            <div>
-              <!-- Top Row: Badge & Status -->
-              <div class="flex items-center justify-between gap-2 mb-4">
-                <span class="expert-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase">
-                  <span>Profile</span>
-                </span>
-                <span class="expert-status-pill inline-flex items-center gap-1.5 text-[11px] font-medium">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                  <span>Available</span>
-                </span>
-              </div>
-
-              <!-- Avatar & Name Header -->
-              <div class="flex items-center gap-3.5 mb-4">
-                <div class="expert-avatar w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm shrink-0">
-                  ${initials}
-                </div>
-                <div class="min-w-0">
-                  <div class="flex items-center gap-1.5">
-                    <h4 class="expert-name text-base sm:text-lg font-bold truncate">${exp.name}</h4>
-                    <i class="fa-solid fa-check text-xs opacity-75 shrink-0" title="Verified"></i>
-                  </div>
-                  <p class="expert-role text-xs sm:text-sm truncate mt-0.5">${exp.role}</p>
-                </div>
-              </div>
-
-              <!-- Experience Metric -->
-              <div class="flex flex-wrap items-center gap-2 my-3">
-                <span class="expert-exp-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium">
-                  <i class="fa-solid fa-briefcase text-[10px]"></i>
-                  <span>${exp.exp}</span>
-                </span>
-              </div>
-
-              <!-- Tags / Competencies -->
-              <div class="flex flex-wrap gap-1.5 mt-4">
-                ${exp.tags.map(t => `<span class="expert-tag rounded-full">${t}</span>`).join('')}
-              </div>
-            </div>
-
-            <!-- Action Button -->
-            <button onclick="scrollToPricing()" class="expert-button mt-6 w-full py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 active:scale-95">
-              <span>Request Contact</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        `;
       }).join('');
     }
 

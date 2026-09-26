@@ -81,17 +81,12 @@
         border-radius: 1.25rem !important;
       }
 
-      .mobile-search-backdrop {
+      .mobile-search-backdrop,
+      .light-theme .mobile-search-backdrop {
         position: fixed !important;
         inset: 0 !important;
         z-index: 55 !important;
-        background: rgba(3, 7, 18, 0.75) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-
-      .light-theme .mobile-search-backdrop {
-        background: rgba(15, 23, 42, 0.42) !important;
+        background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
       }
@@ -149,7 +144,6 @@
       <nav class="hidden md:flex flex-1 justify-center items-center gap-6 whitespace-nowrap text-slate-300 font-medium">
         <a href="jobs.html" class="soft-link is-active hover:text-slate-100 transition-colors text-base font-semibold">Opportunities</a>
                 <a href="index.html#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
-                <a href="index.html#roster-section" class="soft-link hover:text-slate-100 transition-colors text-base">Talent Directory</a>
                 <a href="index.html#pricing-section" class="soft-link hover:text-slate-100 transition-colors text-base">Value Pass</a>
       </nav>
 
@@ -223,7 +217,6 @@
     <nav class="flex flex-col gap-2">
       <a href="jobs.html" onclick="closeMobileMenu()" class="font-bold text-sky-400">Opportunities</a>
               <a href="index.html#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
-              <a href="index.html#roster-section" onclick="closeMobileMenu()">Talent Directory</a>
               <a href="index.html#pricing-section" onclick="closeMobileMenu()">Value Pass</a>
     </nav>
     <div class="mobile-menu-divider"></div>

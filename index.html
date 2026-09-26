@@ -77,17 +77,12 @@
         border-radius: 1.25rem !important;
       }
 
-      .mobile-search-backdrop {
+      .mobile-search-backdrop,
+      .light-theme .mobile-search-backdrop {
         position: fixed !important;
         inset: 0 !important;
         z-index: 55 !important;
-        background: rgba(3, 7, 18, 0.75) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-
-      .light-theme .mobile-search-backdrop {
-        background: rgba(15, 23, 42, 0.42) !important;
+        background: transparent !important;
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
       }
@@ -142,15 +137,14 @@
       </div>
 
       <!-- Center Navigation Links -->
-      <nav class="hidden md:flex flex-1 justify-center items-center gap-6 whitespace-nowrap text-slate-300 font-medium">
+      <nav class="hidden lg:flex flex-1 justify-center items-center gap-6 whitespace-nowrap text-slate-300 font-medium">
         <a href="jobs.html" class="soft-link hover:text-slate-100 transition-colors text-base">Opportunities</a>
         <a href="#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
-        <a href="#roster-section" class="soft-link hover:text-slate-100 transition-colors text-base">Talent Directory</a>
         <a href="#pricing-section" class="soft-link hover:text-slate-100 transition-colors text-base">Value Pass</a>
       </nav>
 
       <!-- Action Buttons -->
-      <div class="hidden md:flex shrink-0 items-center space-x-3 whitespace-nowrap">
+      <div class="hidden lg:flex shrink-0 items-center space-x-3 whitespace-nowrap">
         <button onclick="openModal('post-job-modal')" class="hidden sm:inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-semibold bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition-all active:scale-95">
           <i class="fa-solid fa-plus text-xs text-appleBlue"></i>
           <span>Post Job</span>
@@ -194,7 +188,7 @@
       </div>
 
       <!-- Mobile Navbar Controls (Search Button + Menu Button) -->
-      <div class="flex items-center space-x-2 md:hidden">
+      <div class="flex items-center space-x-2 lg:hidden">
         <button id="mobile-search-toggle" onclick="toggleMobileSearch()" type="button" aria-label="Search opportunities" aria-expanded="false" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 flex items-center justify-center transition-all active:scale-95">
           <i id="mobile-search-icon" class="fa-solid fa-magnifying-glass text-sm"></i>
         </button>
@@ -220,7 +214,6 @@
       <a href="jobs.html" onclick="closeMobileMenu()">Opportunities</a>
       <a href="#bento-section" onclick="closeMobileMenu()">Platform</a>
       <a href="#pricing-section" onclick="closeMobileMenu()">Value Pass</a>
-      <a href="#roster-section" onclick="closeMobileMenu()">Talent Directory</a>
     </nav>
     <div class="mobile-menu-divider"></div>
     <button onclick="closeMobileMenu(); openModal('post-job-modal')" class="mobile-menu-action">Post Job</button>
@@ -333,6 +326,10 @@
                 </button>
                 <button type="button" onclick="selectSector('Education', 'Education & Youth', 'fa-graduation-cap', event)" class="search-option" data-sector-val="Education">
                   <span class="search-option-left"><i class="fa-solid fa-graduation-cap text-xs w-4 text-center text-amber-400"></i><span>Education & Youth</span></span>
+                  <i class="fa-solid fa-check search-check"></i>
+                </button>
+                <button type="button" onclick="selectSector('Teaching', 'Teaching', 'fa-chalkboard-user', event)" class="search-option" data-sector-val="Teaching">
+                  <span class="search-option-left"><i class="fa-solid fa-chalkboard-user text-xs w-4 text-center text-orange-400"></i><span>Teaching</span></span>
                   <i class="fa-solid fa-check search-check"></i>
                 </button>
                 <button type="button" onclick="selectSector('Gender Rights', 'Gender Rights & Women', 'fa-venus', event)" class="search-option" data-sector-val="Gender Rights">
@@ -689,27 +686,6 @@
         <span>Open Opportunities Portal</span>
         <i class="fa-solid fa-arrow-right text-xs"></i>
       </a>
-    </div>
-  </section>
-
-  <!-- Featured Jobseekers / Talent Roster Section -->
-  <section id="roster-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
-    <div class="apple-dark-card p-8 sm:p-10 rounded-3xl border border-white/10 relative overflow-hidden">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10">
-        <div>
-          <span class="text-xs uppercase font-extrabold tracking-widest text-appleGreen">Value Member Spotlight</span>
-          <h2 class="text-3xl sm:text-4xl font-black text-slate-100 mt-1">Featured Development Experts</h2>
-          <p class="text-slate-300 text-base mt-2">Direct candidate profile broadcast directory for recruiters and UN agencies.</p>
-        </div>
-        <button onclick="scrollToPricing()" class="px-5 py-2.5 rounded-full text-sm font-bold bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 transition self-start sm:self-auto">
-          Broadcast Your Resume
-        </button>
-      </div>
-
-      <!-- Talent Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="experts-container">
-        <!-- Injected Experts -->
-      </div>
     </div>
   </section>
 
