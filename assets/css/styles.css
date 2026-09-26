@@ -89,36 +89,119 @@
       font-weight: 600 !important;
     }
 
-    /* Softer profile cards: light by design for a clean visual break in dark mode. */
+    /* =========================================================
+       Featured Experts / Talent Roster Section (Full Screen & Sharp Outer Container)
+       ========================================================= */
+    #roster-section {
+      width: 100% !important;
+      max-width: 100% !important;
+      position: relative;
+    }
+
+    /* Sharp corners ONLY for the bigger outer card */
+    #roster-section .roster-card-container {
+      border-radius: 0 !important;
+      width: 100% !important;
+      transition: all 0.3s ease;
+    }
+
+    /* Softly rounded corners for inner cards and their elements */
+    .roster-broadcast-btn {
+      border-radius: 0.75rem !important;
+    }
     .expert-card {
-      background: #eaf5fc;
-      border: 1px solid #c8ddeb;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+      border-radius: 1.25rem !important;
+    }
+    .expert-card .expert-avatar {
+      border-radius: 0.85rem !important;
+    }
+    .expert-card .expert-badge {
+      border-radius: 9999px !important;
+    }
+    .expert-card .expert-exp-badge {
+      border-radius: 9999px !important;
+    }
+    .expert-card .expert-tag {
+      border-radius: 9999px !important;
+    }
+    .expert-card .expert-button {
+      border-radius: 0.75rem !important;
     }
 
-    .expert-label {
-      color: #687386;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+    /* Roster Container - Dark Theme */
+    body:not(.light-theme) .roster-card-container {
+      background: rgba(14, 16, 25, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6);
     }
 
-    .expert-tag {
-      background: #e7e7eb;
-      border-radius: 9999px;
-      color: #475569;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.3rem 0.55rem;
+    body:not(.light-theme) .roster-header-border {
+      border-color: rgba(255, 255, 255, 0.1);
     }
 
-    .expert-button {
-      background: #3697f8;
+    body:not(.light-theme) .roster-broadcast-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    body:not(.light-theme) .roster-broadcast-btn:hover {
+      background: #ffffff;
+      color: #090a0f;
+      border-color: #ffffff;
+    }
+
+    /* Expert Cards - Dark Theme */
+    body:not(.light-theme) .expert-card {
+      background: rgba(20, 23, 34, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    body:not(.light-theme) .expert-card:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(26, 30, 44, 0.96);
+      transform: translateY(-3px);
+    }
+    body:not(.light-theme) .expert-card .expert-avatar {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    body:not(.light-theme) .expert-card .expert-name {
       color: #f8fafc;
     }
-
-    .expert-button:hover { background: #353541; }
+    body:not(.light-theme) .expert-card .expert-role {
+      color: #94a3b8;
+    }
+    body:not(.light-theme) .expert-card .expert-badge {
+      background: rgba(255, 255, 255, 0.05);
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    body:not(.light-theme) .expert-card .expert-status-pill {
+      color: #94a3b8;
+    }
+    body:not(.light-theme) .expert-card .expert-exp-badge {
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    body:not(.light-theme) .expert-card .expert-tag {
+      background: rgba(255, 255, 255, 0.04);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.3rem 0.6rem;
+    }
+    body:not(.light-theme) .expert-card .expert-button {
+      background: #2563eb;
+      color: #ffffff;
+      border: 1px solid transparent;
+    }
+    body:not(.light-theme) .expert-card .expert-button:hover {
+      background: #1d4ed8;
+    }
 
     /* Theme Toggle Button & Dropdown Styles */
     .theme-toggle {
@@ -495,6 +578,140 @@
 
     .mobile-menu [data-mobile-theme-option].is-selected { background: rgba(41, 151, 255, 0.22); border-color: rgba(41, 151, 255, 0.55); color: #d9efff; }
 
+    /* =========================================================
+       Mobile Screen Search Bar (Navbar-triggered, NO background blur)
+       ========================================================= */
+    .mobile-search-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 48;
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .light-theme .mobile-search-backdrop {
+      background: rgba(15, 23, 42, 0.42);
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    #mobile-search-toggle.is-active {
+      background: rgba(41, 151, 255, 0.25) !important;
+      border-color: rgba(41, 151, 255, 0.6) !important;
+      color: #38bdf8 !important;
+    }
+
+    .light-theme #mobile-search-toggle {
+      background: #edf2f7 !important;
+      color: #334155 !important;
+      border-color: rgba(15, 23, 42, 0.12) !important;
+    }
+
+    .light-theme #mobile-search-toggle:hover {
+      background: #e2e8f0 !important;
+      color: #0f172a !important;
+    }
+
+    .light-theme #mobile-search-toggle.is-active {
+      background: #e0f2fe !important;
+      border-color: #38bdf8 !important;
+      color: #0284c7 !important;
+    }
+
+    .mobile-search-header {
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    .light-theme .mobile-search-header {
+      border-color: #e2e8f0 !important;
+    }
+    .light-theme .mobile-search-header span {
+      color: #64748b !important;
+    }
+    .light-theme .mobile-search-header button {
+      color: #64748b !important;
+    }
+    .light-theme .mobile-search-header button:hover {
+      color: #0f172a !important;
+    }
+
+    @media (max-width: 767px) {
+      /* In mobile screens, hide search bar from taking space in normal page flow */
+      #search-bar-sticky-sentinel {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .search-bar-container:not(.mobile-search-active) {
+        display: none !important;
+      }
+
+      /* When activated via mobile navbar search icon */
+      .search-bar-container.mobile-search-active {
+        display: block !important;
+        position: fixed !important;
+        top: 4.5rem !important; /* directly below navbar */
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 0.85rem !important;
+        z-index: 52 !important;
+        transform: none !important;
+        margin: 0 !important;
+        animation: mobileSearchSlideDown 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      /* Pure solid background — NO BLUR in the background or card */
+      .search-bar-container.mobile-search-active .apple-dark-card {
+        background: #0d0f18 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.18) !important;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+        border-radius: 1.25rem !important;
+      }
+
+      .light-theme .search-bar-container.mobile-search-active .apple-dark-card {
+        background: #ffffff !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22) !important;
+        border-radius: 1.25rem !important;
+      }
+
+      .search-bar-container.mobile-search-active .search-dropdown-menu {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #141724 !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-height: 15rem !important;
+      }
+
+      .light-theme .search-bar-container.mobile-search-active .search-dropdown-menu {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #ffffff !important;
+        border-color: #cbd5e1 !important;
+      }
+    }
+
+    @keyframes mobileSearchSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (max-width: 639px) {
       .mobile-menu { top: 0.5rem; right: 0.5rem; width: min(22rem, calc(100vw - 1rem)); }
       #jobs-section, #bento-section, #roster-section, #pricing-section { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
@@ -505,11 +722,6 @@
     body:not(.light-theme) .bg-\[\#f4f4f7\] {
       background-color: #e7f2f9 !important;
       border-color: #c8dce9 !important;
-    }
-
-    body:not(.light-theme) .expert-card {
-      background: #e6f1f8;
-      border-color: #c4d9e6;
     }
 
     body:not(.light-theme) .apple-dark-card .bg-white\/\[0\.04\] {
@@ -622,10 +834,93 @@
 
     .light-theme .bg-slate-200:hover { background-color: #d5dde8 !important; }
 
+    /* Roster Container - Light Theme */
+    .light-theme #roster-section {
+      border-color: rgba(186, 230, 253, 0.6) !important;
+    }
+    .light-theme .roster-card-container {
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08) !important;
+    }
+    .light-theme .roster-card-container h2 {
+      color: #0f172a !important;
+    }
+    .light-theme .roster-card-container p {
+      color: #475569 !important;
+    }
+    .light-theme .roster-header-border {
+      border-color: #e2e8f0 !important;
+    }
+    .light-theme .roster-broadcast-btn {
+      background: #0f172a !important;
+      color: #ffffff !important;
+      border: 1px solid #0f172a !important;
+    }
+    .light-theme .roster-broadcast-btn:hover {
+      background: #1e293b !important;
+      color: #ffffff !important;
+      border-color: #1e293b !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15) !important;
+    }
+
+    /* Expert Cards - Light Theme */
     .light-theme .expert-card {
-      background: #eff8ff;
-      border-color: #cfe5f3;
-      box-shadow: 0 10px 22px rgba(70, 112, 140, 0.1);
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      box-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.06) !important;
+      transition: all 0.25s ease;
+    }
+    .light-theme .expert-card:hover {
+      transform: translateY(-3px);
+      background: #ffffff !important;
+      border-color: #64748b !important;
+      box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.12) !important;
+    }
+    .light-theme .expert-card .expert-avatar {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    .light-theme .expert-card .expert-name {
+      color: #0f172a !important;
+    }
+    .light-theme .expert-card .expert-role {
+      color: #475569 !important;
+    }
+    .light-theme .expert-card .expert-badge {
+      background: #f8fafc !important;
+      color: #475569 !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+    .light-theme .expert-card .expert-status-pill {
+      color: #475569 !important;
+    }
+    .light-theme .expert-card .expert-exp-badge {
+      background: #f1f5f9 !important;
+      color: #334155 !important;
+      border: 1px solid #e2e8f0 !important;
+    }
+    .light-theme .expert-card .expert-tag {
+      background: #f8fafc !important;
+      color: #334155 !important;
+      border: 1px solid #e2e8f0 !important;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.3rem 0.6rem;
+    }
+    .light-theme .expert-card .expert-tag:hover {
+      background: #f1f5f9 !important;
+      border-color: #cbd5e1 !important;
+    }
+    .light-theme .expert-card .expert-button {
+      background: #2563eb !important;
+      color: #ffffff !important;
+      border: 1px solid transparent !important;
+      box-shadow: none !important;
+    }
+    .light-theme .expert-card .expert-button:hover {
+      background: #1d4ed8 !important;
     }
 
     .light-theme .soft-link {
@@ -638,7 +933,22 @@
       color: #334e68 !important;
     }
 
+    .light-theme #post-job-modal .apple-dark-card { background: #f8fcff; }
 
+    .light-theme #post-job-modal input,
+    .light-theme #post-job-modal textarea,
+    .light-theme #post-job-modal select {
+      background: #eaf6ff !important;
+      border-color: #161616 !important;
+      color: #334e68 !important;
+    }
+
+    .light-theme #post-job-modal input:focus,
+    .light-theme #post-job-modal textarea:focus,
+    .light-theme #post-job-modal select:focus {
+      border-color: #77bde5 !important;
+      box-shadow: 0 0 0 3px rgba(119, 189, 229, 0.18);
+    }
 
     .light-theme .bg-slate-950\/80,
     .light-theme .bg-slate-950\/85 { background-color: rgba(15, 23, 42, 0.55) !important; }
@@ -799,7 +1109,7 @@
     }
 
     .soft-link.is-active {
-      background: rgba(255, 255, 255, 0.12);
+      background: transparent;
       color: #38bdf8 !important;
     }
 
@@ -1124,3 +1434,4 @@
       color: #0f172a;
       box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
     }
+

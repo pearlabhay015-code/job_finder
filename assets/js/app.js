@@ -431,6 +431,18 @@
       let isDocked = false;
 
       function updateDock() {
+        if (window.innerWidth < 768) {
+          if (isDocked) {
+            isDocked = false;
+            if (placeholder) {
+              placeholder.classList.add('hidden');
+              placeholder.style.height = '0px';
+            }
+            bar.classList.remove('is-docked');
+          }
+          return;
+        }
+
         const rect = sentinel.getBoundingClientRect();
         const shouldDock = rect.top <= dockThreshold;
 
@@ -457,6 +469,9 @@
 
       window.addEventListener('scroll', updateDock, { passive: true });
       window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          closeMobileSearch();
+        }
         if (isDocked && placeholder) {
           placeholder.style.height = `${bar.offsetHeight}px`;
         }
@@ -587,23 +602,60 @@
     function renderExperts(experts) {
       const container = document.getElementById('experts-container');
       if (!container) return;
-      container.innerHTML = experts.map(exp => `
-        <div class="expert-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <span class="expert-label">Featured profile</span>
-            <h4 class="text-lg font-bold text-slate-900 mt-3">${exp.name}</h4>
-            <p class="text-sm text-slate-600 mt-0.5">${exp.role}</p>
-            <span class="inline-block mt-2 text-xs text-appleGreen font-semibold">${exp.exp}</span>
 
-            <div class="flex flex-wrap gap-1.5 mt-4">
-              ${exp.tags.map(t=>`<span class="expert-tag">${t}</span>`).join('')}
+      container.innerHTML = experts.map((exp) => {
+        const initials = exp.name.replace(/^(Dr\.|Mr\.|Ms\.|Mrs\.)\s*/i, '').split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'EX';
+
+        return `
+          <div class="expert-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between group">
+            <div>
+              <!-- Top Row: Badge & Status -->
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <span class="expert-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase">
+                  <span>Profile</span>
+                </span>
+                <span class="expert-status-pill inline-flex items-center gap-1.5 text-[11px] font-medium">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  <span>Available</span>
+                </span>
+              </div>
+
+              <!-- Avatar & Name Header -->
+              <div class="flex items-center gap-3.5 mb-4">
+                <div class="expert-avatar w-11 h-11 rounded-xl flex items-center justify-center font-bold text-sm shrink-0">
+                  ${initials}
+                </div>
+                <div class="min-w-0">
+                  <div class="flex items-center gap-1.5">
+                    <h4 class="expert-name text-base sm:text-lg font-bold truncate">${exp.name}</h4>
+                    <i class="fa-solid fa-check text-xs opacity-75 shrink-0" title="Verified"></i>
+                  </div>
+                  <p class="expert-role text-xs sm:text-sm truncate mt-0.5">${exp.role}</p>
+                </div>
+              </div>
+
+              <!-- Experience Metric -->
+              <div class="flex flex-wrap items-center gap-2 my-3">
+                <span class="expert-exp-badge inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium">
+                  <i class="fa-solid fa-briefcase text-[10px]"></i>
+                  <span>${exp.exp}</span>
+                </span>
+              </div>
+
+              <!-- Tags / Competencies -->
+              <div class="flex flex-wrap gap-1.5 mt-4">
+                ${exp.tags.map(t => `<span class="expert-tag rounded-full">${t}</span>`).join('')}
+              </div>
             </div>
+
+            <!-- Action Button -->
+            <button onclick="scrollToPricing()" class="expert-button mt-6 w-full py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 active:scale-95">
+              <span>Request Contact</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
           </div>
-          <button onclick="scrollToPricing()" class="expert-button mt-6 w-full py-2.5 rounded-full text-xs font-bold transition">
-            Request Contact
-          </button>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     // Tab Filter Logic
@@ -857,6 +909,9 @@
       alert("In production, this opens Razorpay payment gateway for Value Pass subscription.");
     }
 
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
 
     function applySavedTheme() {
       const savedTheme = localStorage.getItem('helping-hands-theme');
@@ -991,12 +1046,62 @@
       }
     }
 
+    function toggleMobileSearch(forceState) {
+      const sentinel = document.getElementById('search-bar-sticky-sentinel');
+      const bar = document.getElementById('search-bar-container');
+      const backdrop = document.getElementById('mobile-search-backdrop');
+      const toggleBtn = document.getElementById('mobile-search-toggle');
+      const toggleIcon = document.getElementById('mobile-search-icon');
+      if (!bar) return;
+
+      const isOpen = bar.classList.contains('mobile-search-active');
+      const nextState = typeof forceState === 'boolean' ? forceState : !isOpen;
+
+      if (nextState) {
+        closeMobileMenu();
+        if (sentinel) sentinel.classList.add('mobile-search-active');
+        bar.classList.add('mobile-search-active');
+        if (backdrop) backdrop.classList.remove('hidden');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          toggleBtn.classList.add('is-active');
+        }
+        if (toggleIcon) {
+          toggleIcon.className = 'fa-solid fa-xmark text-sm';
+        }
+        document.body.classList.add('mobile-search-open');
+
+        setTimeout(() => {
+          const input = document.getElementById('search-input');
+          if (input) input.focus();
+        }, 120);
+      } else {
+        if (sentinel) sentinel.classList.remove('mobile-search-active');
+        bar.classList.remove('mobile-search-active');
+        if (backdrop) backdrop.classList.add('hidden');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.classList.remove('is-active');
+        }
+        if (toggleIcon) {
+          toggleIcon.className = 'fa-solid fa-magnifying-glass text-sm';
+        }
+        document.body.classList.remove('mobile-search-open');
+        closeAllSearchDropdowns();
+      }
+    }
+
+    function closeMobileSearch() {
+      toggleMobileSearch(false);
+    }
+
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       if (menu.classList.contains('hidden')) openMobileMenu(); else closeMobileMenu();
     }
 
     function openMobileMenu() {
+      closeMobileSearch();
       document.getElementById('mobile-menu').classList.remove('hidden');
       document.getElementById('mobile-menu-backdrop').classList.remove('hidden');
       document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'true');
@@ -1034,6 +1139,7 @@
         closeThemeMenu();
         closeAllSearchDropdowns();
         closeMobileMenu();
+        closeMobileSearch();
         if (wasOpen) {
           const button = document.getElementById('theme-toggle');
           if (button) button.focus();
@@ -1045,214 +1151,46 @@
       if ((localStorage.getItem('helping-hands-theme') || 'system') === 'system') applySavedTheme();
     });
 
-    /* ==========================================================================
-       Interactive Premium Modal Management
-       ========================================================================== */
-    function openModal(id) {
-      const modal = typeof id === 'string' ? document.getElementById(id) : id;
-      if (!modal) return;
-      modal.classList.remove('hidden');
-      modal.classList.add('is-open');
-      document.body.classList.add('modal-open');
-    }
-
     function closeModal(id) {
-      const modal = typeof id === 'string' ? document.getElementById(id) : id;
-      if (!modal) return;
-      modal.classList.remove('is-open');
-      modal.classList.add('hidden');
-      if (!document.querySelector('.modal-overlay:not(.hidden)')) {
-        document.body.classList.remove('modal-open');
-      }
-    }
-
-    function handleModalBackdropClick(event, id) {
-      if (event.target === event.currentTarget || event.target.id === id || event.target.classList.contains('modal-overlay')) {
-        closeModal(id);
-      }
-    }
-
-    function togglePasswordVisibility(inputId, btnEl) {
-      const input = document.getElementById(inputId);
-      if (!input) return;
-      const isPassword = input.type === 'password';
-      input.type = isPassword ? 'text' : 'password';
-      const icon = btnEl.querySelector('i');
-      if (icon) {
-        icon.className = isPassword ? 'fa-solid fa-eye-slash text-xs' : 'fa-solid fa-eye text-xs';
-      }
-      btnEl.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
-    }
-
-    function updatePostDescCount() {
-      const desc = document.getElementById('post-desc');
-      const count = document.getElementById('post-desc-count');
-      if (desc && count) {
-        count.textContent = desc.value.length;
-      }
+      document.getElementById(id).classList.add('hidden');
     }
 
     let authMode = 'login';
     let accountToken = localStorage.getItem('helping-hands-account-token') || '';
 
-    function openAuthModal(mode) {
-      setAuthMode(mode || 'login');
-      openModal('auth-modal');
-    }
+    function openAuthModal(mode) { setAuthMode(mode); openModal('auth-modal'); }
 
     function setAuthMode(mode) {
       authMode = mode;
       const signUp = mode === 'signup';
-      const nameGroup = document.getElementById('auth-name-group');
-      const nameInput = document.getElementById('auth-name');
-      const title = document.getElementById('auth-title');
-      const copy = document.getElementById('auth-copy');
-      const submitText = document.getElementById('auth-submit-text');
-      const loginTab = document.getElementById('auth-login-tab');
-      const signupTab = document.getElementById('auth-signup-tab');
-      const messageBox = document.getElementById('auth-message-box');
-      const message = document.getElementById('auth-message');
-
-      if (nameGroup) nameGroup.classList.toggle('hidden', !signUp);
-      if (nameInput) nameInput.required = signUp;
-      if (title) title.textContent = signUp ? 'Create your account' : 'Welcome back';
-      if (copy) copy.textContent = signUp ? 'Your first recruiter job post is free.' : 'Log in to manage your job postings.';
-      if (submitText) submitText.textContent = signUp ? 'Create account' : 'Log in';
-
-      if (loginTab && signupTab) {
-        loginTab.classList.toggle('is-active', !signUp);
-        loginTab.setAttribute('aria-selected', String(!signUp));
-        signupTab.classList.toggle('is-active', signUp);
-        signupTab.setAttribute('aria-selected', String(signUp));
-      }
-
-      if (messageBox) messageBox.classList.add('hidden');
-      if (message) message.textContent = '';
+      document.getElementById('auth-name').classList.toggle('hidden', !signUp);
+      document.getElementById('auth-title').textContent = signUp ? 'Create your account' : 'Welcome back';
+      document.getElementById('auth-copy').textContent = signUp ? 'Your first recruiter job post is free.' : 'Log in to manage your job postings.';
+      document.getElementById('auth-submit').textContent = signUp ? 'Create account' : 'Log in';
+      document.getElementById('auth-login-tab').className = `auth-tab flex-1 py-2 rounded-full text-sm font-semibold ${signUp ? 'text-slate-300' : 'bg-slate-200 text-slate-950'}`;
+      document.getElementById('auth-signup-tab').className = `auth-tab flex-1 py-2 rounded-full text-sm font-semibold ${signUp ? 'bg-slate-200 text-slate-950' : 'text-slate-300'}`;
+      document.getElementById('auth-message').textContent = '';
     }
 
     async function submitAuth(event) {
       event.preventDefault();
-      const submitBtn = document.getElementById('auth-submit');
-      const submitText = document.getElementById('auth-submit-text');
-      const messageBox = document.getElementById('auth-message-box');
+      const payload = { email: document.getElementById('auth-email').value, password: document.getElementById('auth-password').value };
+      if (authMode === 'signup') payload.name = document.getElementById('auth-name').value;
       const message = document.getElementById('auth-message');
-      const email = document.getElementById('auth-email').value.trim();
-      const password = document.getElementById('auth-password').value;
-      const nameInput = document.getElementById('auth-name');
-      const name = nameInput ? nameInput.value.trim() : '';
-
-      const originalBtnHtml = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> ${authMode === 'signup' ? 'Creating account...' : 'Signing in...'}`;
-
-      const payload = { email, password };
-      if (authMode === 'signup') payload.name = name || 'Recruiter';
-
       try {
-        const response = await fetch(`/api/auth/${authMode === 'signup' ? 'signup' : 'login'}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          accountToken = result.token;
-          localStorage.setItem('helping-hands-account-token', accountToken);
-          messageBox.className = 'p-3 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-2';
-          message.textContent = `Welcome, ${result.user?.name || 'Recruiter'}! Your account is ready.`;
-          messageBox.classList.remove('hidden');
-          setTimeout(() => {
-            closeModal('auth-modal');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
-          }, 900);
-        } else {
-          let errMsg = 'Unable to continue.';
-          try {
-            const errResult = await response.json();
-            errMsg = errResult.error || errMsg;
-          } catch (_) {}
-          throw new Error(errMsg);
-        }
-      } catch (error) {
-        // If server is not responding (e.g., static file preview), simulate successful local demo login
-        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-          const simulatedName = name || email.split('@')[0] || 'Recruiter';
-          messageBox.className = 'p-3 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-2';
-          message.textContent = `Welcome, ${simulatedName}! (Local demo mode active)`;
-          messageBox.classList.remove('hidden');
-          setTimeout(() => {
-            closeModal('auth-modal');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
-          }, 900);
-        } else {
-          messageBox.className = 'p-3 rounded-xl text-xs font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 flex items-center gap-2';
-          message.textContent = error.message;
-          messageBox.classList.remove('hidden');
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnHtml;
-        }
-      }
+        const response = await fetch(`/api/auth/${authMode === 'signup' ? 'signup' : 'login'}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const result = await response.json(); if (!response.ok) throw new Error(result.error || 'Unable to continue.');
+        accountToken = result.token; localStorage.setItem('helping-hands-account-token', accountToken);
+        message.className = 'text-sm text-appleGreen'; message.textContent = `Welcome, ${result.user.name}. Your account is ready.`;
+        setTimeout(() => closeModal('auth-modal'), 800);
+      } catch (error) { message.className = 'text-sm text-red-400'; message.textContent = error.message; }
     }
 
     function handlePostSubmit(e) {
       e.preventDefault();
-      const submitBtn = document.getElementById('post-job-submit');
-      const statusBox = document.getElementById('post-job-status');
-      const form = document.getElementById('post-job-form');
-
-      const originalHtml = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Submitting Opportunity...`;
-
-      setTimeout(() => {
-        if (statusBox) {
-          statusBox.className = 'p-3.5 rounded-xl text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-2';
-          statusBox.innerHTML = `<i class="fa-solid fa-circle-check text-sm shrink-0"></i> <span>Opportunity submitted to moderation queue! Your first post is 100% free.</span>`;
-          statusBox.classList.remove('hidden');
-        }
-
-        setTimeout(() => {
-          if (form) form.reset();
-          updatePostDescCount();
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalHtml;
-          if (statusBox) statusBox.classList.add('hidden');
-          closeModal('post-job-modal');
-        }, 1200);
-      }, 500);
+      alert("Opportunity submitted for the manual moderation queue. Job posting is free.");
+      closeModal('post-job-modal');
     }
 
-    // Close modal on tap / click anywhere on the screen outside the dialog
-    ['click', 'touchend'].forEach(evtType => {
-      document.addEventListener(evtType, (event) => {
-        const activeModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
-        activeModals.forEach(modal => {
-          const dialog = modal.querySelector('.modal-dialog');
-          if (dialog && !dialog.contains(event.target) && !event.target.closest('[onclick*="openModal"], [onclick*="openAuthModal"]')) {
-            closeModal(modal.id);
-          }
-        });
-      }, { passive: true });
-    });
-
-    // Global listener for Escape key to close modals
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        const openOverlays = document.querySelectorAll('.modal-overlay:not(.hidden)');
-        openOverlays.forEach(overlay => closeModal(overlay.id));
-      }
-    });
-
-    // Expose all functions on window for global accessibility
-    window.openModal = openModal;
-    window.closeModal = closeModal;
-    window.openAuthModal = openAuthModal;
-    window.handleModalBackdropClick = handleModalBackdropClick;
-    window.togglePasswordVisibility = togglePasswordVisibility;
-    window.updatePostDescCount = updatePostDescCount;
-    window.setAuthMode = setAuthMode;
-    window.submitAuth = submitAuth;
-    window.handlePostSubmit = handlePostSubmit;
+    window.toggleMobileSearch = toggleMobileSearch;
+    window.closeMobileSearch = closeMobileSearch;
