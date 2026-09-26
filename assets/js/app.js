@@ -857,9 +857,6 @@
       alert("In production, this opens Razorpay payment gateway for Value Pass subscription.");
     }
 
-    function openModal(id) {
-      document.getElementById(id).classList.remove('hidden');
-    }
 
     function applySavedTheme() {
       const savedTheme = localStorage.getItem('helping-hands-theme');
@@ -1052,32 +1049,25 @@
        Interactive Premium Modal Management
        ========================================================================== */
     function openModal(id) {
-      const modal = document.getElementById(id);
+      const modal = typeof id === 'string' ? document.getElementById(id) : id;
       if (!modal) return;
       modal.classList.remove('hidden');
+      modal.classList.add('is-open');
       document.body.classList.add('modal-open');
-      // Trigger smooth transition
-      requestAnimationFrame(() => {
-        modal.classList.add('is-open');
-      });
     }
 
     function closeModal(id) {
-      const modal = document.getElementById(id);
+      const modal = typeof id === 'string' ? document.getElementById(id) : id;
       if (!modal) return;
       modal.classList.remove('is-open');
-      setTimeout(() => {
-        if (!modal.classList.contains('is-open')) {
-          modal.classList.add('hidden');
-        }
-        if (!document.querySelector('.modal-overlay.is-open')) {
-          document.body.classList.remove('modal-open');
-        }
-      }, 220);
+      modal.classList.add('hidden');
+      if (!document.querySelector('.modal-overlay:not(.hidden)')) {
+        document.body.classList.remove('modal-open');
+      }
     }
 
     function handleModalBackdropClick(event, id) {
-      if (event.target === event.currentTarget) {
+      if (event.target === event.currentTarget || event.target.id === id || event.target.classList.contains('modal-overlay')) {
         closeModal(id);
       }
     }
@@ -1235,10 +1225,34 @@
       }, 500);
     }
 
+    // Close modal on tap / click anywhere on the screen outside the dialog
+    ['click', 'touchend'].forEach(evtType => {
+      document.addEventListener(evtType, (event) => {
+        const activeModals = document.querySelectorAll('.modal-overlay:not(.hidden)');
+        activeModals.forEach(modal => {
+          const dialog = modal.querySelector('.modal-dialog');
+          if (dialog && !dialog.contains(event.target) && !event.target.closest('[onclick*="openModal"], [onclick*="openAuthModal"]')) {
+            closeModal(modal.id);
+          }
+        });
+      }, { passive: true });
+    });
+
     // Global listener for Escape key to close modals
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        const openOverlays = document.querySelectorAll('.modal-overlay.is-open');
+        const openOverlays = document.querySelectorAll('.modal-overlay:not(.hidden)');
         openOverlays.forEach(overlay => closeModal(overlay.id));
       }
     });
+
+    // Expose all functions on window for global accessibility
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.openAuthModal = openAuthModal;
+    window.handleModalBackdropClick = handleModalBackdropClick;
+    window.togglePasswordVisibility = togglePasswordVisibility;
+    window.updatePostDescCount = updatePostDescCount;
+    window.setAuthMode = setAuthMode;
+    window.submitAuth = submitAuth;
+    window.handlePostSubmit = handlePostSubmit;
