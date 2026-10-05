@@ -37,7 +37,7 @@
     }
   </script>
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260926_mobile">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261005_mobile_nav">
   <style>
     /* Mobile Search Bar: Hidden by default on mobile, revealed when search icon is clicked */
     @media (max-width: 767px) {
@@ -59,7 +59,6 @@
         z-index: 60 !important;
         margin: 0 !important;
         transform: none !important;
-        animation: mobileSearchSlideDown 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
       }
 
       /* Solid background — NO BLUR in the background or search card */
@@ -111,16 +110,6 @@
       }
     }
 
-    @keyframes mobileSearchSlideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
   </style>
 </head>
 <body class="bg-appleBg font-sans text-slate-300 min-h-screen flex flex-col overflow-x-hidden">
@@ -216,7 +205,7 @@
     </div>
     <nav class="flex flex-col gap-2">
       <a href="jobs.html" onclick="closeMobileMenu()" class="font-bold text-sky-400">Opportunities</a>
-              <a href="index.html#bento-section" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
+              <a href="index.html#bento-section" onclick="closeMobileMenu()" class="soft-link hover:text-slate-100 transition-colors text-base">Platform</a>
               <a href="index.html#pricing-section" onclick="closeMobileMenu()">Value Pass</a>
     </nav>
     <div class="mobile-menu-divider"></div>
@@ -713,6 +702,6 @@
   </div>
 
   <!-- JavaScript Application Logic -->
-  <script src="assets/js/app.js?v=20260926_mobile"></script>
+  <script src="assets/js/app.js?v=20261005_mobile_nav"></script>
 </body>
 </html>

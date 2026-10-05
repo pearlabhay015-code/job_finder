@@ -488,7 +488,8 @@
 
     /* Keep phones and tablets fast: interactions change state instantly. */
     @media (max-width: 1023px) {
-      html { scroll-behavior: auto; }
+      /* Keep content still on touch devices while retaining natural anchor navigation. */
+      html { scroll-behavior: smooth; }
       *, *::before, *::after {
         animation: none !important;
         transition: none !important;

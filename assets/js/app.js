@@ -469,6 +469,8 @@
         link.addEventListener('click', event => {
           const href = link.getAttribute('href');
           if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !href || link.target === '_blank') return;
+          // Phone navigation should never wait on a visual page-transition timer.
+          if (window.matchMedia('(max-width: 1023px)').matches) return;
           event.preventDefault();
           document.body.classList.add('page-leaving');
           window.setTimeout(() => { window.location.href = href; }, 180);
@@ -994,10 +996,10 @@
         }
         document.body.classList.add('mobile-search-open');
 
-        setTimeout(() => {
+        requestAnimationFrame(() => {
           const input = document.getElementById('search-input');
           if (input) input.focus();
-        }, 120);
+        });
       } else {
         if (sentinel) sentinel.classList.remove('mobile-search-active');
         bar.classList.remove('mobile-search-active');
@@ -1025,10 +1027,15 @@
 
     function openMobileMenu() {
       closeMobileSearch();
-      document.getElementById('mobile-menu').classList.remove('hidden');
-      document.getElementById('mobile-menu-backdrop').classList.remove('hidden');
-      document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'true');
-      document.getElementById('mobile-menu-toggle').setAttribute('aria-label', 'Close navigation menu');
+      const menu = document.getElementById('mobile-menu');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (!menu || !backdrop || !toggle) return;
+      menu.classList.remove('hidden');
+      backdrop.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close navigation menu');
+      toggle.innerHTML = '<i class="fa-solid fa-xmark text-base"></i>';
       document.body.classList.add('mobile-menu-open');
     }
 
@@ -1038,8 +1045,12 @@
       if (!menu || !backdrop) return;
       menu.classList.add('hidden');
       backdrop.classList.add('hidden');
-      document.getElementById('mobile-menu-toggle').setAttribute('aria-expanded', 'false');
-      document.getElementById('mobile-menu-toggle').setAttribute('aria-label', 'Open navigation menu');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.innerHTML = '<i class="fa-solid fa-bars text-sm"></i>';
+      }
       document.body.classList.remove('mobile-menu-open');
     }
 
