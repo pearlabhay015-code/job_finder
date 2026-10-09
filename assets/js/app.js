@@ -1,6 +1,187 @@
 // Sample Jobs Database
     const sampleJobs = [
       {
+        id: "amazon-1",
+        title: "Senior UI Designer",
+        org: "Amazon",
+        company: "Amazon",
+        date: "Jul 14, 2025",
+        posted: "Jul 14, 2025",
+        logo: "amazon",
+        logoBg: "bg-black text-white",
+        tags: ["Full time", "Contract", "Senior level"],
+        salary: "$100K - $130K",
+        applicants: 94,
+        sent: 45,
+        type: "standard",
+        sector: "Media & Design",
+        location: "Remote / Seattle",
+        exp: "Senior level",
+        deadline: "Open",
+        desc: "Design next-generation consumer interfaces, intuitive e-commerce customer experiences, and high-fidelity interaction prototypes."
+      },
+      {
+        id: "google-1",
+        title: "Product Designer",
+        org: "Google",
+        company: "Google",
+        date: "Jul 13, 2025",
+        posted: "Jul 13, 2025",
+        isFeatured: true,
+        logo: "google",
+        logoBg: "bg-white text-slate-900",
+        tags: ["Part time", "Distant"],
+        salary: "$30K - $120K",
+        applicants: 34,
+        sent: 10,
+        type: "premium",
+        sector: "Media & Design",
+        location: "Distant / Mountain View",
+        exp: "Mid-Senior",
+        deadline: "Open",
+        desc: "Drive product design systems and user experience frameworks across cloud ecosystem workflows and collaborative AI tools."
+      },
+      {
+        id: "facebook-1",
+        title: "UX Designer",
+        org: "Facebook",
+        company: "Facebook",
+        date: "Jul 12, 2025",
+        posted: "Jul 12, 2025",
+        logo: "facebook",
+        logoBg: "bg-[#1877f2] text-white",
+        tags: ["Full time", "Distant", "Junior level"],
+        salary: "$100K - $170K",
+        applicants: 109,
+        sent: 30,
+        type: "standard",
+        sector: "Media & Design",
+        location: "Distant / Menlo Park",
+        exp: "Junior level",
+        deadline: "Open",
+        desc: "Craft seamless social interfaces, community tools, and user interaction funnels connecting millions of global users."
+      },
+      {
+        id: "apple-1",
+        title: "UI/UX Designer",
+        org: "Apple",
+        company: "Apple",
+        date: "June 9, 2025",
+        posted: "June 9, 2025",
+        logo: "apple",
+        logoBg: "bg-black text-white",
+        tags: ["Full time", "Remote", "Freelance"],
+        salary: "$140K - $180K",
+        applicants: 312,
+        sent: 143,
+        type: "premium",
+        sector: "Media & Design",
+        location: "Remote / Cupertino",
+        exp: "Senior level",
+        deadline: "Open",
+        desc: "Sculpt minimalist, deeply refined human interfaces and tactile user experiences for flagship platforms and applications."
+      },
+      {
+        id: "openai-1",
+        title: "Customer Specialist",
+        org: "OpenAI",
+        company: "OpenAI",
+        date: "June 9, 2025",
+        posted: "June 9, 2025",
+        logo: "openai",
+        logoBg: "bg-black text-white",
+        tags: ["Part time", "Hybrid", "Shift-Based"],
+        salary: "$30K - $50K",
+        applicants: 24,
+        sent: 9,
+        type: "standard",
+        sector: "Customer Support",
+        location: "Hybrid / San Francisco",
+        exp: "Entry-Mid",
+        deadline: "Open",
+        desc: "Partner with developers and enterprise clients leveraging frontier AI models, offering world-class technical insights and onboarding."
+      },
+      {
+        id: "dribbble-1",
+        title: "Frontend Developer",
+        org: "Dribbble",
+        company: "Dribbble",
+        date: "June 2, 2025",
+        posted: "June 2, 2025",
+        logo: "dribbble",
+        logoBg: "bg-[#ea4c89] text-white",
+        tags: ["Contract", "On-Site", "Flexible Hours"],
+        salary: "$80K - $130K",
+        applicants: 98,
+        sent: 26,
+        type: "standard",
+        sector: "Engineering",
+        location: "On-Site / Remote",
+        exp: "Mid level",
+        deadline: "Open",
+        desc: "Build highly responsive, animation-rich web applications that inspire and empower millions of world-class creators."
+      },
+      {
+        id: "aliexpress-1",
+        title: "Lead Brand Strategist",
+        org: "AliExpress",
+        company: "AliExpress",
+        date: "Apr 21, 2025",
+        posted: "Apr 21, 2025",
+        logo: "aliexpress",
+        logoBg: "bg-[#ff4747] text-white",
+        tags: ["Full time", "Remote"],
+        salary: "$95K - $125K",
+        applicants: 76,
+        sent: 18,
+        type: "standard",
+        sector: "Marketing",
+        location: "Remote / Global",
+        exp: "Senior level",
+        deadline: "Open",
+        desc: "Define brand narratives, campaign architecture, and regional expansion strategy across international retail touchpoints."
+      },
+      {
+        id: "youtube-1",
+        title: "Motion Design Engineer",
+        org: "YouTube",
+        company: "YouTube",
+        date: "Apr 19, 2025",
+        posted: "Apr 19, 2025",
+        logo: "youtube",
+        logoBg: "bg-[#ff0000] text-white",
+        tags: ["Full time", "Hybrid"],
+        salary: "$130K - $160K",
+        applicants: 142,
+        sent: 55,
+        type: "standard",
+        sector: "Media & Design",
+        location: "Hybrid / San Bruno",
+        exp: "Senior level",
+        deadline: "Open",
+        desc: "Bring video interfaces and dynamic motion states to life across creator tools, smart displays, and mobile surfaces."
+      },
+      {
+        id: "spotify-1",
+        title: "Senior Product Architect",
+        org: "Spotify",
+        company: "Spotify",
+        date: "Apr 9, 2025",
+        posted: "Apr 9, 2025",
+        logo: "spotify",
+        logoBg: "bg-[#1db954] text-white",
+        tags: ["Full time", "Remote"],
+        salary: "$150K - $190K",
+        applicants: 210,
+        sent: 84,
+        type: "premium",
+        sector: "Engineering",
+        location: "Remote / Stockholm",
+        exp: "Principal",
+        deadline: "Open",
+        desc: "Architect scalable audio discovery, streaming infrastructure, and collaborative playlist listening features."
+      },
+      {
         id: "job-1",
         title: "Senior Public Health Specialist",
         org: "Global Health Alliance",
@@ -277,31 +458,53 @@
       return {
         id: job.id,
         title: job.title || '',
-        org: job.org || job.organization || 'Organization',
+        org: job.org || job.organization || job.company || 'Organization',
+        company: job.company || job.org || 'Organization',
         type: job.type || 'standard',
         sector: job.sector || '',
         location: job.location || '',
         exp: job.exp || job.experience || 'Not specified',
         deadline: job.deadline || 'Open until filled',
-        posted: job.posted || 'Recently',
-        desc: job.desc || job.description || ''
+        posted: job.posted || job.date || 'Recently',
+        date: job.date || job.posted || 'Jul 14, 2025',
+        desc: job.desc || job.description || '',
+        isFeatured: Boolean(job.isFeatured || job.id === 'google-1'),
+        logo: job.logo || '',
+        logoBg: job.logoBg || '',
+        tags: job.tags || [],
+        salary: job.salary || '',
+        applicants: job.applicants || 42,
+        sent: job.sent || 15
       };
     }
 
     function getJobAgeMinutes(job) {
+      const talentryOrder = {
+        'amazon-1': 1,
+        'google-1': 2,
+        'facebook-1': 3,
+        'apple-1': 4,
+        'openai-1': 5,
+        'dribbble-1': 6,
+        'aliexpress-1': 7,
+        'youtube-1': 8,
+        'spotify-1': 9
+      };
+      if (talentryOrder[job.id]) return talentryOrder[job.id];
+
       if (job.createdAt) {
         const diff = (Date.now() - new Date(job.createdAt).getTime()) / 60000;
-        if (!isNaN(diff)) return diff;
+        if (!isNaN(diff)) return 100 + diff;
       }
       const posted = (job.posted || '').toLowerCase().trim();
-      if (posted.includes('just now')) return 0;
+      if (posted.includes('just now')) return 100;
       const numMatch = posted.match(/\d+/);
       const num = numMatch ? parseInt(numMatch[0]) : 999;
-      if (posted.includes('minute')) return num;
-      if (posted.includes('hour')) return num * 60;
-      if (posted.includes('day')) return num * 1440;
-      if (posted.includes('week')) return num * 10080;
-      if (posted.includes('month')) return num * 43200;
+      if (posted.includes('minute')) return 100 + num;
+      if (posted.includes('hour')) return 100 + num * 60;
+      if (posted.includes('day')) return 100 + num * 1440;
+      if (posted.includes('week')) return 100 + num * 10080;
+      if (posted.includes('month')) return 100 + num * 43200;
       return 999999;
     }
 
@@ -321,13 +524,54 @@
       const locationFilter = document.getElementById('location-filter');
       const location = locationFilter ? locationFilter.value : '';
 
+      if (isJobsPage()) {
+        if (overrideQ !== undefined && searchInput) {
+          searchInput.value = overrideQ;
+        }
+        handleSearch();
+        return;
+      }
+
       const params = new URLSearchParams();
       if (query) params.append('q', query);
       if (sector) params.append('sector', sector);
       if (location) params.append('location', location);
 
       const qs = params.toString();
-      window.location.href = `jobs.html${qs ? '?' + qs : ''}`;
+      const targetUrl = `jobs.html${qs ? '?' + qs : ''}`;
+
+      // Smooth and fluid page exit animation
+      if (document.body) {
+        document.body.classList.add('page-leaving');
+        window.setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 180);
+      } else {
+        window.location.href = targetUrl;
+      }
+    }
+
+    function focusOrToggleSearch(event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      focusSearchBar();
+    }
+
+    function focusSearchBar() {
+      const input = document.getElementById('search-input');
+      const sentinel = document.getElementById('search-bar-sticky-sentinel');
+      if (input) {
+        closeMobileMenu();
+        if (sentinel) sentinel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        requestAnimationFrame(() => {
+          input.focus({ preventScroll: true });
+          input.select();
+        });
+      } else if (!isJobsPage()) {
+        submitHeroSearch();
+      }
     }
 
     function initJobsPageFromUrl() {
@@ -463,14 +707,12 @@
       updateDock();
     }
 
-    // Future internal pages can use a normal .html link or data-page-link for a short exit transition.
+    // Smooth internal page navigation transition
     function enablePageTransitions() {
       document.querySelectorAll('a[data-page-link], a[href$=".html"]').forEach(link => {
         link.addEventListener('click', event => {
           const href = link.getAttribute('href');
           if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !href || link.target === '_blank') return;
-          // Phone navigation should never wait on a visual page-transition timer.
-          if (window.matchMedia('(max-width: 1023px)').matches) return;
           event.preventDefault();
           document.body.classList.add('page-leaving');
           window.setTimeout(() => { window.location.href = href; }, 180);
@@ -499,87 +741,120 @@
             <div class="w-16 h-16 rounded-full bg-white/[0.05] border border-white/10 flex items-center justify-center mx-auto mb-4 text-sky-400">
               <i class="fa-solid fa-magnifying-glass text-2xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-200 mb-2">No matching opportunities found</h3>
-            <p class="text-sm text-slate-400 max-w-md mx-auto mb-6">We couldn't find any opportunities matching your search criteria. Clear your filters to see all latest openings.</p>
-            <button onclick="clearAllFilters()" class="px-6 py-2.5 rounded-full bg-appleBlue hover:bg-blue-500 text-white font-semibold text-sm transition shadow-lg shadow-appleBlue/20">
-              Show All Newest Opportunities
+            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">No matching opportunities found</h3>
+            <p class="text-sm text-slate-500 max-w-md mx-auto mb-6">We couldn't find any opportunities matching your search criteria. Clear your filters to see all latest openings.</p>
+            <button onclick="clearAllFilters()" class="px-6 py-2.5 rounded-full bg-[#111317] dark:bg-white text-white dark:text-slate-900 font-semibold text-sm transition">
+              Show All Opportunities
             </button>
           </div>
         `;
         return;
       }
 
-      container.innerHTML = jobs.map((job, index) => {
-        // ALTERNATING CARD LOGIC (Even index = Soft Off-White Card, Odd index = Deep Black Glass Card)
-        const isWhiteCard = index % 2 === 0;
-
-        if(isWhiteCard) {
-          // CARD TYPE A: Soft Off-White Card (#f4f4f7) with crisp dark text
-          return `
-            <div onclick="openJobDrawer('${job.id}')" class="bg-[#f4f4f7] p-7 sm:p-8 rounded-3xl flex flex-col justify-between cursor-pointer group hover:scale-[1.01] hover:shadow-xl transition-all border border-slate-200">
-              <div>
-                <div class="flex items-center justify-end mb-3 text-xs tracking-wider">
-                  <span class="text-slate-400 font-medium">${job.posted}</span>
-                </div>
-
-                <!-- Clean Title Heading (Dark Slate) -->
-                <h3 class="text-xl sm:text-2xl font-black text-slate-900 group-hover:text-appleBlue transition-colors leading-tight">
-                  ${job.title}
-                </h3>
-                
-                <p class="text-base text-slate-700 font-bold mt-2">${job.org}</p>
-                
-                <p class="text-sm text-slate-600 mt-4 line-clamp-3 leading-relaxed font-normal">
-                  ${job.desc}
-                </p>
-              </div>
-
-              <div class="mt-8 pt-4 border-t border-slate-300 flex items-center justify-between text-sm text-slate-700 font-semibold">
-                <span class="flex items-center space-x-2">
-                  <i class="fa-solid fa-location-dot text-slate-500 text-xs"></i>
-                  <span>${job.location}</span>
-                </span>
-                <span class="text-appleBlue font-bold text-sm flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform">
-                  <span>Inspect</span>
-                  <i class="fa-solid fa-chevron-right text-xs"></i>
-                </span>
-              </div>
-            </div>
-          `;
-        } else {
-          // CARD TYPE B: Deep Glass Black Card (#0d0d12) with soft off-white text
-          return `
-            <div onclick="openJobDrawer('${job.id}')" class="apple-dark-card p-7 sm:p-8 rounded-3xl flex flex-col justify-between cursor-pointer group hover:scale-[1.01] hover:border-white/25 transition-all">
-              <div>
-                <div class="flex items-center justify-end mb-3 text-xs tracking-wider">
-                  <span class="text-slate-500 font-medium">${job.posted}</span>
-                </div>
-
-                <!-- Clean Title Heading (Soft Off-White) -->
-                <h3 class="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-appleBlue transition-colors leading-tight">
-                  ${job.title}
-                </h3>
-                
-                <p class="text-base text-slate-300 font-semibold mt-2">${job.org}</p>
-                
-                <p class="text-sm text-slate-400 mt-4 line-clamp-3 leading-relaxed">
-                  ${job.desc}
-                </p>
-              </div>
-
-              <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-sm text-slate-300 font-medium">
-                <span class="flex items-center space-x-2">
-                  <i class="fa-solid fa-location-dot text-slate-500 text-xs"></i>
-                  <span>${job.location}</span>
-                </span>
-                <span class="text-appleBlue font-bold text-sm flex items-center space-x-1.5 group-hover:translate-x-1 transition-transform">
-                  <span>Inspect</span>
-                  <i class="fa-solid fa-chevron-right text-xs"></i>
-                </span>
-              </div>
-            </div>
-          `;
+      function getCompanyLogoHtml(brand, org) {
+        const b = (brand || org || '').toLowerCase();
+        if (b.includes('amazon')) {
+          return `<div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-amazon text-sm"></i></div>`;
         }
+        if (b.includes('google')) {
+          return `<div class="w-9 h-9 rounded-full bg-white border border-slate-200/80 flex items-center justify-center p-1.5 shadow-xs"><svg viewBox="0 0 24 24" class="w-4 h-4"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg></div>`;
+        }
+        if (b.includes('facebook') || b.includes('meta')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#1877f2] text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-facebook-f text-sm"></i></div>`;
+        }
+        if (b.includes('apple')) {
+          return `<div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-apple text-sm"></i></div>`;
+        }
+        if (b.includes('openai')) {
+          return `<div class="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center shadow-xs p-2"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1683a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4947zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1683a.0757.0757 0 0 1-.071 0l-4.8303-2.7866A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.6668zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1635a.0804.0804 0 0 1-.038-.0567V6.0748a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4598a.7948.7948 0 0 0-.3927.6813l-.0048 6.7219zm1.1448-2.6176l2.55-1.4716 2.55 1.4716v2.9431l-2.55 1.4716-2.55-1.4716z"/></svg></div>`;
+        }
+        if (b.includes('dribbble')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#ea4c89] text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-dribbble text-sm"></i></div>`;
+        }
+        if (b.includes('aliexpress')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#ff4747] text-white flex items-center justify-center font-bold text-[11px] shadow-xs">AE</div>`;
+        }
+        if (b.includes('youtube')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#ff0000] text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-youtube text-sm"></i></div>`;
+        }
+        if (b.includes('spotify')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#1db954] text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-spotify text-sm"></i></div>`;
+        }
+        return `<div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold shadow-xs"><i class="fa-solid fa-briefcase text-xs"></i></div>`;
+      }
+
+      container.innerHTML = jobs.map((job) => {
+        const isFeatured = job.isFeatured || job.id === 'google-1';
+        const cardClass = isFeatured ? 'talentry-card-featured' : 'talentry-card';
+        const logoHtml = getCompanyLogoHtml(job.logo, job.org || job.company);
+        const tags = job.tags || ['Full time', job.sector || 'Specialist', job.exp || 'Open'];
+        const tagText = tags.join(' <span class="mx-1 text-slate-400">&bull;</span> ');
+        const dateStr = job.date || job.posted || 'Jul 14, 2025';
+        const applicants = job.applicants || 42;
+        const sentCount = job.sent || 15;
+        const salaryText = job.salary || (job.exp && job.exp.includes('Years') ? '$90K - $130K' : '$80K - $120K');
+
+        return `
+          <div onclick="openJobDrawer('${job.id}')" class="${cardClass} rounded-2xl p-5 flex flex-col justify-between cursor-pointer group hover:-translate-y-0.5 transition-all">
+            <div>
+              <!-- Top Row: Logo, Date Pill, Bookmark -->
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2.5">
+                  ${logoHtml}
+                  <span class="text-[11px] font-medium px-2.5 py-1 rounded-full ${isFeatured ? 'bg-white/15 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300'}">
+                    ${dateStr}
+                  </span>
+                </div>
+                <div>
+                  ${isFeatured 
+                    ? `<button type="button" aria-label="Bookmarked" class="w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center hover:scale-105 transition"><i class="fa-solid fa-bookmark text-xs"></i></button>`
+                    : `<button type="button" aria-label="Bookmark" class="w-7 h-7 rounded-full text-slate-400 hover:text-slate-800 dark:hover:text-white flex items-center justify-center hover:scale-105 transition"><i class="fa-regular fa-bookmark text-xs"></i></button>`
+                  }
+                </div>
+              </div>
+
+              <!-- Company Name + Verified Badge -->
+              <div class="flex items-center gap-1.5 text-xs font-semibold ${isFeatured ? 'text-slate-200' : 'text-slate-600 dark:text-slate-400'}">
+                <span>${job.org || job.company}</span>
+                <i class="fa-solid fa-circle-check text-emerald-500 text-[11px]"></i>
+              </div>
+
+              <!-- Job Title -->
+              <h3 class="text-base sm:text-lg font-bold tracking-tight mt-1 mb-2 ${isFeatured ? 'text-white' : 'text-slate-900 dark:text-white group-hover:text-appleBlue'} transition-colors leading-snug">
+                ${job.title}
+              </h3>
+
+              <!-- Metadata / Tags -->
+              <p class="text-xs ${isFeatured ? 'text-slate-300' : 'text-slate-500 dark:text-slate-400'} font-normal truncate">
+                ${tagText}
+              </p>
+
+              <!-- Salary -->
+              <p class="text-xs sm:text-sm font-semibold mt-2.5 ${isFeatured ? 'text-slate-100' : 'text-slate-700 dark:text-slate-200'}">
+                ${salaryText}
+              </p>
+            </div>
+
+            <!-- Footer: Metrics & Details Button -->
+            <div class="mt-5 pt-3.5 border-t ${isFeatured ? 'border-white/15' : 'border-slate-100 dark:border-white/10'} flex items-center justify-between text-xs">
+              <div class="flex items-center gap-3.5 ${isFeatured ? 'text-slate-300' : 'text-slate-400 dark:text-slate-400'} font-medium">
+                <span class="flex items-center gap-1.5">
+                  <i class="fa-regular fa-user text-[11px]"></i>
+                  <span>${applicants}</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <i class="fa-solid fa-bars-staggered text-[11px]"></i>
+                  <span>${sentCount}</span>
+                </span>
+              </div>
+              <div>
+                <button type="button" class="px-4 py-1.5 rounded-full text-xs font-semibold transition active:scale-95 ${isFeatured ? 'bg-white text-slate-950 font-bold hover:bg-slate-100' : 'talentry-primary-btn shadow-xs'}">
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
       }).join('');
     }
 
@@ -839,7 +1114,7 @@
     }
 
     function applySavedTheme() {
-      const savedTheme = localStorage.getItem('helping-hands-theme');
+      const savedTheme = localStorage.getItem('job-saathi-theme');
       setTheme(savedTheme && ['light', 'dark', 'system'].includes(savedTheme) ? savedTheme : 'light', false);
     }
 
@@ -860,7 +1135,9 @@
       });
       updateThemeToggleUI(theme);
       closeThemeMenu();
-      if (save) localStorage.setItem('helping-hands-theme', theme);
+      if (save) {
+        localStorage.setItem('job-saathi-theme', theme);
+      }
     }
 
     function updateThemeToggleUI(theme) {
@@ -971,53 +1248,11 @@
       }
     }
 
-    function toggleMobileSearch(forceState) {
-      const sentinel = document.getElementById('search-bar-sticky-sentinel');
-      const bar = document.getElementById('search-bar-container');
-      const backdrop = document.getElementById('mobile-search-backdrop');
-      const toggleBtn = document.getElementById('mobile-search-toggle');
-      const toggleIcon = document.getElementById('mobile-search-icon');
-      if (!bar) return;
-
-      const isOpen = bar.classList.contains('mobile-search-active');
-      const nextState = typeof forceState === 'boolean' ? forceState : !isOpen;
-
-      if (nextState) {
-        closeMobileMenu();
-        if (sentinel) sentinel.classList.add('mobile-search-active');
-        bar.classList.add('mobile-search-active');
-        if (backdrop) backdrop.classList.remove('hidden');
-        if (toggleBtn) {
-          toggleBtn.setAttribute('aria-expanded', 'true');
-          toggleBtn.classList.add('is-active');
-        }
-        if (toggleIcon) {
-          toggleIcon.className = 'fa-solid fa-xmark text-sm';
-        }
-        document.body.classList.add('mobile-search-open');
-
-        requestAnimationFrame(() => {
-          const input = document.getElementById('search-input');
-          if (input) input.focus();
-        });
-      } else {
-        if (sentinel) sentinel.classList.remove('mobile-search-active');
-        bar.classList.remove('mobile-search-active');
-        if (backdrop) backdrop.classList.add('hidden');
-        if (toggleBtn) {
-          toggleBtn.setAttribute('aria-expanded', 'false');
-          toggleBtn.classList.remove('is-active');
-        }
-        if (toggleIcon) {
-          toggleIcon.className = 'fa-solid fa-magnifying-glass text-sm';
-        }
-        document.body.classList.remove('mobile-search-open');
-        closeAllSearchDropdowns();
-      }
-    }
+    function toggleMobileSearch() { focusSearchBar(); }
 
     function closeMobileSearch() {
-      toggleMobileSearch(false);
+      document.body.classList.remove('mobile-search-open');
+      closeAllSearchDropdowns();
     }
 
     function toggleMobileMenu() {
@@ -1082,7 +1317,7 @@
     });
 
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-      if ((localStorage.getItem('helping-hands-theme') || 'system') === 'system') applySavedTheme();
+      if ((localStorage.getItem('job-saathi-theme') || 'system') === 'system') applySavedTheme();
     });
 
     function closeModal(id) {
@@ -1090,7 +1325,7 @@
     }
 
     let authMode = 'login';
-    let accountToken = localStorage.getItem('helping-hands-account-token') || '';
+    let accountToken = localStorage.getItem('job-saathi-account-token') || '';
 
     function openAuthModal(mode) { setAuthMode(mode); openModal('auth-modal'); }
 
@@ -1114,7 +1349,8 @@
       try {
         const response = await fetch(`/api/auth/${authMode === 'signup' ? 'signup' : 'login'}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
         const result = await response.json(); if (!response.ok) throw new Error(result.error || 'Unable to continue.');
-        accountToken = result.token; localStorage.setItem('helping-hands-account-token', accountToken);
+        accountToken = result.token;
+        localStorage.setItem('job-saathi-account-token', accountToken);
         message.className = 'text-sm text-appleGreen'; message.textContent = `Welcome, ${result.user.name}. Your account is ready.`;
         setTimeout(() => closeModal('auth-modal'), 800);
       } catch (error) { message.className = 'text-sm text-red-400'; message.textContent = error.message; }
@@ -1128,3 +1364,4 @@
 
     window.toggleMobileSearch = toggleMobileSearch;
     window.closeMobileSearch = closeMobileSearch;
+    window.focusSearchBar = focusSearchBar;

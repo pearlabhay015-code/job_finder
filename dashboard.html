@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased selection:bg-sky-500/30 selection:text-sky-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Saathi - Candidate Dashboard & AI Career Platform</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            appleBg: '#070709',
+            appleDarkCard: '#0d0d12',
+            appleLightCard: '#f4f4f7',
+            appleBlue: '#2997ff',
+            appleGreen: '#30d158',
+            appleAmber: '#ff9f0a',
+            applePurple: '#bf5af2'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261007_job_saathi">
+</head>
+<body class="talentry-canvas font-sans min-h-screen flex flex-col justify-start items-center p-3 sm:p-5 lg:p-8">
+
+  <!-- Main Application Window / Container -->
+  <div class="w-full max-w-[1480px] talentry-shell rounded-[28px] sm:rounded-[36px] p-5 sm:p-7 lg:p-9 transition-all">
+
+    <!-- Top Navigation Bar -->
+    <header class="flex items-center justify-between pb-6 sm:pb-7 border-b border-slate-200/60 dark:border-white/10 gap-4">
+      
+      <!-- Brand Logo: Job Saathi -->
+      <a href="index.html" class="flex items-center gap-2.5 cursor-pointer group" title="Return to Job Saathi Homepage">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-sky-500 to-blue-600 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-globe text-base"></i>
+        </div>
+        <div class="flex items-center space-x-1">
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">Job</span>
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-sky-500">Saathi</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Options -->
+      <nav class="hidden xl:flex items-center gap-1.5 whitespace-nowrap text-sm font-medium">
+        <a href="dashboard.html" class="talentry-nav-active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition">
+          Find Jobs
+        </a>
+        <a href="index.html" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          Home Portal
+        </a>
+        <a href="#companies" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          Companies
+        </a>
+        <a href="#ai-cv" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          AI CV Analysis
+        </a>
+        <a href="#mock-interview" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          Mock Interview
+        </a>
+        <a href="#career-coach" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          Career Coach
+        </a>
+        <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3.5 py-2 text-xs sm:text-sm font-medium transition">
+          About
+        </a>
+      </nav>
+
+      <!-- Right Action Icons (Mail, Bell, Blank Profile Avatar + Theme Selector) -->
+      <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <!-- Messages Circle Button -->
+        <button type="button" aria-label="Messages" title="Messages" onclick="alert('Messages & Communications')" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#161722] border border-slate-200/80 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-xs hover:shadow transition active:scale-95">
+          <i class="fa-regular fa-envelope text-sm"></i>
+        </button>
+
+        <!-- Notification Bell Circle Button -->
+        <button type="button" aria-label="Notifications" title="Notifications" onclick="alert('Notifications: 12 new matches today')" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#161722] border border-slate-200/80 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-xs hover:shadow transition active:scale-95 relative">
+          <i class="fa-regular fa-bell text-sm"></i>
+          <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-sky-500"></span>
+        </button>
+
+        <!-- Blank Profile Avatar (No user logged in) -->
+        <div onclick="openAuthModal('login')" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 dark:bg-white/10 border border-slate-200/80 dark:border-white/20 flex items-center justify-center text-slate-500 dark:text-slate-300 cursor-pointer shadow-xs hover:ring-2 hover:ring-sky-400 transition" title="Account / Profile (Not Logged In)">
+          <i class="fa-regular fa-user text-sm"></i>
+        </div>
+
+        <!-- Theme Selector Menu -->
+        <div class="theme-menu-wrap relative ml-1">
+          <button id="theme-toggle" onclick="toggleThemeMenu(event)" type="button" aria-label="Choose colour theme" aria-expanded="false" aria-haspopup="true" class="theme-toggle inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#161722] text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-white/10 shadow-xs hover:shadow transition active:scale-95" title="Toggle Light / Dark Theme">
+            <span id="theme-toggle-icon" class="inline-flex items-center justify-center text-sky-400">
+              <i class="fa-solid fa-circle-half-stroke text-xs"></i>
+            </span>
+          </button>
+          <div id="theme-menu" class="theme-menu hidden" role="menu" aria-label="Theme selection">
+            <button data-theme-option="system" onclick="setTheme('system')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <i class="fa-solid fa-circle-half-stroke text-xs w-4 text-center"></i>
+                <span>System</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button data-theme-option="light" onclick="setTheme('light')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <svg class="w-3.5 h-3.5 shrink-0 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                <span>Light</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+            <button data-theme-option="dark" onclick="setTheme('dark')" type="button" role="menuitem">
+              <span class="theme-item-left">
+                <i class="fa-solid fa-moon text-xs w-4 text-center"></i>
+                <span>Dark</span>
+              </span>
+              <i class="fa-solid fa-check theme-check"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Return to Home Button -->
+        <a href="index.html" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-700 dark:text-slate-200 transition">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i>
+          <span>Portal</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" type="button" aria-label="Open navigation menu" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-[#161722] border border-slate-200/80 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 shadow-xs">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu-backdrop" onclick="closeMobileMenu()" class="mobile-menu-backdrop hidden"></div>
+    <aside id="mobile-menu" class="mobile-menu hidden" aria-label="Mobile navigation">
+      <div class="flex items-center justify-between mb-6">
+        <span class="font-bold text-slate-900 dark:text-white">Job Saathi Menu</span>
+        <button onclick="closeMobileMenu()" type="button" aria-label="Close navigation menu" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <nav class="flex flex-col gap-2">
+        <a href="index.html" onclick="closeMobileMenu()">Home Portal</a>
+        <a href="dashboard.html" onclick="closeMobileMenu()" class="font-bold text-sky-500">Find Jobs</a>
+        <a href="#companies" onclick="closeMobileMenu()">Companies</a>
+        <a href="#ai-cv" onclick="closeMobileMenu()">AI CV Analysis</a>
+        <a href="#mock-interview" onclick="closeMobileMenu()">Mock Interview</a>
+        <a href="#career-coach" onclick="closeMobileMenu()">Career Coach</a>
+        <a href="#about" onclick="closeMobileMenu()">About</a>
+      </nav>
+      <div class="mobile-menu-divider"></div>
+      <button onclick="closeMobileMenu(); openModal('post-job-modal')" class="mobile-menu-action">Post a Job</button>
+      <div class="mobile-menu-divider"></div>
+      <button onclick="closeMobileMenu(); openAuthModal('login')" class="mobile-menu-action mobile-menu-action-primary mt-4">Log in / Sign up</button>
+    </aside>
+
+    <!-- Dashboard Content Layout with Left Floating Dock -->
+    <div class="flex items-start gap-4 sm:gap-6 lg:gap-8 pt-6 sm:pt-8">
+      
+      <!-- Left Floating Dock / Sidebar Rail -->
+      <aside class="hidden md:flex flex-col gap-3 shrink-0 pt-28" aria-label="Quick Actions Dock">
+        <button type="button" title="Profile" onclick="openAuthModal('login')" class="dock-circle-btn">
+          <i class="fa-regular fa-user text-sm"></i>
+        </button>
+        <button type="button" title="Saved Opportunities" onclick="alert('Viewing Bookmarked Opportunities')" class="dock-circle-btn">
+          <i class="fa-regular fa-bookmark text-sm"></i>
+        </button>
+        <button type="button" title="CV / Resume" onclick="alert('Viewing Uploaded CVs')" class="dock-circle-btn">
+          <i class="fa-regular fa-file-lines text-sm"></i>
+        </button>
+        <button type="button" title="Interview Calendar" onclick="alert('Opening Interview Calendar')" class="dock-circle-btn">
+          <i class="fa-regular fa-calendar text-sm"></i>
+        </button>
+        <button type="button" title="History & Applications" onclick="alert('Viewing Application History')" class="dock-circle-btn">
+          <i class="fa-regular fa-clock text-sm"></i>
+        </button>
+        <button type="button" title="Settings" onclick="alert('Opening Account Settings')" class="dock-circle-btn">
+          <i class="fa-solid fa-gear text-sm"></i>
+        </button>
+      </aside>
+
+      <!-- Main Dashboard Stream -->
+      <main class="flex-1 min-w-0">
+
+        <!-- Welcome Banner (Generic, No user named Elcan) -->
+        <div class="mb-6">
+          <h1 class="text-3xl sm:text-4xl lg:text-[40px] font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+            Welcome to Job Saathi
+          </h1>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-1 mt-1.5 text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-normal">
+            <span>12 new job matches found today</span>
+            <span>CV Score: 87/100</span>
+            <span>Interview Preparedness: 62%</span>
+          </div>
+        </div>
+
+        <!-- Top Search & Filter Bar (Wide Bar) -->
+        <div class="talentry-card rounded-2xl p-4 sm:p-5 mb-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3.5 items-end">
+            
+            <!-- Job Title / Keywords -->
+            <div class="lg:col-span-3">
+              <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                Job Title / Keywords
+              </label>
+              <div class="relative">
+                <input type="text" id="search-input" oninput="handleSearch()" onkeyup="handleSearch()" onkeydown="if(event.key==='Enter') handleSearch()" placeholder="e.g. UI Designer, Backend Developer" class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs sm:text-sm placeholder-slate-400 outline-none">
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="lg:col-span-3">
+              <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                Location
+              </label>
+              <div class="relative search-dropdown-wrap">
+                <button type="button" id="location-select-btn" onclick="toggleSearchDropdown('location', event)" class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs sm:text-sm flex items-center justify-between text-left cursor-pointer">
+                  <span id="location-display-label" class="truncate font-medium">e.g. Remote, New York, Berlin</span>
+                  <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-1 shrink-0 transition-transform duration-200"></i>
+                </button>
+                <div id="location-dropdown-menu" class="search-dropdown-menu hidden" role="menu">
+                  <button type="button" onclick="selectLocation('', 'All Locations', 'fa-earth-americas', event)" class="search-option is-selected" data-location-val="">
+                    <span class="search-option-left"><i class="fa-solid fa-earth-americas text-xs w-4 text-center text-rose-400"></i><span>All Locations</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectLocation('Remote', 'Remote', 'fa-house-laptop', event)" class="search-option" data-location-val="Remote">
+                    <span class="search-option-left"><i class="fa-solid fa-house-laptop text-xs w-4 text-center text-purple-400"></i><span>Remote</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectLocation('New York', 'New York, USA', 'fa-city', event)" class="search-option" data-location-val="New York">
+                    <span class="search-option-left"><i class="fa-solid fa-city text-xs w-4 text-center text-sky-400"></i><span>New York, USA</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectLocation('Berlin', 'Berlin, Germany', 'fa-location-dot', event)" class="search-option" data-location-val="Berlin">
+                    <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-amber-400"></i><span>Berlin, Germany</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectLocation('San Francisco', 'San Francisco, CA', 'fa-location-dot', event)" class="search-option" data-location-val="San Francisco">
+                    <span class="search-option-left"><i class="fa-solid fa-location-dot text-xs w-4 text-center text-indigo-400"></i><span>San Francisco, CA</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                </div>
+                <input type="hidden" id="location-filter" value="">
+              </div>
+            </div>
+
+            <!-- Experience Level -->
+            <div class="lg:col-span-2">
+              <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                Experience Level
+              </label>
+              <div class="relative search-dropdown-wrap">
+                <button type="button" id="exp-select-btn" onclick="toggleSearchDropdown('sector', event)" class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs sm:text-sm flex items-center justify-between text-left cursor-pointer text-slate-500 dark:text-slate-400">
+                  <span id="sector-display-label" class="truncate font-medium">Select Experience Level</span>
+                  <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-1 shrink-0"></i>
+                </button>
+                <div id="sector-dropdown-menu" class="search-dropdown-menu hidden" role="menu">
+                  <button type="button" onclick="selectSector('', 'Select Experience Level', 'fa-shapes', event)" class="search-option is-selected" data-sector-val="">
+                    <span class="search-option-left"><i class="fa-solid fa-shapes text-xs w-4 text-center text-sky-400"></i><span>All Levels</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectSector('Junior level', 'Junior Level (1-3 yrs)', 'fa-seedling', event)" class="search-option" data-sector-val="Junior level">
+                    <span class="search-option-left"><i class="fa-solid fa-seedling text-xs w-4 text-center text-emerald-400"></i><span>Junior Level</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectSector('Mid level', 'Mid Level (3-5 yrs)', 'fa-layer-group', event)" class="search-option" data-sector-val="Mid level">
+                    <span class="search-option-left"><i class="fa-solid fa-layer-group text-xs w-4 text-center text-blue-400"></i><span>Mid Level</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                  <button type="button" onclick="selectSector('Senior level', 'Senior Level (5+ yrs)', 'fa-medal', event)" class="search-option" data-sector-val="Senior level">
+                    <span class="search-option-left"><i class="fa-solid fa-medal text-xs w-4 text-center text-amber-400"></i><span>Senior Level</span></span>
+                    <i class="fa-solid fa-check search-check"></i>
+                  </button>
+                </div>
+                <input type="hidden" id="sector-filter" value="">
+              </div>
+            </div>
+
+            <!-- Job Type -->
+            <div class="lg:col-span-2">
+              <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                Job Type
+              </label>
+              <div class="relative">
+                <select onchange="handleSearch()" class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs sm:text-sm appearance-none outline-none cursor-pointer text-slate-500 dark:text-slate-400">
+                  <option value="">Select Job Type</option>
+                  <option value="Full time">Full time</option>
+                  <option value="Part time">Part time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Freelance">Freelance</option>
+                </select>
+                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              </div>
+            </div>
+
+            <!-- Search Button -->
+            <div class="lg:col-span-2">
+              <button type="button" onclick="handleSearch()" class="talentry-primary-btn w-full py-2.5 sm:py-3 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold shadow-sm transition active:scale-95">
+                <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                <span>Search</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Lower Two-Column Section: Sidebar on Left, Cards on Right -->
+        <div class="flex flex-col lg:flex-row gap-6 items-start">
+          
+          <!-- Left Column: AI Matcher & Additional Filters -->
+          <div class="w-full lg:w-[280px] xl:w-[290px] shrink-0 space-y-5">
+            
+            <!-- Card 1: Let AI find your ideal job -->
+            <div class="talentry-card rounded-2xl p-5 shadow-xs">
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                Let AI find your ideal job
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 mb-4">
+                Upload your CV and get matched instantly
+              </p>
+
+              <!-- Drag/Paste Box -->
+              <div onclick="openModal('post-job-modal')" class="rounded-xl border border-dashed border-slate-300 dark:border-white/15 bg-slate-50/70 dark:bg-white/[0.03] py-7 px-4 flex flex-col items-center justify-center text-center cursor-pointer hover:border-slate-400 dark:hover:border-white/30 transition group">
+                <div class="w-8 h-8 rounded-lg bg-slate-200/70 dark:bg-white/10 flex items-center justify-center text-slate-500 dark:text-slate-300 mb-2 group-hover:scale-105 transition">
+                  <i class="fa-regular fa-file-lines text-sm"></i>
+                </div>
+                <span class="text-[11px] text-slate-400 font-normal">
+                  Click and paste anywhere in this box.
+                </span>
+              </div>
+
+              <!-- Get Matched Button -->
+              <button type="button" onclick="alert('AI Matching activated for your profile!')" class="w-full talentry-primary-btn py-2.5 rounded-full text-xs font-semibold mt-4 transition active:scale-95 shadow-xs text-center">
+                Get Matched
+              </button>
+            </div>
+
+            <!-- Card 2: Filter Panel -->
+            <div class="talentry-card rounded-2xl p-5 shadow-xs space-y-4">
+              
+              <!-- Company / Industry -->
+              <div>
+                <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                  Company / Industry
+                </label>
+                <div class="relative">
+                  <select class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs appearance-none outline-none cursor-pointer text-slate-700 dark:text-slate-300">
+                    <option selected>Media & Design</option>
+                    <option>Technology & AI</option>
+                    <option>Finance & Fintech</option>
+                    <option>Healthcare & Life Sciences</option>
+                    <option>E-Commerce & Retail</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+              </div>
+
+              <!-- Work Schedule -->
+              <div>
+                <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-1.5">
+                  Work Schedule
+                </label>
+                <div class="relative">
+                  <select class="talentry-input-field w-full rounded-xl px-3.5 py-2.5 text-xs appearance-none outline-none cursor-pointer text-slate-700 dark:text-slate-300">
+                    <option selected>Flexible Hours</option>
+                    <option>Standard 9-to-5</option>
+                    <option>Shift-Based</option>
+                    <option>Weekend Optional</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+              </div>
+
+              <!-- Salary Range -->
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-slate-800 dark:text-slate-200">Salary Range</span>
+                  <div class="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/15 text-slate-600 dark:text-slate-300 cursor-pointer">
+                    <span>Yearly</span>
+                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400"></i>
+                  </div>
+                </div>
+
+                <!-- Custom Slider Graphic -->
+                <div class="py-2.5">
+                  <div class="salary-slider-track">
+                    <div class="salary-slider-fill"></div>
+                    <div class="salary-slider-thumb" style="left: 15%;"></div>
+                    <div class="salary-slider-thumb" style="left: 75%;"></div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs font-bold text-slate-800 dark:text-slate-200 mt-1">
+                  <span>$35K</span>
+                  <span>$150K</span>
+                </div>
+              </div>
+
+              <!-- Job Type -->
+              <div class="pt-2 border-t border-slate-100 dark:border-white/10">
+                <label class="block text-xs font-bold text-slate-800 dark:text-slate-200 mb-2">
+                  Job Type
+                </label>
+                <div class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900 dark:hover:text-white">
+                    <input type="checkbox" checked class="rounded accent-sky-500">
+                    <span>Full time</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900 dark:hover:text-white">
+                    <input type="checkbox" checked class="rounded accent-sky-500">
+                    <span>Part time</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900 dark:hover:text-white">
+                    <input type="checkbox" class="rounded accent-sky-500">
+                    <span>Contract</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900 dark:hover:text-white">
+                    <input type="checkbox" checked class="rounded accent-sky-500">
+                    <span>Remote</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Job Cards Grid (3 Columns) -->
+          <div class="flex-1 min-w-0">
+            <div id="jobs-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4.5">
+              <!-- Dynamically populated or static fallback cards -->
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- Slide-Over Drawer: Job Details Panel -->
+  <div id="drawer-backdrop" onclick="closeJobDrawer()" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="job-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-xl talentry-card border-l border-slate-200 dark:border-white/15 shadow-2xl z-50 transform translate-x-full drawer-transition flex flex-col overflow-y-auto">
+    <div class="p-6 sm:p-8 flex items-center justify-between border-b border-slate-200/80 dark:border-white/10">
+      <span id="drawer-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">Verified Role</span>
+      <button onclick="closeJobDrawer()" type="button" aria-label="Close details" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+
+    <div class="p-6 sm:p-8 flex-1 space-y-6">
+      <div>
+        <p id="drawer-org" class="text-sm font-semibold text-slate-500 dark:text-slate-400">Organization</p>
+        <h2 id="drawer-title" class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">Opportunity Details</h2>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3 p-4 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 text-center">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Location</span>
+          <span id="drawer-location" class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-0.5 block truncate">Remote</span>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Experience</span>
+          <span id="drawer-exp" class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-0.5 block truncate">Senior level</span>
+        </div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Timeline</span>
+          <span id="drawer-deadline" class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-0.5 block truncate">Active</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Role Overview & Responsibilities</h4>
+        <p id="drawer-desc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          Direct design systems, tactile user experiences, and responsive interfaces with engineering teams.
+        </p>
+      </div>
+
+      <div id="drawer-gate-box" class="p-5 rounded-2xl bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20">
+        <div class="flex items-start gap-3">
+          <i class="fa-solid fa-bolt text-sky-500 mt-0.5"></i>
+          <div>
+            <h5 class="text-xs font-bold text-slate-900 dark:text-white">Direct Application Channel</h5>
+            <p class="text-xs text-slate-500 dark:text-slate-300 mt-0.5">Apply with one click or export your verified profile to hiring managers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-6 border-t border-slate-200/80 dark:border-white/10 bg-slate-50/50 dark:bg-black/20" id="drawer-action-container">
+      <button type="button" onclick="alert('Application submitted successfully!')" class="w-full talentry-primary-btn py-3 rounded-full text-xs sm:text-sm font-bold shadow-md transition active:scale-95">
+        Apply Now
+      </button>
+    </div>
+  </aside>
+
+  <!-- Auth Modal (Log in / Sign up) -->
+  <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md hidden">
+    <div class="talentry-card max-w-md w-full rounded-3xl border border-slate-200 dark:border-white/15 p-8 relative shadow-2xl">
+      <button onclick="closeModal('auth-modal')" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300"><i class="fa-solid fa-xmark"></i></button>
+      <h3 id="auth-title" class="text-2xl font-black text-slate-900 dark:text-white">Log In to Job Saathi</h3>
+      <p id="auth-copy" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">Access your candidate dashboard, AI CV score, and matches.</p>
+      <div class="flex gap-2 mt-6">
+        <button onclick="setAuthMode('login')" id="auth-login-tab" class="auth-tab flex-1 py-2 rounded-full text-xs font-semibold bg-[#111317] dark:bg-white text-white dark:text-slate-950">Log in</button>
+        <button onclick="setAuthMode('signup')" id="auth-signup-tab" class="auth-tab flex-1 py-2 rounded-full text-xs font-semibold text-slate-500">Sign up</button>
+      </div>
+      <form onsubmit="submitAuth(event)" class="mt-6 space-y-4">
+        <input id="auth-name" class="auth-name hidden w-full talentry-input-field rounded-xl p-3 text-xs" placeholder="Your name">
+        <input id="auth-email" required type="email" class="w-full talentry-input-field rounded-xl p-3 text-xs" placeholder="Email address">
+        <input id="auth-password" required type="password" minlength="8" class="w-full talentry-input-field rounded-xl p-3 text-xs" placeholder="Password (8+ characters)">
+        <p id="auth-message" class="text-xs"></p>
+        <button id="auth-submit" class="w-full py-3 rounded-full talentry-primary-btn text-xs font-bold">Log in</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Post Opportunity Modal -->
+  <div id="post-job-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md hidden">
+    <div class="talentry-card max-w-xl w-full rounded-3xl border border-slate-200 dark:border-white/15 p-8 relative shadow-2xl">
+      <button onclick="closeModal('post-job-modal')" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <h3 class="text-2xl font-black text-slate-900 dark:text-white">Post an Opportunity on Job Saathi</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Connect with thousands of verified development sector professionals.</p>
+
+      <form onsubmit="handlePostSubmit(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-700 dark:text-slate-300 mb-1.5 font-semibold">Job Title</label>
+          <input type="text" required placeholder="e.g. Program Director - Climate & Health" class="w-full talentry-input-field rounded-xl p-3 outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 mb-1.5 font-semibold">Organization</label>
+            <input type="text" required placeholder="e.g. UNICEF Partner" class="w-full talentry-input-field rounded-xl p-3 outline-none">
+          </div>
+          <div>
+            <label class="block text-slate-700 dark:text-slate-300 mb-1.5 font-semibold">Category</label>
+            <select class="w-full talentry-input-field rounded-xl p-3 outline-none">
+              <option>Standard Job</option>
+              <option>Premium Job</option>
+              <option>RFP / Consultancy</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-700 dark:text-slate-300 mb-1.5 font-semibold">Description</label>
+          <textarea rows="4" required placeholder="Outline key qualifications and responsibilities..." class="w-full talentry-input-field rounded-xl p-3 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-full talentry-primary-btn font-bold text-xs shadow-md transition active:scale-95">
+          Submit Listing
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script src="assets/js/app.js?v=20261007_job_saathi"></script>
+</body>
+</html>

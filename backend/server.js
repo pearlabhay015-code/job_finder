@@ -1,4 +1,4 @@
-/* Helping Hands CMS API — no external packages required. */
+/* Job Saathi CMS API — no external packages required. */
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -13,7 +13,7 @@ const userSessions = new Map();
 
 const initialData = {
   settings: {
-    brandName: 'Helping Hands',
+    brandName: 'Job Saathi',
     heroTitle: 'Purpose-driven careers.',
     heroSubtitle: 'Engineered to perfection.',
     heroDescription: 'Discover verified opportunities across UN Agencies, Top NGOs, ESG Foundations, and CSR Tenders.',
@@ -216,4 +216,4 @@ http.createServer(async (req, res) => {
     }
     if (!serveStatic(res, pathname)) send(res, 404, { error: 'Not found.' });
   } catch (error) { send(res, 400, { error: error.message || 'Request failed.' }); }
-}).listen(process.env.PORT || 3000, () => console.log('Helping Hands CMS running at http://localhost:3000'));
+}).listen(process.env.PORT || 3000, () => console.log('Job Saathi CMS running at http://localhost:3000'));
