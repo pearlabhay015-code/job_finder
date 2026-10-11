@@ -6,7 +6,9 @@
     "heroDescription": "Discover verified opportunities across UN Agencies, Top NGOs, ESG Foundations, and CSR Tenders.",
     "jobPostingFee": 4999,
     "currency": "INR",
-    "paymentProvider": "razorpay"
+    "paymentProvider": "razorpay",
+    "priorityResumeFee": 299,
+    "priorityApplicationFee": 99
   },
   "jobs": [
     {

@@ -10,6 +10,7 @@ const uploadDir = path.join(root, 'uploads');
 const adminPassword = process.env.CMS_ADMIN_PASSWORD || 'change-me';
 const sessions = new Set();
 const userSessions = new Map();
+const priorityPaymentOrders = new Map();
 
 const initialData = {
   settings: {
@@ -18,6 +19,8 @@ const initialData = {
     heroSubtitle: 'Engineered to perfection.',
     heroDescription: 'Discover verified opportunities across UN Agencies, Top NGOs, ESG Foundations, and CSR Tenders.',
     jobPostingFee: 4999,
+    priorityResumeFee: 299,
+    priorityApplicationFee: 99,
     currency: 'INR',
     paymentProvider: 'razorpay'
   },
@@ -35,7 +38,15 @@ function loadData() {
   if (!fs.existsSync(dataFile)) fs.writeFileSync(dataFile, JSON.stringify(initialData, null, 2));
   const data = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
   data.users ||= [];
+  data.applications ||= [];
+  data.resumes ||= [];
   data.settings.jobPostingFee ??= 4999;
+  data.settings.priorityResumeFee ??= 299;
+  data.settings.priorityApplicationFee ??= 99;
+  for (const user of data.users) {
+    user.freeBasicResumeUsed ??= false;
+    user.priorityCredits ??= { resume: 0, application: 0 };
+  }
   return data;
 }
 function saveData(data) { fs.writeFileSync(dataFile, JSON.stringify(data, null, 2)); }
@@ -66,6 +77,18 @@ function adminOnly(req, res) {
 function id() { return crypto.randomUUID(); }
 function passwordHash(password, salt = crypto.randomBytes(16).toString('hex')) { return { salt, hash: crypto.scryptSync(password, salt, 64).toString('hex') }; }
 function currentUser(req, data) { const token = (req.headers.authorization || '').replace(/^Bearer\s+/i, ''); return data.users.find(user => user.id === userSessions.get(token)); }
+function publicUser(user) {
+  return { id: user.id, name: user.name, email: user.email, jobPostCount: user.jobPostCount || 0, freeBasicResumeUsed: Boolean(user.freeBasicResumeUsed), priorityCredits: user.priorityCredits || { resume: 0, application: 0 } };
+}
+function requireUser(req, res, data) {
+  const user = currentUser(req, data);
+  if (!user) { send(res, 401, { error: 'Please register or log in to continue.', code: 'authentication_required' }); return null; }
+  return user;
+}
+function priorityKind(input) { return input === 'priority_application' ? 'application' : input === 'priority_resume' ? 'resume' : null; }
+function priorityAmount(data, kind) { return Math.round(Number(kind === 'resume' ? data.settings.priorityResumeFee : data.settings.priorityApplicationFee) * 100); }
+function addPriorityCredit(user, kind) { user.priorityCredits ||= { resume: 0, application: 0 }; user.priorityCredits[kind] = Number(user.priorityCredits[kind] || 0) + 1; }
+function consumePriorityCredit(user, kind) { user.priorityCredits ||= { resume: 0, application: 0 }; if (Number(user.priorityCredits[kind] || 0) < 1) return false; user.priorityCredits[kind] -= 1; return true; }
 function cleanJob(job) {
   const required = ['title', 'organization', 'location', 'sector', 'description'];
   for (const key of required) if (!String(job[key] || '').trim()) throw new Error(`${key} is required.`);
@@ -173,15 +196,20 @@ http.createServer(async (req, res) => {
       const input = await jsonBody(req); const email = String(input.email || '').trim().toLowerCase(); const name = String(input.name || '').trim(); const password = String(input.password || '');
       if (!name || !/^\S+@\S+\.\S+$/.test(email) || password.length < 8) return send(res, 400, { error: 'Name, valid email, and an 8-character password are required.' });
       const data = loadData(); if (data.users.some(user => user.email === email)) return send(res, 409, { error: 'An account already exists for this email.' });
-      const secret = passwordHash(password); const user = { id: id(), name, email, passwordHash: secret.hash, passwordSalt: secret.salt, jobPostCount: 0, createdAt: new Date().toISOString() }; data.users.push(user); saveData(data);
-      const token = crypto.randomBytes(32).toString('hex'); userSessions.set(token, user.id); return send(res, 201, { token, user: { id: user.id, name, email, jobPostCount: 0 } });
+      const secret = passwordHash(password); const user = { id: id(), name, email, passwordHash: secret.hash, passwordSalt: secret.salt, jobPostCount: 0, freeBasicResumeUsed: false, priorityCredits: { resume: 0, application: 0 }, createdAt: new Date().toISOString() }; data.users.push(user); saveData(data);
+      const token = crypto.randomBytes(32).toString('hex'); userSessions.set(token, user.id); return send(res, 201, { token, user: publicUser(user) });
     }
     if (req.method === 'POST' && pathname === '/api/auth/login') {
       const input = await jsonBody(req); const data = loadData(); const user = data.users.find(entry => entry.email === String(input.email || '').trim().toLowerCase());
       if (!user || passwordHash(String(input.password || ''), user.passwordSalt).hash !== user.passwordHash) return send(res, 401, { error: 'Incorrect email or password.' });
-      const token = crypto.randomBytes(32).toString('hex'); userSessions.set(token, user.id); return send(res, 200, { token, user: { id: user.id, name: user.name, email: user.email, jobPostCount: user.jobPostCount } });
+      const token = crypto.randomBytes(32).toString('hex'); userSessions.set(token, user.id); return send(res, 200, { token, user: publicUser(user) });
     }
-    if (req.method === 'GET' && pathname === '/api/auth/me') { const data = loadData(); const user = currentUser(req, data); return user ? send(res, 200, { user: { id: user.id, name: user.name, email: user.email, jobPostCount: user.jobPostCount } }) : send(res, 401, { error: 'Please log in.' }); }
+    if (req.method === 'GET' && pathname === '/api/auth/me') { const data = loadData(); const user = currentUser(req, data); return user ? send(res, 200, { user: publicUser(user) }) : send(res, 401, { error: 'Please log in.' }); }
+    if (req.method === 'GET' && pathname === '/api/account') {
+      const data = loadData(); const user = requireUser(req, res, data); if (!user) return;
+      const owns = record => record.userId === user.id;
+      return send(res, 200, { user: publicUser(user), resumes: data.resumes.filter(owns), applications: data.applications.filter(owns) });
+    }
     if (req.method === 'GET' && pathname === '/api/admin/data') { if (!adminOnly(req, res)) return; return send(res, 200, loadData()); }
     if (req.method === 'POST' && pathname === '/api/admin/login') {
       const input = await jsonBody(req); const supplied = String(input.password || ''); if (supplied.length !== adminPassword.length || !crypto.timingSafeEqual(Buffer.from(supplied), Buffer.from(adminPassword))) return send(res, 401, { error: 'Incorrect password.' });
@@ -201,10 +229,49 @@ http.createServer(async (req, res) => {
       if (!adminOnly(req, res)) return; const data = loadData(); data.jobs = data.jobs.filter(job => job.id !== pathname.split('/').pop()); saveData(data); return send(res, 204, {});
     }
     if (req.method === 'POST' && (pathname === '/api/resumes' || pathname === '/api/applications')) {
-      const parsed = parseMultipart(req, await body(req)); const data = loadData();
+      const data = loadData(); const user = requireUser(req, res, data); if (!user) return;
+      const parsed = parseMultipart(req, await body(req));
       if (!parsed.file) return send(res, 400, { error: 'A resume file is required.' });
-      const record = { id: id(), ...parsed.fields, resume: parsed.file, createdAt: new Date().toISOString() };
-      if (pathname === '/api/resumes') data.resumes.unshift(record); else data.applications.unshift(record); saveData(data); return send(res, 201, { record });
+      const isResume = pathname === '/api/resumes';
+      const preference = String(parsed.fields.preference || 'basic').toLowerCase() === 'priority' ? 'priority' : 'basic';
+      if (!isResume && preference === 'basic' && String(parsed.fields.jobTier || 'basic') !== 'basic') return send(res, 403, { error: 'Priority opportunities require a priority application credit.', code: 'priority_payment_required' });
+      if (preference === 'priority') {
+        const kind = isResume ? 'resume' : 'application';
+        if (!consumePriorityCredit(user, kind)) return send(res, 402, { error: 'Priority access requires payment before you can continue.', code: 'priority_payment_required', kind: `priority_${kind}` });
+      } else if (isResume) {
+        if (user.freeBasicResumeUsed) return send(res, 402, { error: 'Your one free basic resume post has been used. Choose priority posting to continue.', code: 'priority_payment_required', kind: 'priority_resume' });
+        user.freeBasicResumeUsed = true;
+      }
+      const record = { id: id(), userId: user.id, name: user.name, email: user.email, preference, ...parsed.fields, resume: parsed.file, createdAt: new Date().toISOString() };
+      if (isResume) data.resumes.unshift(record); else data.applications.unshift(record);
+      saveData(data); return send(res, 201, { record, user: publicUser(user) });
+    }
+    if (req.method === 'POST' && pathname === '/api/payments/priority') {
+      const data = loadData(); const user = requireUser(req, res, data); if (!user) return;
+      const kind = priorityKind((await jsonBody(req)).kind);
+      if (!kind) return send(res, 400, { error: 'Choose a valid priority service.' });
+      const amount = priorityAmount(data, kind); const receipt = `priority_${kind}_${Date.now()}`;
+      if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+        const orderId = `demo_${id()}`; priorityPaymentOrders.set(orderId, { userId: user.id, kind, amount, demo: true });
+        return send(res, 200, { mode: 'demo', orderId, amount, currency: data.settings.currency, kind, message: 'Demo payment is enabled. Add Razorpay keys for live checkout.' });
+      }
+      const auth = Buffer.from(`${process.env.RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}`).toString('base64');
+      const order = await fetch('https://api.razorpay.com/v1/orders', { method: 'POST', headers: { Authorization: `Basic ${auth}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ amount, currency: data.settings.currency, receipt }) }).then(async response => { const result = await response.json(); if (!response.ok) throw new Error(result.error?.description || 'Unable to start payment.'); return result; });
+      priorityPaymentOrders.set(order.id, { userId: user.id, kind, amount, demo: false });
+      return send(res, 200, { mode: 'razorpay', orderId: order.id, keyId: process.env.RAZORPAY_KEY_ID, amount, currency: data.settings.currency, kind });
+    }
+    if (req.method === 'POST' && pathname === '/api/payments/priority/verify') {
+      const data = loadData(); const user = requireUser(req, res, data); if (!user) return;
+      const input = await jsonBody(req); const order = priorityPaymentOrders.get(String(input.orderId || ''));
+      if (!order || order.userId !== user.id) return send(res, 400, { error: 'Payment order was not found.' });
+      if (order.demo) {
+        if (input.demo !== true) return send(res, 400, { error: 'Demo payment confirmation is required.' });
+      } else {
+        const signature = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET).update(`${input.orderId}|${input.paymentId}`).digest('hex');
+        if (!input.signature || !crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(String(input.signature)))) return send(res, 400, { error: 'Payment verification failed.' });
+      }
+      addPriorityCredit(user, order.kind); priorityPaymentOrders.delete(String(input.orderId)); saveData(data);
+      return send(res, 200, { message: 'Priority access is active.', user: publicUser(user), kind: `priority_${order.kind}` });
     }
     if (req.method === 'POST' && pathname === '/api/payments/job-posting') {
       const data = loadData(); const user = currentUser(req, data); if (!user) return send(res, 401, { error: 'Please log in before posting a job.' }); const amount = user.jobPostCount === 0 ? 0 : Math.round(Number(data.settings.jobPostingFee || 0) * 100);

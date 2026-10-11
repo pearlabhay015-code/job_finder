@@ -154,7 +154,7 @@
         salary: "$130K - $160K",
         applicants: 142,
         sent: 55,
-        type: "standard",
+        type: "premium",
         sector: "Media & Design",
         location: "Hybrid / San Bruno",
         exp: "Senior level",
@@ -185,217 +185,361 @@
         id: "job-1",
         title: "Senior Public Health Specialist",
         org: "Global Health Alliance",
-        type: "standard", // standard, premium, rfp
-        sector: "Health",
+        company: "Global Health Alliance",
+        date: "Jul 11, 2025",
+        posted: "Jul 11, 2025",
+        logo: "global health",
+        logoBg: "bg-[#0ea5e9] text-white",
+        tags: ["Full time", "On-Site", "Health Sciences"],
+        salary: "$90K - $130K",
+        applicants: 68,
+        sent: 24,
+        type: "standard",
+        sector: "Healthcare & Life Sciences",
         location: "New Delhi",
         exp: "7-10 Years",
         deadline: "12 Days Left",
-        posted: "2 hours ago",
-        desc: "Leading field operations for maternal healthcare initiatives across North India. Expertise in USAID donor compliance and M&E metrics required."
+        desc: "Lead maternal healthcare and epidemiological monitoring initiatives across health centers with donor compliance."
       },
       {
         id: "job-2",
         title: "ESG & Climate Resilience Director",
         org: "Terra Impact Foundation",
+        company: "Terra Impact Foundation",
+        date: "Jul 10, 2025",
+        posted: "Jul 10, 2025",
+        logo: "terra",
+        logoBg: "bg-[#10b981] text-white",
+        tags: ["Full time", "Remote", "Climate Strategy"],
+        salary: "$120K - $160K",
+        applicants: 89,
+        sent: 41,
         type: "premium",
-        sector: "Climate",
+        sector: "Social Impact & Sustainability",
         location: "Bengaluru, Karnataka",
         exp: "8-12 Years",
         deadline: "4 Days Left",
-        posted: "1 day ago",
-        desc: "Value Member Exclusive: Direct oversight of carbon-offset grants and CSR ESG advisory services for Fortune 500 corporate foundations."
+        desc: "Direct oversight of carbon-offset grants and CSR ESG advisory services for enterprise partners."
       },
       {
         id: "job-3",
-        title: "RFP: Mid-Term Evaluation of Digital Literacy Pilot",
+        title: "Digital Literacy Evaluation Lead",
         org: "UNICEF Partner Network",
-        type: "rfp",
-        sector: "Education",
+        company: "UNICEF Partner Network",
+        date: "Jul 9, 2025",
+        posted: "Jul 9, 2025",
+        logo: "unicef",
+        logoBg: "bg-[#1cabe2] text-white",
+        tags: ["Contract", "Remote", "Education"],
+        salary: "$95K - $135K",
+        applicants: 112,
+        sent: 47,
+        type: "premium",
+        sector: "Technology & AI",
         location: "Remote / Bihar",
-        exp: "Consultancy Firm",
+        exp: "Senior Specialist",
         deadline: "18 Days Left",
-        posted: "3 hours ago",
-        desc: "Request for Proposals: Inviting sealed bids from technical research agencies for a quantitative end-line impact assessment of youth digital centers."
+        desc: "Quantitative end-line impact assessment and learning analytics for youth digital education centers."
       },
       {
         id: "job-4",
         title: "CSR Lead - Social Governance & Grants",
         org: "Tata Sustainability Group",
+        company: "Tata Sustainability Group",
+        date: "Jul 8, 2025",
+        posted: "Jul 8, 2025",
+        logo: "tata",
+        logoBg: "bg-[#004b87] text-white",
+        tags: ["Full time", "Hybrid", "Governance"],
+        salary: "$85K - $115K",
+        applicants: 145,
+        sent: 52,
         type: "standard",
-        sector: "CSR",
+        sector: "Social Impact & Sustainability",
         location: "Mumbai, Maharashtra",
         exp: "5-8 Years",
         deadline: "15 Days Left",
-        posted: "2 days ago",
-        desc: "Oversee Section 135 CSR compliance budgets, partner NGO due diligence, and quarterly board reporting."
+        desc: "Oversee social governance compliance budgets, partner due diligence, and quarterly executive reporting."
       },
       {
         id: "job-5",
         title: "Chief of Party - WASH Sustainable Mission",
         org: "WaterAid India",
+        company: "WaterAid India",
+        date: "Jul 7, 2025",
+        posted: "Jul 7, 2025",
+        logo: "wateraid",
+        logoBg: "bg-[#0094d8] text-white",
+        tags: ["Full time", "On-Site", "Director"],
+        salary: "$130K - $175K",
+        applicants: 58,
+        sent: 22,
         type: "premium",
-        sector: "WASH",
+        sector: "Healthcare & Life Sciences",
         location: "New Delhi",
         exp: "12+ Years",
         deadline: "2 Days Left",
-        posted: "Just now",
-        desc: "Value Member Exclusive: Senior leadership role directing a multi-state clean water initiative funded by international multilateral donors."
+        desc: "Senior leadership directing multi-state clean water and community sanitation infrastructure programs."
       },
       {
         id: "job-6",
-        title: "RFP: Supply & Installation of Solar Microgrids",
+        title: "Solar Microgrids Engineering Lead",
         org: "Clean Power Trust",
-        type: "rfp",
-        sector: "Renewable Energy",
+        company: "Clean Power Trust",
+        date: "Jul 6, 2025",
+        posted: "Jul 6, 2025",
+        logo: "clean power",
+        logoBg: "bg-[#eab308] text-slate-950",
+        tags: ["Full time", "Hybrid", "Clean Energy"],
+        salary: "$80K - $110K",
+        applicants: 73,
+        sent: 19,
+        type: "standard",
+        sector: "Technology & AI",
         location: "Ranchi, Jharkhand",
-        exp: "Vendor Tender",
+        exp: "5-8 Years",
         deadline: "22 Days Left",
-        posted: "4 days ago",
-        desc: "Turnkey procurement tender for solar microgrid installations in off-grid tribal villages across Jharkhand."
+        desc: "Turnkey engineering oversight for decentralized solar microgrid installations in rural areas."
       },
       {
         id: "job-7",
         title: "Program Officer - Child Protection & Education",
         org: "Save the Children",
+        company: "Save the Children",
+        date: "Jul 5, 2025",
+        posted: "Jul 5, 2025",
+        logo: "save the children",
+        logoBg: "bg-[#da291c] text-white",
+        tags: ["Full time", "On-Site", "Child Rights"],
+        salary: "$70K - $95K",
+        applicants: 134,
+        sent: 38,
         type: "standard",
-        sector: "Child Rights",
+        sector: "Social Impact & Sustainability",
         location: "Jaipur, Rajasthan",
         exp: "3-6 Years",
         deadline: "9 Days Left",
-        posted: "5 hours ago",
-        desc: "Coordinate district-level community child rights protection committees and adolescent girl schooling retention programs in western Rajasthan."
+        desc: "Coordinate district community protection committees and adolescent girl schooling retention programs."
       },
       {
         id: "job-8",
         title: "Head of Sustainable Agritech & FPO Linkages",
         org: "AgriImpact India",
+        company: "AgriImpact India",
+        date: "Jul 4, 2025",
+        posted: "Jul 4, 2025",
+        logo: "agriimpact",
+        logoBg: "bg-[#15803d] text-white",
+        tags: ["Full time", "Remote", "Agritech"],
+        salary: "$110K - $145K",
+        applicants: 62,
+        sent: 27,
         type: "premium",
-        sector: "Agriculture",
+        sector: "Technology & AI",
         location: "Ludhiana, Punjab",
         exp: "8-10 Years",
         deadline: "7 Days Left",
-        posted: "1 day ago",
-        desc: "Value Member Exclusive: Drive regenerative farming adoption and direct farmer producer organization (FPO) market linkages across northern states."
+        desc: "Drive regenerative farming adoption, precision sensor tech, and direct farmer producer organization linkages."
       },
       {
         id: "job-9",
         title: "Disaster Response Coordinator - Flood Relief",
         org: "Oxfam India",
+        company: "Oxfam India",
+        date: "Jul 3, 2025",
+        posted: "Jul 3, 2025",
+        logo: "oxfam",
+        logoBg: "bg-[#61a534] text-white",
+        tags: ["Contract", "On-Site", "Emergency"],
+        salary: "$75K - $105K",
+        applicants: 89,
+        sent: 31,
         type: "standard",
-        sector: "Disaster Relief",
+        sector: "Social Impact & Sustainability",
         location: "Guwahati, Assam",
         exp: "4-7 Years",
         deadline: "14 Days Left",
-        posted: "3 days ago",
-        desc: "Lead emergency flood response operations, cash-for-work deployment, and rapid community relief logistics in the Brahmaputra river basin."
+        desc: "Lead emergency logistics, humanitarian aid deployment, and rapid community relief operations."
       },
       {
         id: "job-10",
         title: "Lead Civic Tech & Open Data Architect",
         org: "Centre for GovTech Solutions",
+        company: "Centre for GovTech Solutions",
+        date: "Jul 2, 2025",
+        posted: "Jul 2, 2025",
+        logo: "govtech",
+        logoBg: "bg-[#6366f1] text-white",
+        tags: ["Full time", "Remote", "Open Data"],
+        salary: "$125K - $165K",
+        applicants: 156,
+        sent: 64,
         type: "premium",
-        sector: "Tech4Good",
+        sector: "Technology & AI",
         location: "Hyderabad, Telangana",
         exp: "6-9 Years",
         deadline: "11 Days Left",
-        posted: "6 hours ago",
-        desc: "Value Member Exclusive: Architect open-source digital public infrastructure (DPI) tools and citizen feedback dashboards for state government ministries."
+        desc: "Architect open-source digital public infrastructure (DPI) tools and citizen feedback dashboards."
       },
       {
         id: "job-11",
-        title: "RFP: Comprehensive Rural Livelihoods Baseline Survey",
+        title: "Rural Livelihoods Research Specialist",
         org: "State Rural Livelihood Mission",
-        type: "rfp",
-        sector: "Livelihoods",
+        company: "State Rural Livelihood Mission",
+        date: "Jul 1, 2025",
+        posted: "Jul 1, 2025",
+        logo: "rural",
+        logoBg: "bg-[#854d0e] text-white",
+        tags: ["Full time", "Hybrid", "Research"],
+        salary: "$80K - $115K",
+        applicants: 77,
+        sent: 25,
+        type: "standard",
+        sector: "Social Impact & Sustainability",
         location: "Bhubaneswar, Odisha",
-        exp: "Research Agency",
+        exp: "5-7 Years",
         deadline: "25 Days Left",
-        posted: "2 days ago",
-        desc: "Request for Proposals: Inviting empaneled research institutions to conduct household livelihood asset mapping across 12 tribal blocks."
+        desc: "Conduct household livelihood asset mapping, micro-enterprise incubation, and economic impact surveys."
       },
       {
         id: "job-12",
         title: "Women Legal Empowerment & Advocacy Lead",
         org: "Breakthrough Trust",
+        company: "Breakthrough Trust",
+        date: "Jun 30, 2025",
+        posted: "Jun 30, 2025",
+        logo: "breakthrough",
+        logoBg: "bg-[#ec4899] text-white",
+        tags: ["Full time", "On-Site", "Legal Advocacy"],
+        salary: "$75K - $100K",
+        applicants: 94,
+        sent: 28,
         type: "standard",
-        sector: "Gender Rights",
+        sector: "Social Impact & Sustainability",
         location: "Lucknow, Uttar Pradesh",
         exp: "5-8 Years",
         deadline: "16 Days Left",
-        posted: "3 days ago",
-        desc: "Drive legal aid camps, grassroots rights awareness campaigns, and gender-based violence helpline counseling systems across eastern UP."
+        desc: "Drive grassroots legal rights awareness campaigns, legal counseling camps, and community outreach."
       },
       {
         id: "job-13",
         title: "Wildlife Habitat Conservationist",
         org: "Himalayan Ecology Foundation",
+        company: "Himalayan Ecology Foundation",
+        date: "Jun 29, 2025",
+        posted: "Jun 29, 2025",
+        logo: "himalayan",
+        logoBg: "bg-[#0284c7] text-white",
+        tags: ["Full time", "On-Site", "Ecology"],
+        salary: "$85K - $120K",
+        applicants: 61,
+        sent: 17,
         type: "standard",
-        sector: "Animal Welfare",
+        sector: "Social Impact & Sustainability",
         location: "Dehradun, Uttarakhand",
         exp: "4-6 Years",
         deadline: "19 Days Left",
-        posted: "4 days ago",
-        desc: "Manage alpine wildlife corridors, human-wildlife conflict resolution mechanisms, and community eco-tourism models in Himalayan foothills."
+        desc: "Manage alpine wildlife corridors, human-wildlife conflict mitigation, and community eco-tourism models."
       },
       {
         id: "job-14",
         title: "Senior Clean Energy Finance Specialist",
         org: "Gujarat Green Energy Mission",
+        company: "Gujarat Green Energy Mission",
+        date: "Jun 28, 2025",
+        posted: "Jun 28, 2025",
+        logo: "gujarat",
+        logoBg: "bg-[#059669] text-white",
+        tags: ["Full time", "Remote", "Fintech / Climate"],
+        salary: "$135K - $170K",
+        applicants: 104,
+        sent: 49,
         type: "premium",
-        sector: "Renewable Energy",
+        sector: "Finance & Fintech",
         location: "Gandhinagar, Gujarat",
         exp: "9-12 Years",
         deadline: "5 Days Left",
-        posted: "1 day ago",
-        desc: "Value Member Exclusive: Structure concessional climate finance facilities and solar park investment mechanisms with international development banks."
+        desc: "Structure concessional climate finance facilities and large-scale solar park investment mechanisms."
       },
       {
         id: "job-15",
         title: "Public Health & Mental Health Program Manager",
         org: "MindCare Foundation India",
+        company: "MindCare Foundation India",
+        date: "Jun 27, 2025",
+        posted: "Jun 27, 2025",
+        logo: "mindcare",
+        logoBg: "bg-[#8b5cf6] text-white",
+        tags: ["Part time", "Hybrid", "Mental Health"],
+        salary: "$80K - $110K",
+        applicants: 83,
+        sent: 32,
         type: "standard",
-        sector: "Mental Health",
+        sector: "Healthcare & Life Sciences",
         location: "Kochi, Kerala",
         exp: "4-8 Years",
         deadline: "13 Days Left",
-        posted: "3 days ago",
-        desc: "Design community mental health screening protocols and school counseling curricula with Kerala health department officials."
+        desc: "Design community mental health screening protocols, clinical workflows, and youth counseling curricula."
       },
       {
         id: "job-16",
-        title: "RFP: Smart City Solid Waste Management Consultancy",
+        title: "Smart City Circular Economy Consultant",
         org: "Urban Development Authority",
-        type: "rfp",
-        sector: "Urban Planning",
+        company: "Urban Development Authority",
+        date: "Jun 26, 2025",
+        posted: "Jun 26, 2025",
+        logo: "urban development",
+        logoBg: "bg-[#475569] text-white",
+        tags: ["Contract", "Hybrid", "Urban Tech"],
+        salary: "$115K - $155K",
+        applicants: 67,
+        sent: 29,
+        type: "premium",
+        sector: "Technology & AI",
         location: "Chennai, Tamil Nadu",
-        exp: "Urban Planning Firm",
+        exp: "7-10 Years",
         deadline: "30 Days Left",
-        posted: "Just now",
-        desc: "Request for Proposals: Consulting firms requested for circular economy waste processing and sensor-based route optimization in metropolitan zones."
+        desc: "Advising on smart municipal sensor networks, circular waste management, and route optimization."
       },
       {
         id: "job-17",
         title: "Director of Impact Investment & Social Finance",
         org: "Aavishkaar Capital Partners",
+        company: "Aavishkaar Capital Partners",
+        date: "Jun 25, 2025",
+        posted: "Jun 25, 2025",
+        logo: "aavishkaar",
+        logoBg: "bg-[#d97706] text-white",
+        tags: ["Full time", "Remote", "Venture Capital"],
+        salary: "$140K - $190K",
+        applicants: 122,
+        sent: 56,
         type: "premium",
-        sector: "Social Enterprise",
+        sector: "Finance & Fintech",
         location: "Kolkata, West Bengal",
         exp: "10-15 Years",
         deadline: "8 Days Left",
-        posted: "1 day ago",
-        desc: "Value Member Exclusive: Oversee series A/B social enterprise pipeline investments in eastern and north-eastern India across healthcare and fintech."
+        desc: "Oversee Series A/B venture equity investments in healthcare, agritech, and inclusive fintech startups."
       },
       {
         id: "job-18",
         title: "Senior Public Policy & Legislative Fellow",
         org: "Centre for Policy Research",
+        company: "Centre for Policy Research",
+        date: "Jun 24, 2025",
+        posted: "Jun 24, 2025",
+        logo: "policy research",
+        logoBg: "bg-[#334155] text-white",
+        tags: ["Full time", "Hybrid", "Public Policy"],
+        salary: "$90K - $125K",
+        applicants: 110,
+        sent: 43,
         type: "standard",
-        sector: "Public Policy",
+        sector: "Social Impact & Sustainability",
         location: "New Delhi",
         exp: "6-9 Years",
         deadline: "10 Days Left",
-        posted: "2 days ago",
-        desc: "Lead policy white-papers, parliamentarian briefings, and data-driven governance analysis on fiscal decentralization."
+        desc: "Lead legislative policy white-papers, parliamentarian research briefings, and governance analysis."
       }
     ];
 
@@ -488,7 +632,25 @@
         'dribbble-1': 6,
         'aliexpress-1': 7,
         'youtube-1': 8,
-        'spotify-1': 9
+        'spotify-1': 9,
+        'job-1': 10,
+        'job-2': 11,
+        'job-3': 12,
+        'job-4': 13,
+        'job-5': 14,
+        'job-6': 15,
+        'job-7': 16,
+        'job-8': 17,
+        'job-9': 18,
+        'job-10': 19,
+        'job-11': 20,
+        'job-12': 21,
+        'job-13': 22,
+        'job-14': 23,
+        'job-15': 24,
+        'job-16': 25,
+        'job-17': 26,
+        'job-18': 27
       };
       if (talentryOrder[job.id]) return talentryOrder[job.id];
 
@@ -511,9 +673,67 @@
     let currentTab = 'all';
     let currentJobsList = sampleJobs.map(normalizeJob).sort((a, b) => getJobAgeMinutes(a) - getJobAgeMinutes(b));
 
+    // Job Saathi Interactive State
+    let savedJobIds = JSON.parse(localStorage.getItem('job-saathi-bookmarks') || '["google-1", "apple-1"]');
+    let filterSavedOnly = false;
+    let currentJobTier = 'all'; // 'all' | 'standard' | 'premium'
+    let currentSalaryPeriod = 'Yearly'; // 'Yearly' | 'Monthly'
+    let salaryMinVal = 20;
+    let salaryMaxVal = 200;
+    let uploadedResumeFile = localStorage.getItem('job-saathi-resume-name') || '';
+    let aiMatchedState = false;
+
+    function setJobTierFilter(tier) {
+      currentJobTier = tier || 'all';
+      currentTab = currentJobTier;
+
+      // Update segmented control pills
+      const allBtn = document.getElementById('tier-pill-all');
+      const stdBtn = document.getElementById('tier-pill-standard');
+      const premBtn = document.getElementById('tier-pill-premium');
+
+      if (allBtn) allBtn.classList.toggle('is-active', currentJobTier === 'all');
+      if (stdBtn) stdBtn.classList.toggle('is-active', currentJobTier === 'standard');
+      if (premBtn) premBtn.classList.toggle('is-active', currentJobTier === 'premium');
+
+      // Update sidebar tier buttons
+      const sideStd = document.getElementById('sidebar-tier-standard-btn');
+      const sidePrem = document.getElementById('sidebar-tier-premium-btn');
+      if (sideStd) sideStd.classList.toggle('is-active', currentJobTier === 'standard');
+      if (sidePrem) sidePrem.classList.toggle('is-premium-active', currentJobTier === 'premium');
+
+      handleSearch();
+
+      if (currentJobTier === 'premium') {
+        showJobSaathiToast('Filtered to Premium Opportunities (Fast-Track & Verified)', '<i class="fa-solid fa-crown text-amber-400"></i>');
+      } else if (currentJobTier === 'standard') {
+        showJobSaathiToast('Filtered to Standard Opportunities', '<i class="fa-regular fa-circle-check text-sky-400"></i>');
+      } else {
+        showJobSaathiToast('Showing All Opportunities', '<i class="fa-solid fa-layer-group text-sky-400"></i>');
+      }
+    }
+
+    function toggleSidebarTier(tier) {
+      if (currentJobTier === tier) {
+        setJobTierFilter('all');
+      } else {
+        setJobTierFilter(tier);
+      }
+    }
+
     function isJobsPage() {
       const p = window.location.pathname.toLowerCase();
-      return p.endsWith('jobs.html') || p.includes('jobs.html');
+      return p.endsWith('jobs.html') || p.includes('jobs.html') || !!document.getElementById('jobs-container');
+    }
+
+    function parseSalaryRange(salaryStr) {
+      if (!salaryStr) return { min: 20, max: 200 };
+      const matches = salaryStr.match(/\$?(\d+)(?:\s*K)?/gi);
+      if (!matches || matches.length === 0) return { min: 20, max: 200 };
+      const nums = matches.map(m => parseInt(m.replace(/[^0-9]/g, ''), 10)).filter(n => !isNaN(n));
+      if (nums.length === 0) return { min: 20, max: 200 };
+      if (nums.length === 1) return { min: nums[0], max: nums[0] };
+      return { min: Math.min(...nums), max: Math.max(...nums) };
     }
 
     function submitHeroSearch(overrideQ) {
@@ -646,6 +866,12 @@
         if (sortSelect) sortSelect.value = sort;
       }
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      applySavedTheme();
+      initJobsPageFromUrl();
+      handleSearch();
+    });
 
     window.onload = function() {
       applySavedTheme();
@@ -780,7 +1006,61 @@
         if (b.includes('spotify')) {
           return `<div class="w-9 h-9 rounded-full bg-[#1db954] text-white flex items-center justify-center shadow-xs"><i class="fa-brands fa-spotify text-sm"></i></div>`;
         }
-        return `<div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold shadow-xs"><i class="fa-solid fa-briefcase text-xs"></i></div>`;
+        if (b.includes('unicef')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#00adef] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-child-reaching text-sm"></i></div>`;
+        }
+        if (b.includes('tata')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#004b87] text-white flex items-center justify-center font-black text-[10px] tracking-tight shadow-xs">TATA</div>`;
+        }
+        if (b.includes('wateraid')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#0284c7] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-droplet text-sm"></i></div>`;
+        }
+        if (b.includes('gates')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#991b1b] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-hand-holding-heart text-sm"></i></div>`;
+        }
+        if (b.includes('clean power')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#059669] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-bolt-lightning text-sm"></i></div>`;
+        }
+        if (b.includes('teach for india')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#e11d48] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-graduation-cap text-sm"></i></div>`;
+        }
+        if (b.includes('wwf')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#15803d] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-paw text-sm"></i></div>`;
+        }
+        if (b.includes('aga khan')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#0d9488] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-landmark text-sm"></i></div>`;
+        }
+        if (b.includes('pratham')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#d97706] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-book-open text-sm"></i></div>`;
+        }
+        if (b.includes('oxfam')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#16a34a] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-people-group text-sm"></i></div>`;
+        }
+        if (b.includes('digital green')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#10b981] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-leaf text-sm"></i></div>`;
+        }
+        if (b.includes('save the children')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#dc2626] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-shield-heart text-sm"></i></div>`;
+        }
+        if (b.includes('terra')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#0f766e] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-solar-panel text-sm"></i></div>`;
+        }
+        if (b.includes('gujarat')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#047857] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-earth-americas text-sm"></i></div>`;
+        }
+        if (b.includes('mindcare')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#7c3aed] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-brain text-sm"></i></div>`;
+        }
+        if (b.includes('urban development')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#334155] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-city text-sm"></i></div>`;
+        }
+        if (b.includes('aavishkaar')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#b45309] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-chart-line text-sm"></i></div>`;
+        }
+        if (b.includes('policy research')) {
+          return `<div class="w-9 h-9 rounded-full bg-[#312e81] text-white flex items-center justify-center shadow-xs"><i class="fa-solid fa-scale-balanced text-sm"></i></div>`;
+        }
+        return `<div class="w-9 h-9 rounded-full bg-slate-900 dark:bg-white/10 text-white flex items-center justify-center text-xs font-bold shadow-xs"><i class="fa-solid fa-briefcase text-xs"></i></div>`;
       }
 
       container.innerHTML = jobs.map((job) => {
@@ -793,51 +1073,72 @@
         const applicants = job.applicants || 42;
         const sentCount = job.sent || 15;
         const salaryText = job.salary || (job.exp && job.exp.includes('Years') ? '$90K - $130K' : '$80K - $120K');
+        const isSaved = savedJobIds.includes(job.id);
+        const isPremium = job.type === 'premium';
+        const tierBadge = isPremium ? (isFeatured ? `
+          <span onclick="event.stopPropagation(); setJobTierFilter('premium')" title="Premium Featured Opportunity &bull; Click to filter" class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950 flex items-center gap-1 cursor-pointer hover:scale-105 transition shadow-xs">
+            <i class="fa-solid fa-crown text-[9px]"></i> Premium
+          </span>
+        ` : `
+          <span onclick="event.stopPropagation(); setJobTierFilter('premium')" title="Premium Opportunity &bull; Click to filter" class="tier-badge-premium px-2.5 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 cursor-pointer hover:scale-105 transition">
+            <i class="fa-solid fa-crown text-[9px] text-amber-500"></i> Premium
+          </span>
+        `) : `
+          <span onclick="event.stopPropagation(); setJobTierFilter('standard')" title="Standard Opportunity &bull; Click to filter" class="tier-badge-standard px-2.5 py-0.5 rounded-full text-[10px] font-semibold flex items-center gap-1 cursor-pointer hover:scale-105 transition">
+            <i class="fa-regular fa-circle-check text-[9px] text-sky-400"></i> Standard
+          </span>
+        `;
+        const matchBadge = (aiMatchedState && job.matchScore) ? `
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${isFeatured ? 'bg-sky-400 text-slate-950 font-bold' : 'bg-sky-500/15 text-sky-400 border border-sky-500/30'} flex items-center gap-1">
+            <i class="fa-solid fa-sparkles text-[9px]"></i> ${job.matchScore}% Match
+          </span>
+        ` : '';
 
         return `
-          <div onclick="openJobDrawer('${job.id}')" class="${cardClass} rounded-2xl p-5 flex flex-col justify-between cursor-pointer group hover:-translate-y-0.5 transition-all">
+          <div onclick="openJobDrawer('${job.id}')" class="${cardClass} rounded-2xl p-5 sm:p-6 flex flex-col justify-between cursor-pointer group hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
             <div>
-              <!-- Top Row: Logo, Date Pill, Bookmark -->
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2.5">
+              <!-- Top Row: Logo, Date Pill, Tier Badge, Bookmark -->
+              <div class="flex items-center justify-between mb-4 sm:mb-5">
+                <div class="flex items-center gap-2">
                   ${logoHtml}
                   <span class="text-[11px] font-medium px-2.5 py-1 rounded-full ${isFeatured ? 'bg-white/15 text-white' : 'bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300'}">
                     ${dateStr}
                   </span>
+                  ${tierBadge}
                 </div>
-                <div>
-                  ${isFeatured 
-                    ? `<button type="button" aria-label="Bookmarked" class="w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center hover:scale-105 transition"><i class="fa-solid fa-bookmark text-xs"></i></button>`
-                    : `<button type="button" aria-label="Bookmark" class="w-7 h-7 rounded-full text-slate-400 hover:text-slate-800 dark:hover:text-white flex items-center justify-center hover:scale-105 transition"><i class="fa-regular fa-bookmark text-xs"></i></button>`
-                  }
+                <div class="flex items-center gap-2">
+                  ${matchBadge}
+                  <button type="button" aria-label="Bookmark" onclick="toggleBookmark('${job.id}', event)" class="w-7 h-7 rounded-full ${isFeatured ? (isSaved ? 'bg-sky-400 text-slate-950 font-bold' : 'bg-black/40 text-white hover:bg-black/60') : (isSaved ? 'text-sky-500' : 'text-slate-400 hover:text-slate-800 dark:hover:text-white')} flex items-center justify-center hover:scale-110 transition">
+                    <i class="${isSaved ? 'fa-solid' : 'fa-regular'} fa-bookmark text-xs"></i>
+                  </button>
                 </div>
               </div>
 
               <!-- Company Name + Verified Badge -->
-              <div class="flex items-center gap-1.5 text-xs font-semibold ${isFeatured ? 'text-slate-200' : 'text-slate-600 dark:text-slate-400'}">
+              <div class="flex items-center gap-1.5 text-xs font-semibold mb-1 ${isFeatured ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'}">
                 <span>${job.org || job.company}</span>
                 <i class="fa-solid fa-circle-check text-emerald-500 text-[11px]"></i>
               </div>
 
               <!-- Job Title -->
-              <h3 class="text-base sm:text-lg font-bold tracking-tight mt-1 mb-2 ${isFeatured ? 'text-white' : 'text-slate-900 dark:text-white group-hover:text-appleBlue'} transition-colors leading-snug">
+              <h3 class="text-sm sm:text-base lg:text-lg font-bold tracking-tight mt-1 mb-2.5 ${isFeatured ? 'text-white' : 'text-slate-900 dark:text-white group-hover:text-sky-400 dark:group-hover:text-sky-300'} transition-colors leading-snug line-clamp-2">
                 ${job.title}
               </h3>
 
               <!-- Metadata / Tags -->
-              <p class="text-xs ${isFeatured ? 'text-slate-300' : 'text-slate-500 dark:text-slate-400'} font-normal truncate">
+              <p class="text-[11px] sm:text-xs ${isFeatured ? 'text-slate-300' : 'text-slate-500 dark:text-slate-300'} font-normal truncate mb-3">
                 ${tagText}
               </p>
 
               <!-- Salary -->
-              <p class="text-xs sm:text-sm font-semibold mt-2.5 ${isFeatured ? 'text-slate-100' : 'text-slate-700 dark:text-slate-200'}">
+              <p class="text-xs sm:text-sm font-semibold mt-2.5 mb-1 ${isFeatured ? 'text-slate-100' : 'text-slate-800 dark:text-slate-100'}">
                 ${salaryText}
               </p>
             </div>
 
             <!-- Footer: Metrics & Details Button -->
-            <div class="mt-5 pt-3.5 border-t ${isFeatured ? 'border-white/15' : 'border-slate-100 dark:border-white/10'} flex items-center justify-between text-xs">
-              <div class="flex items-center gap-3.5 ${isFeatured ? 'text-slate-300' : 'text-slate-400 dark:text-slate-400'} font-medium">
+            <div class="mt-5 pt-4 border-t ${isFeatured ? 'border-white/15' : 'border-slate-100 dark:border-white/10'} flex items-center justify-between text-xs">
+              <div class="flex items-center gap-3.5 ${isFeatured ? 'text-slate-300' : 'text-slate-400 dark:text-slate-300'} font-medium">
                 <span class="flex items-center gap-1.5">
                   <i class="fa-regular fa-user text-[11px]"></i>
                   <span>${applicants}</span>
@@ -848,7 +1149,7 @@
                 </span>
               </div>
               <div>
-                <button type="button" class="px-4 py-1.5 rounded-full text-xs font-semibold transition active:scale-95 ${isFeatured ? 'bg-white text-slate-950 font-bold hover:bg-slate-100' : 'talentry-primary-btn shadow-xs'}">
+                <button type="button" onclick="event.stopPropagation(); openJobDrawer('${job.id}')" class="px-4.5 py-1.5 rounded-full text-xs font-semibold transition active:scale-95 ${isFeatured ? 'bg-white text-slate-950 font-bold hover:bg-slate-100' : 'talentry-primary-btn shadow-xs'}">
                   Details
                 </button>
               </div>
@@ -912,20 +1213,104 @@
         jobsToRender = filtered.map(normalizeJob);
       }
 
-      // Auto-sort by newest opportunities by default whenever jobs are found
-      const sortSelect = document.getElementById('sort-select');
-      const sortBy = sortSelect ? sortSelect.value : 'newest';
-      if (sortBy === 'deadline') {
-        jobsToRender.sort((a, b) => {
-          const da = parseInt((a.deadline || '').match(/\d+/) || [999][0]);
-          const db = parseInt((b.deadline || '').match(/\d+/) || [999][0]);
-          return da - db;
-        });
-      } else if (sortBy === 'alpha') {
-        jobsToRender.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+      // Apply dynamic filtering: Tier, Saved only, Industry, Schedule, Salary Range, and Job Types
+      jobsToRender = jobsToRender.filter(job => {
+        // Opportunity Tier filter (Standard vs Premium)
+        if (currentJobTier !== 'all' && job.type !== currentJobTier) {
+          return false;
+        }
+
+        // Saved Opportunities filter
+        if (filterSavedOnly && !savedJobIds.includes(job.id)) {
+          return false;
+        }
+
+        // Industry / Company filter
+        const industrySelect = document.getElementById('industry-filter');
+        if (industrySelect && industrySelect.value && !industrySelect.value.toLowerCase().includes('all')) {
+          const indVal = industrySelect.value.toLowerCase();
+          const jobSec = (job.sector || '').toLowerCase();
+          const jobOrg = (job.org || job.company || '').toLowerCase();
+          const jobTitle = (job.title || '').toLowerCase();
+          if (indVal.includes('media') || indVal.includes('design')) {
+            if (!jobSec.includes('design') && !jobSec.includes('media') && !jobTitle.includes('design')) return false;
+          } else if (indVal.includes('tech') || indVal.includes('ai')) {
+            if (!jobSec.includes('ai') && !jobSec.includes('engineer') && !jobTitle.includes('developer') && !jobTitle.includes('specialist')) return false;
+          } else if (indVal.includes('finance')) {
+            if (!jobSec.includes('finance') && !jobSec.includes('fintech')) return false;
+          } else if (indVal.includes('healthcare')) {
+            if (!jobSec.includes('health') && !jobSec.includes('life')) return false;
+          } else if (indVal.includes('commerce') || indVal.includes('retail')) {
+            if (!jobSec.includes('marketing') && !jobOrg.includes('aliexpress') && !jobOrg.includes('amazon')) return false;
+          }
+        }
+
+        // Work Schedule filter
+        const scheduleSelect = document.getElementById('schedule-filter');
+        if (scheduleSelect && scheduleSelect.value && !scheduleSelect.value.toLowerCase().includes('all')) {
+          const schedVal = scheduleSelect.value.toLowerCase();
+          const tagString = (job.tags || []).join(' ').toLowerCase();
+          if (schedVal.includes('shift') && !tagString.includes('shift')) return false;
+          if (schedVal.includes('9-to-5') && !tagString.includes('full time')) return false;
+          if (schedVal.includes('flexible') && !tagString.includes('flexible') && !tagString.includes('remote') && !tagString.includes('freelance') && !tagString.includes('contract')) return false;
+          if (schedVal.includes('weekend') && !tagString.includes('contract') && !tagString.includes('part time')) return false;
+        }
+
+        // Working Salary Range Selector Filter
+        const jobSalaryObj = parseSalaryRange(job.salary);
+        const minAnnualK = currentSalaryPeriod === 'Monthly' ? Math.round(salaryMinVal * 12) : salaryMinVal;
+        const maxAnnualK = currentSalaryPeriod === 'Monthly' ? Math.round(salaryMaxVal * 12) : salaryMaxVal;
+        // Overlap: job.max >= userMin && job.min <= userMax
+        if (jobSalaryObj.max < minAnnualK || jobSalaryObj.min > maxAnnualK) {
+          return false;
+        }
+
+        // Job Type Checkbox filters
+        const typeBoxes = document.querySelectorAll('.job-type-filter-checkbox:checked');
+        const allTypeBoxes = document.querySelectorAll('.job-type-filter-checkbox');
+        if (typeBoxes && typeBoxes.length > 0 && allTypeBoxes && allTypeBoxes.length > 0 && typeBoxes.length < allTypeBoxes.length) {
+          const checkedTypes = Array.from(typeBoxes).map(cb => cb.value.toLowerCase());
+          const tags = (job.tags || []).map(t => t.toLowerCase());
+          const hasMatchingType = checkedTypes.some(ct => tags.some(t => t.includes(ct)));
+          if (!hasMatchingType) return false;
+        }
+
+        return true;
+      });
+
+      // AI Matching Ranker
+      const matchScores = {
+        'apple-1': 98,
+        'amazon-1': 95,
+        'google-1': 93,
+        'facebook-1': 91,
+        'openai-1': 88,
+        'dribbble-1': 86,
+        'youtube-1': 84,
+        'spotify-1': 82,
+        'aliexpress-1': 79
+      };
+      jobsToRender.forEach(j => {
+        j.matchScore = matchScores[j.id] || 85;
+      });
+
+      if (aiMatchedState) {
+        jobsToRender.sort((a, b) => (b.matchScore || 0) - (a.matchScore || 0));
       } else {
-        // Auto-show newest opportunities first by default
-        jobsToRender.sort((a, b) => getJobAgeMinutes(a) - getJobAgeMinutes(b));
+        // Auto-sort by newest opportunities by default whenever jobs are found
+        const sortSelect = document.getElementById('sort-select');
+        const sortBy = sortSelect ? sortSelect.value : 'newest';
+        if (sortBy === 'deadline') {
+          jobsToRender.sort((a, b) => {
+            const da = parseInt((a.deadline || '').match(/\d+/) || [999][0]);
+            const db = parseInt((b.deadline || '').match(/\d+/) || [999][0]);
+            return da - db;
+          });
+        } else if (sortBy === 'alpha') {
+          jobsToRender.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        } else {
+          jobsToRender.sort((a, b) => getJobAgeMinutes(a) - getJobAgeMinutes(b));
+        }
       }
 
       currentJobsList = jobsToRender;
@@ -935,6 +1320,11 @@
       const resultsCount = document.getElementById('results-count');
       if (resultsCount) resultsCount.textContent = currentJobsList.length;
 
+      const matchesText = document.getElementById('matches-count-text');
+      if (matchesText) {
+        matchesText.textContent = `${currentJobsList.length} new job match${currentJobsList.length === 1 ? '' : 'es'} found for you today`;
+      }
+
       renderActiveFilters(query, sector, location, currentTab);
 
       if (isJobsPage()) {
@@ -943,7 +1333,6 @@
         if (sector) cleanParams.append('sector', sector);
         if (location) cleanParams.append('location', location);
         if (currentTab && currentTab !== 'all') cleanParams.append('type', currentTab);
-        if (sortBy && sortBy !== 'newest') cleanParams.append('sort', sortBy);
         const qs = cleanParams.toString();
         window.history.replaceState({}, '', `jobs.html${qs ? '?' + qs : ''}`);
       }
@@ -1012,6 +1401,32 @@
     }
 
     function updateCounts(pool) {
+      const allList = sampleJobs;
+      const totalAll = allList.length;
+      const totalStd = allList.filter(j => j.type === 'standard').length;
+      const totalPrem = allList.filter(j => j.type === 'premium').length;
+
+      // Update pill badge counts
+      const countAllBadge = document.getElementById('count-all-badge');
+      if (countAllBadge) countAllBadge.textContent = totalAll;
+      const countStdBadge = document.getElementById('count-standard-badge');
+      if (countStdBadge) countStdBadge.textContent = totalStd;
+      const countPremBadge = document.getElementById('count-premium-badge');
+      if (countPremBadge) countPremBadge.textContent = totalPrem;
+
+      // Update sidebar counts
+      const sideStdBadge = document.getElementById('sidebar-standard-badge');
+      if (sideStdBadge) sideStdBadge.textContent = totalStd;
+      const sidePremBadge = document.getElementById('sidebar-premium-badge');
+      if (sidePremBadge) sidePremBadge.textContent = totalPrem;
+
+      // Update header results count
+      const resCountBadge = document.getElementById('results-count-badge');
+      const currentCount = (pool || currentJobsList).length;
+      if (resCountBadge) {
+        resCountBadge.textContent = `${currentCount} Role${currentCount === 1 ? '' : 's'}`;
+      }
+
       const source = pool || currentJobsList || sampleJobs;
       const counts = {
         'count-all': source.length,
@@ -1043,26 +1458,35 @@
       const actionContainer = document.getElementById('drawer-action-container');
 
       if(job.type === 'premium') {
-        badge.innerText = "VALUE MEMBER EXCLUSIVE";
-        badge.className = "px-3 py-1 rounded-full text-xs font-black bg-appleAmber/20 text-appleAmber border border-appleAmber/40";
-        gateBox.classList.remove('hidden');
+        if (badge) {
+          badge.innerHTML = `<i class="fa-solid fa-crown text-[10px] mr-1 text-amber-400"></i> PREMIUM FAST-TRACK`;
+          badge.className = "px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-500 border border-amber-500/40 inline-flex items-center";
+        }
+        if (gateBox) gateBox.classList.remove('hidden');
 
-        actionContainer.innerHTML = `
-          <button onclick="closeDrawer(); scrollToPricing();" class="px-6 py-3 rounded-full bg-appleAmber hover:bg-amber-500 text-slate-950 font-extrabold text-sm transition shadow-lg shadow-appleAmber/20 flex items-center space-x-2">
-            <i class="fa-solid fa-crown text-sm"></i>
-            <span>Unlock with Value Pass</span>
-          </button>
-        `;
+        if (actionContainer) {
+          actionContainer.innerHTML = `
+            <button onclick="closeDrawer(); showJobSaathiToast('Premium fast-track application initiated! Recruiter alerted.', '<i class=\\'fa-solid fa-crown text-amber-400\\'></i>');" class="px-6 py-3 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm transition shadow-lg shadow-amber-500/20 flex items-center space-x-2">
+              <i class="fa-solid fa-bolt text-sm"></i>
+              <span>Fast-Track Apply (Premium)</span>
+            </button>
+          `;
+        }
       } else {
-        badge.innerText = job.type.toUpperCase();
-        badge.className = "px-3 py-1 rounded-full text-xs font-black bg-white/10 text-slate-200";
-        gateBox.classList.add('hidden');
+        if (badge) {
+          badge.innerHTML = `<i class="fa-regular fa-circle-check text-[10px] mr-1 text-sky-400"></i> STANDARD OPPORTUNITY`;
+          badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-white/10 inline-flex items-center";
+        }
+        if (gateBox) gateBox.classList.add('hidden');
 
-        actionContainer.innerHTML = `
-          <button onclick="alert('Redirecting to direct NGO portal application link...'); closeDrawer();" class="px-6 py-3 rounded-full bg-appleBlue hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-appleBlue/20">
-            Apply Direct
-          </button>
-        `;
+        if (actionContainer) {
+          actionContainer.innerHTML = `
+            <button onclick="closeDrawer(); showJobSaathiToast('Standard direct application submitted successfully!', '<i class=\\'fa-solid fa-check text-emerald-400\\'></i>');" class="px-6 py-3 rounded-full talentry-primary-btn text-white font-bold text-sm transition shadow-lg shadow-sky-500/20 flex items-center space-x-2">
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+              <span>Direct Apply (Standard)</span>
+            </button>
+          `;
+        }
       }
 
       // Show drawer
@@ -1122,6 +1546,7 @@
       const useLightTheme = theme === 'light' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches);
       document.body.classList.toggle('light-theme', useLightTheme);
       document.documentElement.classList.toggle('light-theme', useLightTheme);
+      document.documentElement.classList.toggle('dark', !useLightTheme);
       document.documentElement.dataset.themePreference = theme;
       document.querySelectorAll('[data-theme-option]').forEach(option => {
         const isMatch = option.dataset.themeOption === theme;
@@ -1358,10 +1783,329 @@
 
     function handlePostSubmit(e) {
       e.preventDefault();
-      alert("Opportunity submitted for the manual moderation queue. Job posting is free.");
+      showJobSaathiToast("Opportunity submitted for manual review. Free posting active!", '<i class="fa-solid fa-circle-check text-emerald-400"></i>');
       closeModal('post-job-modal');
     }
 
+    /* ========================================================
+       JOB SAATHI SALARY RANGE & RESUME UPLOAD LOGIC
+       ======================================================== */
+    function toggleSalaryPeriodDropdown(event) {
+      if (event) event.stopPropagation();
+      const dropdown = document.getElementById('salary-period-dropdown');
+      if (dropdown) dropdown.classList.toggle('hidden');
+    }
+
+    function setSalaryPeriod(period, event) {
+      if (event) event.stopPropagation();
+      currentSalaryPeriod = period;
+      const label = document.getElementById('salary-period-label');
+      if (label) label.textContent = period;
+
+      const checkYearly = document.getElementById('salary-check-yearly');
+      const checkMonthly = document.getElementById('salary-check-monthly');
+      if (checkYearly) checkYearly.classList.toggle('hidden', period !== 'Yearly');
+      if (checkMonthly) checkMonthly.classList.toggle('hidden', period !== 'Monthly');
+
+      const minInput = document.getElementById('salary-min-input');
+      const maxInput = document.getElementById('salary-max-input');
+      if (minInput && maxInput) {
+        if (period === 'Yearly') {
+          minInput.min = 20; minInput.max = 200; minInput.step = 5;
+          minInput.value = 35; maxInput.value = 150;
+          salaryMinVal = 35; salaryMaxVal = 150;
+        } else {
+          minInput.min = 2; minInput.max = 20; minInput.step = 0.5;
+          minInput.value = 3; maxInput.value = 13;
+          salaryMinVal = 3; salaryMaxVal = 13;
+        }
+      }
+
+      const dropdown = document.getElementById('salary-period-dropdown');
+      if (dropdown) dropdown.classList.add('hidden');
+
+      updateSalarySliderUI();
+      handleSearch();
+    }
+
+    function handleSalarySliderInput(which) {
+      const minInput = document.getElementById('salary-min-input');
+      const maxInput = document.getElementById('salary-max-input');
+      if (!minInput || !maxInput) return;
+
+      let min = parseFloat(minInput.value);
+      let max = parseFloat(maxInput.value);
+      const step = parseFloat(minInput.step) || 1;
+
+      if (which === 'min' && min > max - step) {
+        min = max - step;
+        minInput.value = min;
+      } else if (which === 'max' && max < min + step) {
+        max = min + step;
+        maxInput.value = max;
+      }
+
+      salaryMinVal = min;
+      salaryMaxVal = max;
+
+      updateSalarySliderUI();
+      handleSearch();
+    }
+
+    function updateSalarySliderUI() {
+      const minInput = document.getElementById('salary-min-input');
+      const maxInput = document.getElementById('salary-max-input');
+      const fill = document.getElementById('salary-slider-fill');
+      const minDisplay = document.getElementById('salary-min-display');
+      const maxDisplay = document.getElementById('salary-max-display');
+
+      if (!minInput || !maxInput || !fill) return;
+
+      const minRange = parseFloat(minInput.min);
+      const maxRange = parseFloat(maxInput.max);
+      const leftPercent = ((salaryMinVal - minRange) / (maxRange - minRange)) * 100;
+      const rightPercent = 100 - (((salaryMaxVal - minRange) / (maxRange - minRange)) * 100);
+
+      fill.style.left = `${Math.max(0, leftPercent)}%`;
+      fill.style.right = `${Math.max(0, rightPercent)}%`;
+
+      if (minDisplay) minDisplay.textContent = `$${salaryMinVal}K`;
+      if (maxDisplay) maxDisplay.textContent = `$${salaryMaxVal}K`;
+    }
+
+    // Bookmarking & Saved Opportunities
+    function toggleBookmark(jobId, event) {
+      if (event) event.stopPropagation();
+      const idx = savedJobIds.indexOf(jobId);
+      if (idx > -1) {
+        savedJobIds.splice(idx, 1);
+        showJobSaathiToast('Removed from saved bookmarks', '<i class="fa-regular fa-bookmark text-amber-400"></i>');
+      } else {
+        savedJobIds.push(jobId);
+        showJobSaathiToast('Opportunity saved to your bookmarks!', '<i class="fa-solid fa-bookmark text-sky-400"></i>');
+      }
+      localStorage.setItem('job-saathi-bookmarks', JSON.stringify(savedJobIds));
+      updateSavedBadge();
+      handleSearch();
+      renderSavedJobsList();
+    }
+
+    function updateSavedBadge() {
+      const badge = document.getElementById('dock-saved-badge');
+      if (badge) {
+        badge.textContent = savedJobIds.length;
+        badge.classList.toggle('hidden', savedJobIds.length === 0);
+      }
+    }
+
+    function openSavedJobsModal() {
+      renderSavedJobsList();
+      openModal('saved-jobs-modal');
+    }
+
+    function renderSavedJobsList() {
+      const container = document.getElementById('saved-jobs-list-container');
+      if (!container) return;
+      const savedJobs = sampleJobs.filter(j => savedJobIds.includes(j.id));
+      if (savedJobs.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <div class="w-12 h-12 rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center mx-auto mb-3 text-slate-400">
+              <i class="fa-regular fa-bookmark text-lg"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-700 dark:text-slate-200">No saved opportunities yet</p>
+            <p class="text-xs text-slate-400 mt-1">Bookmark any job from the board to save it here for quick access.</p>
+          </div>
+        `;
+        return;
+      }
+      container.innerHTML = savedJobs.map(job => `
+        <div class="p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.03] flex items-center justify-between gap-4 transition hover:border-slate-300 dark:hover:border-white/20">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0 text-sm font-bold">
+              ${(job.org || job.company || 'J').charAt(0)}
+            </div>
+            <div class="min-w-0">
+              <h4 class="text-sm font-bold text-slate-900 dark:text-white truncate">${job.title}</h4>
+              <p class="text-xs text-slate-500 dark:text-slate-400">${job.org || job.company} &bull; ${job.salary || 'Competitive'}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" onclick="closeModal('saved-jobs-modal'); openJobDrawer('${job.id}')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#111317] dark:bg-white text-white dark:text-slate-950 transition active:scale-95">Details</button>
+            <button type="button" onclick="toggleBookmark('${job.id}', event)" title="Remove bookmark" class="w-8 h-8 rounded-full text-slate-400 hover:text-rose-400 flex items-center justify-center transition hover:bg-rose-50 dark:hover:bg-rose-500/10"><i class="fa-solid fa-trash-can text-xs"></i></button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleSavedFilterFromDock() {
+      filterSavedOnly = !filterSavedOnly;
+      const dockBtn = document.getElementById('dock-btn-saved');
+      if (dockBtn) dockBtn.classList.toggle('is-active', filterSavedOnly);
+      showJobSaathiToast(filterSavedOnly ? 'Filtering: Showing saved jobs only' : 'Showing all job opportunities', '<i class="fa-solid fa-filter text-sky-400"></i>');
+      handleSearch();
+    }
+
+    // System Files CV Upload Logic
+    function triggerCvFileInput() {
+      const input = document.getElementById('cv-file-input');
+      if (input) input.click();
+    }
+
+    function handleCvFileSelect(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      processSelectedResume(file);
+    }
+
+    function handleCvDragOver(event) {
+      event.preventDefault();
+      const box = document.getElementById('cv-upload-dropzone');
+      if (box) box.classList.add('border-sky-400', 'bg-sky-500/[0.08]');
+    }
+
+    function handleCvDragLeave(event) {
+      event.preventDefault();
+      const box = document.getElementById('cv-upload-dropzone');
+      if (box) box.classList.remove('border-sky-400', 'bg-sky-500/[0.08]');
+    }
+
+    function handleCvDrop(event) {
+      event.preventDefault();
+      const box = document.getElementById('cv-upload-dropzone');
+      if (box) box.classList.remove('border-sky-400', 'bg-sky-500/[0.08]');
+      const file = event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files[0];
+      if (file) processSelectedResume(file);
+    }
+
+    function processSelectedResume(file) {
+      uploadedResumeFile = file.name;
+      localStorage.setItem('job-saathi-resume-name', file.name);
+      const sizeKb = (file.size / 1024).toFixed(1);
+
+      const idle = document.getElementById('cv-upload-idle');
+      const success = document.getElementById('cv-upload-success');
+      const nameEl = document.getElementById('cv-filename-text');
+      const sizeEl = document.getElementById('cv-filesize-text');
+
+      if (idle) idle.classList.add('hidden');
+      if (success) {
+        success.classList.remove('hidden');
+        success.classList.add('flex');
+      }
+      if (nameEl) nameEl.textContent = file.name;
+      if (sizeEl) sizeEl.innerHTML = `<i class="fa-solid fa-circle-check text-[10px]"></i> ${sizeKb} KB &bull; Loaded from system`;
+
+      const scoreBanner = document.getElementById('cv-score-stat');
+      if (scoreBanner) scoreBanner.textContent = 'CV Score: 94/100 • Verified';
+
+      showJobSaathiToast(`Loaded "${file.name}" from your device! Click 'Get Matched' to rank jobs.`, '<i class="fa-solid fa-circle-check text-emerald-400"></i>');
+    }
+
+    function removeCvFile() {
+      uploadedResumeFile = '';
+      localStorage.removeItem('job-saathi-resume-name');
+      const input = document.getElementById('cv-file-input');
+      if (input) input.value = '';
+      const idle = document.getElementById('cv-upload-idle');
+      const success = document.getElementById('cv-upload-success');
+      if (idle) idle.classList.remove('hidden');
+      if (success) {
+        success.classList.add('hidden');
+        success.classList.remove('flex');
+      }
+      aiMatchedState = false;
+      const getMatchedLabel = document.getElementById('get-matched-label');
+      if (getMatchedLabel) getMatchedLabel.textContent = 'Get Matched';
+
+      handleSearch();
+      showJobSaathiToast('Resume cleared. Select another file from your device.', '<i class="fa-solid fa-rotate-left text-slate-400"></i>');
+    }
+
+    function triggerAiMatch() {
+      const btn = document.getElementById('get-matched-btn');
+      const label = document.getElementById('get-matched-label');
+      if (btn && label) {
+        label.textContent = 'AI Matching...';
+        btn.classList.add('opacity-75');
+      }
+
+      setTimeout(() => {
+        if (btn && label) {
+          label.textContent = 'Matched & Ranked!';
+          btn.classList.remove('opacity-75');
+        }
+        aiMatchedState = true;
+        handleSearch();
+        showJobSaathiToast(`AI Match Complete! 12 roles ranked against ${uploadedResumeFile || 'your profile'}.`, '<i class="fa-solid fa-wand-magic-sparkles text-sky-400"></i>');
+      }, 450);
+    }
+
+    // Side Buttons Modals
+    function openUserProfileModal() { openModal('profile-modal'); }
+    function openCvManagerModal() {
+      const cvNameEl = document.getElementById('cv-manager-current-filename');
+      if (cvNameEl) cvNameEl.textContent = uploadedResumeFile || 'Elcan_Senior_UX_Resume.pdf';
+      openModal('cv-manager-modal');
+    }
+    function openInterviewCalendarModal() { openModal('interview-calendar-modal'); }
+    function openApplicationHistoryModal() { openModal('application-history-modal'); }
+    function openSettingsModal() { openModal('settings-modal'); }
+
+    function saveUserProfile(event) {
+      event.preventDefault();
+      showJobSaathiToast('Profile changes saved successfully!', '<i class="fa-solid fa-circle-check text-emerald-400"></i>');
+      closeModal('profile-modal');
+    }
+
+    function saveSettingsPreferences(event) {
+      event.preventDefault();
+      showJobSaathiToast('Account preferences saved!', '<i class="fa-solid fa-circle-check text-emerald-400"></i>');
+      closeModal('settings-modal');
+    }
+
+    // Sleek Toast Notification
+    function showJobSaathiToast(message, iconHtml = '') {
+      let toast = document.getElementById('job-saathi-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'job-saathi-toast';
+        toast.className = 'job-saathi-toast';
+        document.body.appendChild(toast);
+      }
+      toast.innerHTML = `${iconHtml}<span>${message}</span>`;
+      toast.classList.add('is-visible');
+      if (window._toastTimeout) clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(() => {
+        toast.classList.remove('is-visible');
+      }, 3400);
+    }
+
+    // Attach all handlers to window
     window.toggleMobileSearch = toggleMobileSearch;
     window.closeMobileSearch = closeMobileSearch;
     window.focusSearchBar = focusSearchBar;
+    window.toggleSalaryPeriodDropdown = toggleSalaryPeriodDropdown;
+    window.setSalaryPeriod = setSalaryPeriod;
+    window.handleSalarySliderInput = handleSalarySliderInput;
+    window.updateSalarySliderUI = updateSalarySliderUI;
+    window.toggleBookmark = toggleBookmark;
+    window.openSavedJobsModal = openSavedJobsModal;
+    window.toggleSavedFilterFromDock = toggleSavedFilterFromDock;
+    window.triggerCvFileInput = triggerCvFileInput;
+    window.handleCvFileSelect = handleCvFileSelect;
+    window.handleCvDragOver = handleCvDragOver;
+    window.handleCvDragLeave = handleCvDragLeave;
+    window.handleCvDrop = handleCvDrop;
+    window.removeCvFile = removeCvFile;
+    window.triggerAiMatch = triggerAiMatch;
+    window.openUserProfileModal = openUserProfileModal;
+    window.openCvManagerModal = openCvManagerModal;
+    window.openInterviewCalendarModal = openInterviewCalendarModal;
+    window.openApplicationHistoryModal = openApplicationHistoryModal;
+    window.openSettingsModal = openSettingsModal;
+    window.saveUserProfile = saveUserProfile;
+    window.saveSettingsPreferences = saveSettingsPreferences;
+    window.showJobSaathiToast = showJobSaathiToast;
+    window.setJobTierFilter = setJobTierFilter;
+    window.toggleSidebarTier = toggleSidebarTier;
