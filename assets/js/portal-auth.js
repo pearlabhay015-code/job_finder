@@ -73,19 +73,97 @@
     }
   });
 
-  window.updateNavbarAuth = updateNavbarAuth;
+  function renderMobileDock() {
+    let dock = document.getElementById('portal-mobile-dock');
+    if (!dock) {
+      dock = document.createElement('nav');
+      dock.id = 'portal-mobile-dock';
+      dock.className = 'portal-mobile-dock';
+      dock.setAttribute('aria-label', 'Mobile navigation');
+      document.body.appendChild(dock);
+    }
 
-  // Run immediately if DOM already has navbar, otherwise on DOMContentLoaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateNavbarAuth);
-  } else {
+    const currentPath = window.location.pathname.toLowerCase();
+    const isHome = currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '';
+    const isJobs = currentPath.endsWith('jobs.html');
+    const isRecruiters = currentPath.endsWith('recruiters.html');
+    const isResources = currentPath.endsWith('resources.html');
+    const isAccount = currentPath.endsWith('account.html');
+
+    const token = getAuthToken();
+    const isLoggedIn = Boolean(token);
+
+    dock.innerHTML = `
+      <a href="index.html" class="portal-dock-item ${isHome ? 'is-active' : ''}" data-nav="home">
+        <i class="fa-solid fa-house"></i>
+        <span class="portal-dock-label">Home</span>
+      </a>
+      <a href="jobs.html" class="portal-dock-item ${isJobs ? 'is-active' : ''}" data-nav="jobs">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="portal-dock-label">Find Jobs</span>
+      </a>
+      <a href="recruiters.html" class="portal-dock-item ${isRecruiters ? 'is-active' : ''}" data-nav="recruiters">
+        <i class="fa-solid fa-briefcase"></i>
+        <span class="portal-dock-label">Recruiters</span>
+      </a>
+      <a href="resources.html" class="portal-dock-item ${isResources ? 'is-active' : ''}" data-nav="resources">
+        <i class="fa-solid fa-book-open"></i>
+        <span class="portal-dock-label">Resources</span>
+      </a>
+      <a href="account.html${isLoggedIn ? '' : '?mode=login'}" class="portal-dock-item ${isAccount ? 'is-active' : ''}" data-nav="account">
+        <i class="fa-solid fa-user"></i>
+        <span class="portal-dock-label">${isLoggedIn ? 'Account' : 'Log in'}</span>
+      </a>
+    `;
+    // Preserve in-page mode switching while letting page links navigate immediately.
+    dock.querySelectorAll('.portal-dock-item').forEach(item => {
+      item.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href) return;
+
+        // If it's already the current active item, do nothing
+        if (this.classList.contains('is-active')) {
+          e.preventDefault();
+          return;
+        }
+
+        // If on account.html and switching mode
+        if (href.startsWith('account.html?mode=') && window.location.pathname.endsWith('account.html')) {
+          e.preventDefault();
+          dock.querySelectorAll('.portal-dock-item').forEach(el => el.classList.remove('is-active'));
+          this.classList.add('is-active');
+          const mode = href.includes('mode=signup') ? 'signup' : 'login';
+          if (typeof window.setAuthMode === 'function') {
+            window.setAuthMode(mode);
+          }
+          return;
+        }
+      });
+    });
+  }
+
+  window.renderMobileDock = renderMobileDock;
+
+  function initPortalNavigation() {
+    renderMobileDock();
     updateNavbarAuth();
+    const mainContent = document.querySelector('.portal-page');
+    if (mainContent) {
+      mainContent.classList.add('portal-page-entering');
+    }
+  }
+
+  // Run immediately if DOM ready, otherwise on DOMContentLoaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortalNavigation);
+  } else {
+    initPortalNavigation();
   }
 
   // Sync across tabs
   window.addEventListener('storage', function (e) {
     if (e.key === 'job-saathi-account-token') {
-      updateNavbarAuth();
+      initPortalNavigation();
     }
   });
 })();
