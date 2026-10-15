@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Job Saathi</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">⚡</div>
+        <span>job<span class="accent">saathi</span></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a href="index.html#resume-modal" class="btn btn-coral btn-sm">
+          📄 Post Resume
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="contact-container">
+      <div class="contact-hero">
+        <div class="hero-pill">
+          <span>💬</span> We're Here to Help
+        </div>
+        <h1>Get in Touch with Job Saathi</h1>
+        <p>
+          Have questions about job applications, posting your resume, or recruiting talent? Reach out to our team anytime.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Cards -->
+        <div class="contact-cards-column">
+          <div class="contact-card">
+            <div class="contact-icon-box" style="background: #eff6ff; color: #2563eb;">
+              ✉️
+            </div>
+            <div>
+              <h4>Email Support</h4>
+              <p>For job seekers and general inquiries:</p>
+              <a href="mailto:support@jobsaathi.in">support@jobsaathi.in</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon-box" style="background: #ecfdf5; color: #059669;">
+              📞
+            </div>
+            <div>
+              <h4>Phone & WhatsApp</h4>
+              <p>Monday to Friday, 9:00 AM – 6:00 PM IST:</p>
+              <a href="tel:+918005550199">+91 800 555 0199</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon-box" style="background: #fff7ed; color: #ea580c;">
+              📍
+            </div>
+            <div>
+              <h4>Head Office</h4>
+              <p>Job Saathi Community Hub</p>
+              <p style="color: #64748b; font-size: 13.5px; margin-top: 4px;">4th Floor, Innovation Park, Indiranagar, Bengaluru, Karnataka 560038</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card">
+          <h3>Send us a Message</h3>
+          <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+
+          <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contact-name">Your Full Name</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="e.g. Ananya Sen" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address</label>
+              <input type="email" id="contact-email" class="form-control" placeholder="e.g. ananya@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">Topic / Subject</label>
+              <select id="contact-subject" class="form-control" required>
+                <option value="">Select a topic</option>
+                <option value="job-help">Help with Job Application</option>
+                <option value="resume">Resume Posting Question</option>
+                <option value="employer">Employer / Recruiter Inquiry</option>
+                <option value="feedback">Platform Feedback & Suggestions</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Your Message</label>
+              <textarea id="contact-message" class="form-control" rows="4" placeholder="How can we assist you today?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+              Send Message →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 18px;">⚡</span>
+        <strong style="color: #1e293b; font-weight: 500;">Job Saathi</strong>
+      </div>
+      <p>© 2026 Job Saathi. Connecting people with opportunities.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation toggle
+    const menuBtn = document.querySelector('.menu-toggle');
+    const topbar = document.querySelector('.topbar');
+    if (menuBtn && topbar) {
+      menuBtn.addEventListener('click', () => {
+        topbar.classList.toggle('open');
+      });
+    }
+
+    // Contact form submit handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.textContent = `🎉 Thank you, ${name}! Your message has been sent. We'll reply soon.`;
+        toast.className = 'toast show success';
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }
+      document.getElementById('contact-form').reset();
+    }
+  </script>
+</body>
+</html>

@@ -1,88 +1,211 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Job Saathi | Social Impact Opportunities</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/portal.css?v=20261011_v3fresh">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Saathi | Find Jobs & Post Your Resume</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="portal-body">
-  <div class="portal-announcement"><span><i class="fa-solid fa-circle-check"></i><strong>Job Saathi</strong> &mdash; verified social-impact roles, tenders and talent connections across India.</span></div>
-  <header class="portal-header">
-    <div class="portal-header-inner">
-      <a class="portal-brand" href="index.html"><span class="portal-brand-mark"><i class="fa-solid fa-globe"></i></span><span>Job <span>Saathi</span></span></a>
-      <nav class="portal-nav" aria-label="Primary navigation"><a href="index.html" class="is-active">Home</a><a href="jobs.html">Find Jobs</a><a href="recruiters.html">Recruiters</a><a href="resources.html">Resources</a><a href="account.html" class="portal-nav-account" hidden>My Account</a></nav>
-      <div class="portal-actions"><a class="portal-button-outline portal-action-login" href="account.html?mode=login">Log in</a><a class="portal-button-outline portal-action-signup" href="account.html?mode=signup">Sign up</a><button class="portal-button-outline portal-action-logout" type="button" onclick="portalLogout()" hidden><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button><a class="portal-button" href="recruiters.html"><i class="fa-solid fa-plus"></i> Post a job</a></div>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <a class="brand" href="index.html">
+        <div class="brand-badge">⚡</div>
+        <span>job<span class="accent">saathi</span></span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <button class="btn btn-coral btn-sm" onclick="openResumeModal()">
+          📄 Post Resume
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="portal-page">
-    <p class="portal-breadcrumb">Home / Social-impact opportunities</p>
-    <div class="portal-layout">
-      <aside class="portal-sidebar">
-        <section class="portal-card">
-          <div class="portal-card-title"><i class="fa-solid fa-bolt"></i> Quick links</div>
-          <ul class="portal-link-list">
-            <li><a href="jobs.html?tier=premium">Premium opportunities <i class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="jobs.html?tier=featured">Highlighted roles <i class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="jobs.html">Standard jobs <i class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="resources.html#events">Events & workshops <i class="fa-solid fa-chevron-right"></i></a></li>
-          </ul>
-        </section>
-        <section class="portal-card portal-side-cta"><div class="eyebrow">Job seekers</div><h2>Be seen by purpose-led teams.</h2><p>Set alerts, save jobs and keep your profile ready for relevant opportunities.</p><a class="portal-button" href="account.html">Create your profile</a></section>
-        <section class="portal-card">
-          <div class="portal-card-title"><i class="fa-solid fa-layer-group"></i> Browse by focus</div>
-          <ul class="portal-link-list">
-            <li><a href="jobs.html?q=climate">Climate & ESG <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="jobs.html?q=education">Education & youth <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="jobs.html?q=health">Public health <i class="fa-solid fa-arrow-right"></i></a></li>
-            <li><a href="jobs.html?q=csr">CSR & foundations <i class="fa-solid fa-arrow-right"></i></a></li>
-          </ul>
-        </section>
-      </aside>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-pill">
+          <span>✨</span> India's Simple & Friendly Career Platform
+        </div>
+        <h1 class="hero-title">
+          Discover Opportunities & <span class="highlight">Grow Your Career</span>
+        </h1>
+        <p class="hero-subtitle">
+          Connect directly with verified recruiters, explore transparent vacancies with clear application deadlines, and take your next step with confidence.
+        </p>
 
-      <section class="portal-main">
-        <section class="portal-hero">
-          <div class="portal-eyebrow">India & global social sector portal</div>
-          <h1>Find work that moves communities forward.</h1>
-          <p>Search vetted roles from NGOs, UN agencies, foundations, CSR teams, research groups and social enterprises.</p>
-          <form class="portal-search" action="jobs.html" method="get"><input name="q" aria-label="Search jobs" placeholder="Job title, organization or keyword"><select name="sector" aria-label="Choose a sector"><option value="">All sectors</option><option value="climate">Climate & ESG</option><option value="education">Education & Youth</option><option value="health">Public Health & Nutrition</option><option value="csr">CSR & Corporate Philanthropy</option><option value="livelihoods">Livelihoods & Agriculture</option><option value="water">Water, Sanitation & WASH</option><option value="gender">Gender Equality & Human Rights</option><option value="governance">Policy & Governance</option><option value="mel">Monitoring, Evaluation & Learning (MEL)</option><option value="fundraising">Fundraising & Partnerships</option><option value="technology">Tech for Social Good</option></select><button class="portal-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button></form>
-        </section>
-
-        <section class="portal-section">
-          <div class="portal-section-heading"><h2>Highlighted opportunities</h2><a href="jobs.html?tier=featured">View all jobs <i class="fa-solid fa-arrow-right"></i></a></div>
-          <div class="portal-feed">
-            <a class="portal-job" href="jobs.html?q=program"><span class="portal-job-badge"><i class="fa-solid fa-star"></i></span><span><span class="portal-tier"><i class="fa-solid fa-crown"></i> Featured</span><h3>Programme Lead &mdash; Climate Resilience</h3><p>Impact Foundation &middot; New Delhi / Hybrid</p></span><span class="portal-job-meta"><span>Apply by 18 Oct</span>Full time</span></a>
-            <a class="portal-job" href="jobs.html?q=consultant"><span class="portal-job-badge"><i class="fa-solid fa-file-contract"></i></span><span><span class="portal-tier"><i class="fa-solid fa-crown"></i> Featured</span><h3>Monitoring, Evaluation & Learning Consultant</h3><p>Development Partners Network &middot; Remote, India</p></span><span class="portal-job-meta"><span>Apply by 22 Oct</span>Consultancy</span></a>
-            <a class="portal-job" href="jobs.html?q=csr"><span class="portal-job-badge"><i class="fa-solid fa-handshake"></i></span><span><span class="portal-tier"><i class="fa-solid fa-crown"></i> Featured</span><h3>CSR Partnerships Manager</h3><p>Social Impact Collective &middot; Mumbai</p></span><span class="portal-job-meta"><span>Apply by 25 Oct</span>Full time</span></a>
+        <!-- Prominent Resume Post Callout Banner -->
+        <div class="resume-banner">
+          <div class="resume-content">
+            <div class="resume-icon-bubble">📄</div>
+            <div>
+              <h3>Looking for your next opportunity?</h3>
+              <p>Upload your resume once and get matched with top employers actively hiring.</p>
+            </div>
           </div>
-        </section>
+          <button class="btn btn-coral" onclick="openResumeModal()">
+            Post Your Resume Free →
+          </button>
+        </div>
+      </div>
+    </section>
 
-        <section class="portal-section">
-          <div class="portal-section-heading"><h2>Latest vacancies</h2><a href="jobs.html">Explore all opportunities <i class="fa-solid fa-arrow-right"></i></a></div>
-          <div class="portal-feed">
-            <a class="portal-job" href="jobs.html?q=education"><span class="portal-job-badge"><i class="fa-solid fa-graduation-cap"></i></span><span><h3>Education Programme Officer</h3><p>Learning Futures Trust &middot; Jaipur, Rajasthan</p></span><span class="portal-job-meta"><span>Apply by 16 Oct</span>Standard job</span></a>
-            <a class="portal-job" href="jobs.html?q=health"><span class="portal-job-badge"><i class="fa-solid fa-heart-pulse"></i></span><span><h3>Public Health Research Associate</h3><p>Health Equity Lab &middot; Bengaluru / Hybrid</p></span><span class="portal-job-meta"><span>Apply by 20 Oct</span>Standard job</span></a>
-            <a class="portal-job" href="jobs.html?q=livelihoods"><span class="portal-job-badge"><i class="fa-solid fa-seedling"></i></span><span><h3>Livelihoods Field Coordinator</h3><p>Rural Futures Initiative &middot; Bihar</p></span><span class="portal-job-meta"><span>Apply by 21 Oct</span>Standard job</span></a>
-            <a class="portal-job" href="jobs.html?q=communications"><span class="portal-job-badge"><i class="fa-solid fa-bullhorn"></i></span><span><h3>Communications & Advocacy Officer</h3><p>Equal Access Network &middot; Remote, India</p></span><span class="portal-job-meta"><span>Apply by 26 Oct</span>Standard job</span></a>
-          </div>
-        </section>
-      </section>
+    <!-- Search & Category Filters -->
+    <section class="toolbar-section">
+      <div class="search-box">
+        <div class="search-input-wrapper">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Search by job title, company, skills, or location..."
+            aria-label="Search job listings"
+          />
+        </div>
 
-      <aside class="portal-rail">
-        <section class="portal-card"><div class="portal-card-title"><i class="fa-solid fa-user-group"></i> Featured jobseekers</div><div class="portal-profile"><div class="portal-profile-top"><span class="portal-avatar">AR</span><span><strong>Impact professional</strong><p>Programme & partnerships</p></span></div><p class="portal-muted">Create a visible profile and connect with verified recruiters.</p><a class="portal-button-outline" href="account.html">Build profile</a></div></section>
-        <section class="portal-card"><div class="portal-card-title"><i class="fa-solid fa-calendar-days"></i> Events & notices</div><div class="portal-event"><time>15 OCT 2026</time><h3>Career workshop: Finding purpose-led work</h3></div><div class="portal-event"><time>22 OCT 2026</time><h3>Grant writing and partnerships briefing</h3></div><div class="portal-event"><time>ONGOING</time><h3>Weekly NGO job alerts now open</h3></div></section>
-        <section class="portal-spotlight"><div class="portal-eyebrow">Recruiters</div><h2>Reach relevant talent.</h2><p>Share vacancies, RFPs and consultancy assignments with the social-impact community.</p><a class="portal-button" href="recruiters.html">Recruiter portal</a></section>
-      </aside>
-    </div>
+        <div class="filter-pills" role="tablist">
+          <button class="filter-btn active" data-filter="all">All Jobs</button>
+          <button class="filter-btn" data-filter="tech">💻 Tech & IT</button>
+          <button class="filter-btn" data-filter="design">🎨 UI/UX Design</button>
+          <button class="filter-btn" data-filter="marketing">🚀 Marketing</button>
+          <button class="filter-btn" data-filter="ngo">🌱 NGO & Social</button>
+          <button class="filter-btn" data-filter="operations">🤝 Operations</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section class="listings-section">
+      <div class="section-header">
+        <div>
+          <h2>Featured Opportunities</h2>
+          <p>Hand-picked openings with upcoming application deadlines</p>
+        </div>
+        <div id="results-count" class="results-count">6 active openings</div>
+      </div>
+
+      <!-- Dynamic Job Card Grid populated by app.js -->
+      <div id="job-grid" class="job-grid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
   </main>
-  <footer class="portal-footer">Job Saathi &copy; 2026 &middot; Social sector careers, grants and opportunities.</footer>
-  <script src="assets/js/portal-auth.js?v=20261011_smoothtrans"></script>
+
+  <!-- Post Resume Modal -->
+  <div id="resume-modal" class="modal-overlay" aria-modal="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
+        <h3>Post Your Resume</h3>
+        <p>Introduce yourself to hundreds of hiring teams looking for talent.</p>
+      </div>
+
+      <form id="resume-upload-form">
+        <div class="form-group">
+          <label for="candidate-name">Full Name</label>
+          <input type="text" id="candidate-name" class="form-control" placeholder="e.g. Rahul Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-email">Email Address</label>
+          <input type="email" id="candidate-email" class="form-control" placeholder="e.g. rahul@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-role">Preferred Job Role / Title</label>
+          <input type="text" id="candidate-role" class="form-control" placeholder="e.g. Full Stack Developer, Marketing Specialist" required />
+        </div>
+
+        <div class="form-group">
+          <label>Upload Resume File (PDF / DOC)</label>
+          <div class="file-dropzone" onclick="document.getElementById('file-upload').click()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p><strong>Click to browse</strong> or drag & drop your resume file</p>
+            <p style="font-size: 12px; color: #94a3b8; margin-top: 4px;">Supports PDF, DOC, DOCX up to 5MB</p>
+            <input type="file" id="file-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="if(this.files[0]) this.previousElementSibling.textContent = 'Selected: ' + this.files[0].name;" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-coral" style="width: 100%; margin-top: 10px;">
+          Submit & Post Resume
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Quick Apply Modal -->
+  <div id="apply-modal" class="modal-overlay" aria-modal="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <div style="font-size: 28px; margin-bottom: 8px;">💼</div>
+        <h3 id="apply-modal-job-title">Job Application</h3>
+        <p id="apply-modal-company">Applying to company</p>
+      </div>
+
+      <form id="quick-apply-form">
+        <div class="form-group">
+          <label for="applicant-name">Your Full Name</label>
+          <input type="text" id="applicant-name" class="form-control" placeholder="e.g. Priya Patel" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-email">Email Address</label>
+          <input type="email" id="applicant-email" class="form-control" placeholder="e.g. priya@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-phone">Phone Number</label>
+          <input type="tel" id="applicant-phone" class="form-control" placeholder="e.g. +91 98765 43210" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-notes">Short Note / Why you're a fit (Optional)</label>
+          <textarea id="applicant-notes" class="form-control" rows="3" placeholder="Briefly describe your relevant experience..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 18px;">⚡</span>
+        <strong style="color: #1e293b; font-weight: 500;">Job Saathi</strong>
+      </div>
+      <p>© 2026 Job Saathi. Connecting people with opportunities.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
-
-
