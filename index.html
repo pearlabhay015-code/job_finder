@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Job Saathi | Find Jobs & Post Your Resume</title>
+  <title>Mera Job Saathi | Your Career, Our Commitment</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,9 +11,8 @@
   <!-- Top Navigation Bar -->
   <header class="topbar">
     <div class="topbar-container">
-      <a class="brand" href="index.html">
-        <div class="brand-badge">⚡</div>
-        <span>job<span class="accent">saathi</span></span>
+      <a class="brand" href="index.html" title="Mera Job Saathi">
+        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo" />
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
@@ -24,9 +23,8 @@
       </nav>
 
       <div class="nav-cta">
-        <button class="btn btn-coral btn-sm" onclick="openResumeModal()">
-          📄 Post Resume
-        </button>
+        <button class="btn btn-outline btn-sm" type="button" onclick="openAuthModal('login')">Log in</button>
+        <button class="btn btn-coral btn-sm" type="button" onclick="openAuthModal('signup')">Sign up</button>
       </div>
     </div>
   </header>
@@ -42,7 +40,7 @@
           Discover Opportunities & <span class="highlight">Grow Your Career</span>
         </h1>
         <p class="hero-subtitle">
-          Connect directly with verified recruiters, explore transparent vacancies with clear application deadlines, and take your next step with confidence.
+          Your Career, Our Commitment. Connect directly with verified recruiters, explore transparent vacancies with clear application deadlines.
         </p>
 
         <!-- Prominent Resume Post Callout Banner -->
@@ -61,29 +59,61 @@
       </div>
     </section>
 
-    <!-- Search & Category Filters -->
+    <!-- Search & Location Filter Toolbar -->
     <section class="toolbar-section">
       <div class="search-box">
         <div class="search-input-wrapper">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
           </svg>
           <input 
             type="text" 
             id="search-input" 
             class="search-input" 
-            placeholder="Search by job title, company, skills, or location..."
+            placeholder="Search by job title, organization, Job ID, or city..."
             aria-label="Search job listings"
           />
         </div>
 
-        <div class="filter-pills" role="tablist">
-          <button class="filter-btn active" data-filter="all">All Jobs</button>
-          <button class="filter-btn" data-filter="tech">💻 Tech & IT</button>
-          <button class="filter-btn" data-filter="design">🎨 UI/UX Design</button>
-          <button class="filter-btn" data-filter="marketing">🚀 Marketing</button>
-          <button class="filter-btn" data-filter="ngo">🌱 NGO & Social</button>
-          <button class="filter-btn" data-filter="operations">🤝 Operations</button>
+        <div class="location-select-wrapper">
+          <label for="location-select" class="location-label">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="location-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span>Location:</span>
+          </label>
+          <select id="location-select" class="location-select" aria-label="Filter by state">
+            <option value="">Location</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
         </div>
       </div>
     </section>
@@ -92,14 +122,14 @@
     <section class="listings-section">
       <div class="section-header">
         <div>
-          <h2>Featured Opportunities</h2>
-          <p>Hand-picked openings with upcoming application deadlines</p>
+          <h2>Available Opportunities</h2>
+          <p>Verified job notifications with transparent deadlines</p>
         </div>
-        <div id="results-count" class="results-count">6 active openings</div>
+        <div id="results-count" class="results-count">Showing active openings</div>
       </div>
 
-      <!-- Dynamic Job Card Grid populated by app.js -->
-      <div id="job-grid" class="job-grid">
+      <!-- Job List container populated by app.js -->
+      <div id="job-grid" class="job-list-container">
         <!-- Rendered via JavaScript -->
       </div>
     </section>
@@ -150,6 +180,39 @@
     </div>
   </div>
 
+  <!-- Login / Sign Up Modal -->
+  <div id="auth-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="auth-title">
+    <div class="modal-box">
+      <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h3 id="auth-title">Welcome back</h3>
+        <p id="auth-copy">Log in to your Job Saathi account.</p>
+      </div>
+
+      <div class="auth-mode-tabs" role="group" aria-label="Choose login or sign up">
+        <button id="auth-login-tab" class="auth-mode-tab active" type="button" onclick="setAuthMode('login')">Log in</button>
+        <button id="auth-signup-tab" class="auth-mode-tab" type="button" onclick="setAuthMode('signup')">Sign up</button>
+      </div>
+
+      <form id="auth-form">
+        <div id="auth-name-group" class="form-group" hidden>
+          <label for="auth-name">Full Name</label>
+          <input type="text" id="auth-name" class="form-control" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="auth-email">Email Address</label>
+          <input type="email" id="auth-email" class="form-control" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label for="auth-password">Password</label>
+          <input type="password" id="auth-password" class="form-control" autocomplete="current-password" minlength="8" required />
+        </div>
+        <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
+        <button id="auth-submit" type="submit" class="btn btn-coral" style="width: 100%; margin-top: 10px;">Log in</button>
+      </form>
+    </div>
+  </div>
+
   <!-- Quick Apply Modal -->
   <div id="apply-modal" class="modal-overlay" aria-modal="true" role="dialog">
     <div class="modal-box">
@@ -194,11 +257,10 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">⚡</span>
-        <strong style="color: #1e293b; font-weight: 500;">Job Saathi</strong>
+      <div class="footer-brand">
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo" />
       </div>
-      <p>© 2026 Job Saathi. Connecting people with opportunities.</p>
+      <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact Us</a>

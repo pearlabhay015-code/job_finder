@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | Job Saathi</title>
+  <title>Contact Us | Mera Job Saathi</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -11,9 +11,8 @@
   <!-- Top Navigation Bar -->
   <header class="topbar">
     <div class="topbar-container">
-      <a class="brand" href="index.html">
-        <div class="brand-badge">⚡</div>
-        <span>job<span class="accent">saathi</span></span>
+      <a class="brand" href="index.html" title="Mera Job Saathi">
+        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo" />
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
@@ -24,9 +23,8 @@
       </nav>
 
       <div class="nav-cta">
-        <a href="index.html#resume-modal" class="btn btn-coral btn-sm">
-          📄 Post Resume
-        </a>
+        <a href="index.html#auth-modal" class="btn btn-outline btn-sm">Log in</a>
+        <a href="index.html#auth-signup" class="btn btn-coral btn-sm">Sign up</a>
       </div>
     </div>
   </header>
@@ -34,12 +32,12 @@
   <main>
     <div class="contact-container">
       <div class="contact-hero">
-        <div class="hero-pill">
+        <div class="hero-pill" style="color: var(--job-green); border-color: #bbf7d0; background: #f0fdf4;">
           <span>💬</span> We're Here to Help
         </div>
-        <h1>Get in Touch with Job Saathi</h1>
+        <h1>Get in Touch with Mera Job Saathi</h1>
         <p>
-          Have questions about job applications, posting your resume, or recruiting talent? Reach out to our team anytime.
+          Your Career, Our Commitment. Reach out to our support desk, connect with verified recruiters, or subscribe to our community channels for live vacancy alerts.
         </p>
       </div>
 
@@ -47,23 +45,23 @@
         <!-- Contact Information Cards -->
         <div class="contact-cards-column">
           <div class="contact-card">
-            <div class="contact-icon-box" style="background: #eff6ff; color: #2563eb;">
+            <div class="contact-icon-box" style="background: #e0f2fe; color: #0284c7;">
               ✉️
             </div>
             <div>
               <h4>Email Support</h4>
-              <p>For job seekers and general inquiries:</p>
-              <a href="mailto:support@jobsaathi.in">support@jobsaathi.in</a>
+              <p>For job seekers, application issues & general inquiries:</p>
+              <a href="mailto:support@merajobsaathi.in">support@merajobsaathi.in</a>
             </div>
           </div>
 
           <div class="contact-card">
-            <div class="contact-icon-box" style="background: #ecfdf5; color: #059669;">
+            <div class="contact-icon-box" style="background: #dcfce7; color: #16a34a;">
               📞
             </div>
             <div>
-              <h4>Phone & WhatsApp</h4>
-              <p>Monday to Friday, 9:00 AM – 6:00 PM IST:</p>
+              <h4>Phone & WhatsApp Helpline</h4>
+              <p>Monday to Saturday, 9:00 AM – 6:00 PM IST:</p>
               <a href="tel:+918005550199">+91 800 555 0199</a>
             </div>
           </div>
@@ -73,17 +71,17 @@
               📍
             </div>
             <div>
-              <h4>Head Office</h4>
-              <p>Job Saathi Community Hub</p>
-              <p style="color: #64748b; font-size: 13.5px; margin-top: 4px;">4th Floor, Innovation Park, Indiranagar, Bengaluru, Karnataka 560038</p>
+              <h4>Central Office</h4>
+              <p>Mera Job Saathi Career Center</p>
+              <p style="color: #64748b; font-size: 13px; margin-top: 4px;">4th Floor, Innovation Park, Indiranagar, Bengaluru, Karnataka 560038</p>
             </div>
           </div>
         </div>
 
         <!-- Contact Form -->
         <div class="contact-form-card">
-          <h3>Send us a Message</h3>
-          <p>Fill out the form below and our team will get back to you within 24 hours.</p>
+          <h3>Send us a Direct Message</h3>
+          <p>Fill out the form below and our career coordinators will get back to you within 24 hours.</p>
 
           <form id="contact-form" onsubmit="handleContactSubmit(event)">
             <div class="form-group">
@@ -102,22 +100,101 @@
                 <option value="">Select a topic</option>
                 <option value="job-help">Help with Job Application</option>
                 <option value="resume">Resume Posting Question</option>
-                <option value="employer">Employer / Recruiter Inquiry</option>
+                <option value="employer">Employer / School Recruiter Inquiry</option>
                 <option value="feedback">Platform Feedback & Suggestions</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="contact-message">Your Message</label>
-              <textarea id="contact-message" class="form-control" rows="4" placeholder="How can we assist you today?" required></textarea>
+              <textarea id="contact-message" class="form-control" rows="4" placeholder="How can our career team assist you today?" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 6px;">
               Send Message →
             </button>
           </form>
         </div>
       </div>
+
+      <!-- Official Community Channels: WhatsApp & Telegram -->
+      <section class="community-channels-section">
+        <div class="community-section-header">
+          <div class="hero-pill" style="color: var(--job-green); border-color: #bbf7d0; background: #f0fdf4;">
+            <span>📢</span> Official Community Channels
+          </div>
+          <h2>Join Our Official WhatsApp & Telegram Channels</h2>
+          <p>Get real-time job vacancy circulars, private & school walk-in interview dates, and direct alerts across all 28 states.</p>
+        </div>
+
+        <div class="community-grid">
+          <!-- WhatsApp Channel Card -->
+          <div class="community-channel-card whatsapp-card">
+            <div>
+              <div class="community-card-header">
+                <div class="community-icon-bubble whatsapp-bubble">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="channel-badge whatsapp-tag">WhatsApp Channel</span>
+                  <h3>Mera Job Saathi - Local Private Job</h3>
+                </div>
+              </div>
+
+              <p class="community-desc">
+                Subscribe to get daily local vacancies, private school notifications, interview dates, and real-time application deadlines.
+              </p>
+
+              <div class="qr-preview-wrapper">
+                <img src="whatsapp-qr.png" alt="Mera Job Saathi WhatsApp Channel QR" class="qr-image" />
+                <div class="qr-caption">
+                  <strong>Scan with WhatsApp</strong>
+                  <span>Open WhatsApp Camera & scan this QR code to join our official channel instantly</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://whatsapp.com/channel/0029Va9W87u545usq4Z9Vq3x" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <span>Join WhatsApp Channel</span> →
+            </a>
+          </div>
+
+          <!-- Telegram Channel Card -->
+          <div class="community-channel-card telegram-card">
+            <div>
+              <div class="community-card-header">
+                <div class="community-icon-bubble telegram-bubble">
+                  <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .34z"/>
+                  </svg>
+                </div>
+                <div>
+                  <span class="channel-badge telegram-tag">Telegram Channel</span>
+                  <h3>@MERAJOBSAATHI</h3>
+                </div>
+              </div>
+
+              <p class="community-desc">
+                Subscribe to our Telegram broadcast channel for instant vacancy circulars, official application PDFs, and national job notices.
+              </p>
+
+              <div class="qr-preview-wrapper">
+                <img src="telegram-qr.png" alt="Mera Job Saathi Telegram Channel QR" class="qr-image" />
+                <div class="qr-caption">
+                  <strong>Scan with Telegram</strong>
+                  <span>Scan this QR code with Telegram or phone camera to join @MERAJOBSAATHI</span>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://t.me/MERAJOBSAATHI" target="_blank" rel="noopener noreferrer" class="btn btn-telegram">
+              <span>Join @MERAJOBSAATHI on Telegram</span> →
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -127,11 +204,10 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 18px;">⚡</span>
-        <strong style="color: #1e293b; font-weight: 500;">Job Saathi</strong>
+      <div class="footer-brand">
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo" />
       </div>
-      <p>© 2026 Job Saathi. Connecting people with opportunities.</p>
+      <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="contact.html">Contact Us</a>
