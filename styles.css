@@ -1,23 +1,23 @@
 /* Global CSS Variables & Solid Clean Palette from Official Logo */
 :root {
   /* Logo Palette */
-  --mera-blue: #0284c7;    /* MERA (Cyan/Blue) */
+  --mera-blue: #1034a6;
   --job-green: #16a34a;    /* JOB (Green) */
   --saathi-pink: #e11d48;  /* S (Pink/Magenta) */
-  --saathi-orange: #ea580c;/* A (Orange/Coral) */
+  --saathi-parrot-green: #2edf3c;
   --saathi-teal: #0891b2;  /* A (Teal/Cyan) */
   --saathi-amber: #d97706; /* T (Amber/Gold) */
   --saathi-purple: #7c3aed;/* H (Purple/Violet) */
   --saathi-indigo: #2563eb;/* I (Indigo/Blue) */
   
   --primary: var(--mera-blue);
-  --primary-hover: #0369a1;
+  --primary-hover: #0b2475;
   --primary-light: #f0f9ff;
   --secondary: var(--job-green);
   --secondary-hover: #15803d;
-  --coral: var(--saathi-orange);
-  --coral-hover: #c2410c;
-  --coral-light: #fff7ed;
+  --action-green: var(--saathi-parrot-green);
+  --action-green-hover: #02ca13;
+  --action-green-light: #f0fdf4;
   --emerald: var(--job-green);
   --emerald-hover: #15803d;
   --emerald-light: #f0fdf4;
@@ -52,6 +52,7 @@
 
 html, body {
   overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -59,7 +60,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-body);
-  font-size: 14px;
+  font-size: 22px;
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
@@ -117,9 +118,9 @@ button, input, textarea, select {
 }
 
 .brand-logo {
-  height: 42px;
+  height: 88px;
   width: auto;
-  max-width: 220px;
+  max-width: 400px;
   object-fit: contain;
   display: block;
 }
@@ -131,9 +132,9 @@ button, input, textarea, select {
 }
 
 .footer-logo {
-  height: 32px;
+  height: 48px;
   width: auto;
-  max-width: 170px;
+  max-width: 250px;
   object-fit: contain;
   display: block;
 }
@@ -145,12 +146,18 @@ button, input, textarea, select {
 }
 
 .nav-link {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   color: var(--text-muted);
   position: relative;
   padding: 5px 2px;
   transition: color 0.2s ease;
+}
+
+.nav-icon {
+  display: none;
+  width: 22px;
+  height: 22px;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -180,7 +187,7 @@ button, input, textarea, select {
   display: none;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   color: var(--text-dark);
 }
@@ -193,7 +200,7 @@ button, input, textarea, select {
   gap: 6px;
   padding: 8px 16px;
   border-radius: var(--radius-sm);
-  font-size: 13.5px;
+  font-size: 16.5px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -212,12 +219,12 @@ button, input, textarea, select {
 }
 
 .btn-coral {
-  background: var(--coral);
-  color: white;
+  background: var(--action-green);
+  color: #14532d;
 }
 
 .btn-coral:hover {
-  background: var(--coral-hover);
+  background: var(--action-green-hover);
 }
 
 .btn-emerald {
@@ -241,7 +248,7 @@ button, input, textarea, select {
 
 .btn-sm {
   padding: 6px 12px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /* Hero Section (Clean solid background, compact to fit screen) */
@@ -267,7 +274,7 @@ button, input, textarea, select {
   background: white;
   padding: 4px 12px;
   border-radius: var(--radius-full);
-  font-size: 12.5px;
+  font-size: 15.5px;
   color: var(--primary);
   font-weight: 500;
   box-shadow: var(--shadow-sm);
@@ -276,7 +283,7 @@ button, input, textarea, select {
 }
 
 .hero-title {
-  font-size: clamp(22px, 3.2vw, 32px);
+  font-size: clamp(27px, 3.5vw, 39px);
   margin-bottom: 8px;
   font-weight: 600;
   color: var(--text-dark);
@@ -288,7 +295,7 @@ button, input, textarea, select {
 }
 
 .hero-subtitle {
-  font-size: 14.5px;
+  font-size: 17.5px;
   max-width: 620px;
   margin: 0 auto 20px;
   color: var(--text-muted);
@@ -298,10 +305,10 @@ button, input, textarea, select {
 /* Compact Resume Callout Banner (Solid White, No Gradient) */
 .resume-banner {
   background: #ffffff;
-  border: 1px solid #fed7aa;
+  border: 1px solid #bbf7d0;
   border-radius: var(--radius-md);
   padding: 14px 20px;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -309,6 +316,12 @@ button, input, textarea, select {
   gap: 16px;
   box-shadow: var(--shadow-sm);
   text-align: left;
+}
+
+.resume-banner > .btn {
+  flex-shrink: 0;
+  min-width: 220px;
+  white-space: nowrap;
 }
 
 .resume-content {
@@ -321,24 +334,24 @@ button, input, textarea, select {
   width: 42px;
   height: 42px;
   border-radius: var(--radius-sm);
-  background: #ffedd5;
-  color: var(--coral);
+  background: #dcfce7;
+  color: var(--action-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 24px;
   flex-shrink: 0;
 }
 
 .resume-banner h3 {
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 2px;
   color: var(--text-dark);
   font-weight: 600;
 }
 
 .resume-banner p {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -381,7 +394,7 @@ button, input, textarea, select {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 13.5px;
+  font-size: 16.5px;
   color: var(--text-dark);
   font-weight: 500;
   background: transparent;
@@ -404,7 +417,7 @@ button, input, textarea, select {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 13.5px;
+  font-size: 16.5px;
   font-weight: 600;
   color: var(--text-dark);
   cursor: pointer;
@@ -420,7 +433,7 @@ button, input, textarea, select {
   border: 1px solid var(--border);
   background: #ffffff;
   color: var(--text-dark);
-  font-size: 13.5px;
+  font-size: 16.5px;
   font-weight: 500;
   padding: 7px 12px;
   border-radius: var(--radius-xs);
@@ -452,19 +465,19 @@ button, input, textarea, select {
 }
 
 .section-header h2 {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--text-dark);
   font-weight: 600;
 }
 
 .section-header p {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 .results-count {
-  font-size: 12.5px;
+  font-size: 15.5px;
   color: var(--primary);
   background: var(--primary-light);
   padding: 4px 12px;
@@ -481,7 +494,7 @@ button, input, textarea, select {
 
 /* Job Row Card: Interactive, Colorful & Uncrowded */
 .job-row-card {
-  background: #ffffff;
+  background: var(--accent-bg, #eff6ff);
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent-color, #2563eb);
   border-radius: var(--radius-sm);
@@ -491,19 +504,28 @@ button, input, textarea, select {
   align-items: center;
   gap: 14px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
   position: relative;
 }
 
 .job-row-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
   border-color: #cbd5e1;
   border-left-color: var(--accent-color, #2563eb);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .job-row-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .job-row-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
 .job-col {
-  font-size: 13.5px;
+  font-size: 16.5px;
   color: #1e293b;
   font-weight: 500;
   line-height: 1.4;
@@ -521,7 +543,7 @@ button, input, textarea, select {
   color: var(--accent-color, #2563eb);
   border: 1px solid var(--accent-border, #bfdbfe);
   font-weight: 600;
-  font-size: 12.5px;
+  font-size: 15.5px;
   white-space: nowrap;
   letter-spacing: -0.2px;
 }
@@ -571,16 +593,25 @@ button, input, textarea, select {
   border: none;
   border-radius: var(--radius-xs);
   padding: 6px 14px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition: opacity 0.15s ease;
   white-space: nowrap;
 }
 
 .btn-apply-pill:hover {
   opacity: 0.9;
-  transform: translateY(-1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-apply-pill {
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .btn-apply-pill:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .btn-apply-pill.applied {
@@ -598,24 +629,33 @@ button, input, textarea, select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 16px;
   color: #64748b;
   cursor: pointer;
-  transition: background-color 0.15s, color 0.15s, transform 0.15s, border-color 0.15s;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .action-icon-btn:hover {
   background: #f1f5f9;
   color: var(--text-dark);
   border-color: #cbd5e1;
-  transform: translateY(-1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .action-icon-btn {
+    transition: background-color 0.15s, color 0.15s, transform 0.15s, border-color 0.15s;
+  }
+
+  .action-icon-btn:hover {
+    transform: translateY(-1px);
+  }
 }
 
 .action-icon-btn.saved {
   color: #ef4444;
   background: #fee2e2;
   border-color: #fca5a5;
-  font-size: 14.5px;
+  font-size: 17.5px;
 }
 
 /* No results state */
@@ -629,7 +669,7 @@ button, input, textarea, select {
 }
 
 .no-results h3 {
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -654,7 +694,7 @@ button, input, textarea, select {
 .modal-box {
   background: white;
   width: 100%;
-  max-width: 480px;
+  max-width: 540px;
   border-radius: var(--radius-md);
   padding: 22px 24px;
   box-shadow: var(--shadow-lg);
@@ -675,7 +715,7 @@ button, input, textarea, select {
   right: 14px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   color: var(--text-muted);
   width: 28px;
@@ -697,14 +737,14 @@ button, input, textarea, select {
 }
 
 .modal-header h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 4px;
 }
 
 .modal-header p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -714,7 +754,7 @@ button, input, textarea, select {
 
 .form-group label {
   display: block;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-dark);
   margin-bottom: 5px;
@@ -727,7 +767,7 @@ button, input, textarea, select {
   color: var(--text-dark);
   border-radius: var(--radius-xs);
   border: 1.5px solid #cbd5e1;
-  font-size: 13.5px;
+  font-size: 16.5px;
   font-weight: 500;
   font-family: inherit;
   outline: none;
@@ -765,7 +805,7 @@ button, input, textarea, select {
 
 .auth-message {
   min-height: 18px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .auth-message.error {
@@ -797,7 +837,7 @@ button, input, textarea, select {
 }
 
 .file-dropzone p {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -811,7 +851,7 @@ button, input, textarea, select {
   color: white;
   padding: 10px 18px;
   border-radius: var(--radius-sm);
-  font-size: 13.5px;
+  font-size: 16.5px;
   font-weight: 500;
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -835,7 +875,7 @@ button, input, textarea, select {
 
 /* Contact Page Specifics (Refined Sizing) */
 .contact-container {
-  max-width: 1000px;
+  max-width: 1160px;
   margin: 32px auto 48px;
   padding: 0 20px;
 }
@@ -846,14 +886,14 @@ button, input, textarea, select {
 }
 
 .contact-hero h1 {
-  font-size: 26px;
+  font-size: 31px;
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--text-dark);
 }
 
 .contact-hero p {
-  font-size: 14.5px;
+  font-size: 17.5px;
   font-weight: 500;
   max-width: 580px;
   margin: 0 auto;
@@ -861,7 +901,7 @@ button, input, textarea, select {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
   gap: 24px;
 }
 
@@ -894,19 +934,19 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 20px;
   flex-shrink: 0;
 }
 
 .contact-card h4 {
-  font-size: 14.5px;
+  font-size: 17.5px;
   font-weight: 600;
   margin-bottom: 2px;
   color: var(--text-dark);
 }
 
 .contact-card p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-muted);
 }
@@ -914,7 +954,7 @@ button, input, textarea, select {
 .contact-card a {
   color: var(--primary);
   font-weight: 500;
-  font-size: 13.5px;
+  font-size: 16.5px;
   text-decoration: none;
 }
 
@@ -924,21 +964,21 @@ button, input, textarea, select {
 
 .contact-form-card {
   background: white;
-  padding: 22px 24px;
+  padding: 26px 28px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
 
 .contact-form-card h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   margin-bottom: 4px;
   color: var(--text-dark);
 }
 
 .contact-form-card p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   margin-bottom: 18px;
 }
@@ -956,7 +996,7 @@ button, input, textarea, select {
 }
 
 .community-section-header h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--text-dark);
   margin-top: 6px;
@@ -964,7 +1004,7 @@ button, input, textarea, select {
 }
 
 .community-section-header p {
-  font-size: 13.5px;
+  font-size: 16.5px;
   color: var(--text-muted);
   max-width: 580px;
   margin: 0 auto;
@@ -972,7 +1012,7 @@ button, input, textarea, select {
 
 .community-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   gap: 18px;
 }
 
@@ -985,14 +1025,23 @@ button, input, textarea, select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease;
   position: relative;
 }
 
 .community-channel-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   border-color: #cbd5e1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .community-channel-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+
+  .community-channel-card:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .whatsapp-card {
@@ -1032,7 +1081,7 @@ button, input, textarea, select {
 
 .channel-badge {
   display: inline-block;
-  font-size: 11px;
+  font-size: 13.5px;
   font-weight: 600;
   padding: 2px 7px;
   border-radius: var(--radius-full);
@@ -1052,13 +1101,13 @@ button, input, textarea, select {
 }
 
 .community-card-header h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--text-dark);
 }
 
 .community-desc {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--text-muted);
   line-height: 1.45;
   margin-bottom: 14px;
@@ -1076,8 +1125,8 @@ button, input, textarea, select {
 }
 
 .qr-image {
-  width: 80px;
-  height: 80px;
+  width: 10cm;
+  height: 10cm;
   object-fit: contain;
   border-radius: 4px;
   background: #ffffff;
@@ -1088,7 +1137,7 @@ button, input, textarea, select {
 
 .qr-caption strong {
   display: block;
-  font-size: 12.5px;
+  font-size: 15.5px;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 2px;
@@ -1096,7 +1145,7 @@ button, input, textarea, select {
 
 .qr-caption span {
   display: block;
-  font-size: 11.5px;
+  font-size: 14px;
   color: var(--text-muted);
   line-height: 1.35;
 }
@@ -1106,7 +1155,7 @@ button, input, textarea, select {
   color: white;
   padding: 8px 16px;
   border-radius: var(--radius-xs);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   display: flex;
@@ -1127,7 +1176,7 @@ button, input, textarea, select {
   color: white;
   padding: 8px 16px;
   border-radius: var(--radius-xs);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   display: flex;
@@ -1162,7 +1211,7 @@ footer {
 }
 
 .footer-content p {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   color: #94a3b8;
 }
@@ -1173,7 +1222,7 @@ footer {
 }
 
 .footer-links a {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-muted);
 }
@@ -1183,32 +1232,28 @@ footer {
 }
 
 /* Responsive adjustments */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .job-row-card {
-    grid-template-columns: 140px minmax(150px, 1.2fr) minmax(140px, 1.1fr) minmax(160px, 1.3fr) 130px auto;
-    gap: 10px;
-    padding: 11px 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px 14px;
+    padding: 14px 16px;
   }
-}
 
-@media (max-width: 900px) {
-  .job-row-card {
-    grid-template-columns: 140px 1fr 1fr;
-    gap: 10px 12px;
-  }
   .job-col.job-action {
     grid-column: 1 / -1;
     justify-content: flex-start;
-    padding-top: 8px;
+    padding-top: 10px;
     border-top: 1px dashed var(--border);
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 900px) {
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
-  
+}
+
+@media (max-width: 840px) {
   .resume-banner {
     flex-direction: column;
     align-items: stretch;
@@ -1221,6 +1266,10 @@ footer {
 }
 
 @media (max-width: 680px) {
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
   .topbar-container {
     gap: 8px;
     padding: 10px 12px;
@@ -1228,11 +1277,15 @@ footer {
 
   .brand {
     gap: 6px;
-    font-size: 18px;
+    font-size: 22px;
+  }
+
+  .brand-logo {
+    height: 56px;
   }
 
   .menu-toggle {
-    display: block;
+    display: none;
   }
 
   .nav-cta {
@@ -1241,26 +1294,46 @@ footer {
 
   .nav-cta .btn {
     padding: 6px 8px;
-    font-size: 12px;
+    font-size: 14.5px;
   }
 
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: auto;
+    bottom: 0;
     left: 0;
     right: 0;
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 16px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    box-shadow: var(--shadow-md);
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 110;
   }
 
-  .topbar.open .nav-links {
+  .nav-link {
     display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 2px 8px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .nav-icon {
+    display: block;
+  }
+
+  .nav-link.active::after {
+    display: none;
   }
 
   .hero {
@@ -1290,6 +1363,21 @@ footer {
   .location-select {
     width: 100%;
     min-width: unset;
+  }
+
+  .qr-preview-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .qr-image {
+    width: min(10cm, 100%);
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .qr-caption {
+    text-align: center;
   }
 
   .listings-section {
@@ -1329,5 +1417,253 @@ footer {
     flex: 0 0 30px;
     width: 30px;
     height: 30px;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP-ONLY SMOOTH LANDING ANIMATIONS (min-width: 769px)
+   Engineered with Apple-grade fluid deceleration curves & staggered reveals.
+   Runs strictly on desktop displays; zero impact on mobile devices.
+   ========================================================================== */
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Ultra-smooth GPU accelerated entrance keyframes */
+  @keyframes desktopLandingFadeDown {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -14px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes desktopLandingFadeUp {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Backface visibility & GPU layer preparation */
+  .topbar,
+  .hero-pill,
+  .hero-title,
+  .hero-subtitle,
+  .resume-banner,
+  .toolbar-section,
+  .listings-section .section-header,
+  .listings-section .job-list-container,
+  .contact-hero .hero-pill,
+  .contact-hero h1,
+  .contact-hero p,
+  .contact-cards-column .contact-card,
+  .contact-form-card,
+  .community-section-header,
+  .community-channel-card,
+  footer .footer-content {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Top Navigation Bar */
+  .topbar {
+    animation: desktopLandingFadeDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s both;
+  }
+
+  /* --- Page 1: Home (index.html) Staggered Landing --- */
+  .hero-pill {
+    animation: desktopLandingFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  }
+
+  .hero-title {
+    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  }
+
+  .hero-subtitle {
+    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both;
+  }
+
+  .resume-banner {
+    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+  }
+
+  .toolbar-section {
+    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.33s both;
+  }
+
+  .listings-section .section-header {
+    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+  }
+
+  .listings-section .job-list-container {
+    animation: desktopLandingFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
+  }
+
+  /* --- Page 2: Contact (contact.html) Staggered Landing --- */
+  .contact-hero .hero-pill {
+    animation: desktopLandingFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  }
+
+  .contact-hero h1 {
+    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  }
+
+  .contact-hero p {
+    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both;
+  }
+
+  .contact-cards-column .contact-card:nth-child(1) {
+    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
+  }
+
+  .contact-cards-column .contact-card:nth-child(2) {
+    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.33s both;
+  }
+
+  .contact-cards-column .contact-card:nth-child(3) {
+    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
+  }
+
+  .contact-form-card {
+    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
+  }
+
+  .community-section-header {
+    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
+  }
+
+  .community-channel-card.whatsapp-card {
+    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+  }
+
+  .community-channel-card.telegram-card {
+    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
+  }
+
+  /* Footer Reveal */
+  footer .footer-content {
+    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PERFORMANCE & ANTI-JITTER OPTIMIZATIONS (max-width: 768px)
+   Completely removes touch stutter, animation lag, layout shifts & frame drops.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Strictly disable all landing animations & delays on mobile */
+  .topbar,
+  .hero,
+  .hero-container,
+  .hero-pill,
+  .hero-title,
+  .hero-subtitle,
+  .resume-banner,
+  .toolbar-section,
+  .listings-section,
+  .listings-section .section-header,
+  .listings-section .job-list-container,
+  .job-row-card,
+  .contact-container,
+  .contact-hero,
+  .contact-hero .hero-pill,
+  .contact-hero h1,
+  .contact-hero p,
+  .contact-grid,
+  .contact-cards-column,
+  .contact-card,
+  .contact-form-card,
+  .community-channels-section,
+  .community-section-header,
+  .community-grid,
+  .community-channel-card,
+  footer,
+  footer .footer-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* 2. Eliminate touch hover jumping/jitter while scrolling or tapping */
+  .job-row-card:hover,
+  .community-channel-card:hover,
+  .contact-card:hover,
+  .btn-apply-pill:hover,
+  .action-icon-btn:hover,
+  .btn:hover,
+  .btn-coral:hover,
+  .btn-primary:hover {
+    transform: none !important;
+  }
+
+  /* 3. Fast responsive touch response: eliminates 300ms mobile tap delay */
+  html, body {
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+
+  button, a, input, select, textarea, .btn, .btn-apply-pill, .action-icon-btn, .job-row-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* 4. Disable smooth scroll on mobile to avoid fighting native touch-momentum scrolling */
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* 5. GPU render optimization for listings: browser skips offscreen layout calculation */
+  .job-row-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 120px;
+  }
+
+  /* 6. Hardware compositor isolation for fixed mobile bottom dock (prevents scroll blur lag) */
+  .nav-links {
+    contain: paint layout;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* ==========================================================================
+   TOUCH DEVICE UNIVERSAL ANTI-JITTER
+   ========================================================================== */
+@media (hover: none) {
+  .job-row-card:hover,
+  .community-channel-card:hover,
+  .contact-card:hover,
+  .btn-apply-pill:hover,
+  .action-icon-btn:hover,
+  .btn:hover {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: RESPECT USER MOTION PREFERENCE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

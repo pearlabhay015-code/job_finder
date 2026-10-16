@@ -44,9 +44,9 @@ const jobData = [
     location: "Varanasi, Gorakhpur",
     state: "Uttar Pradesh",
     deadline: "30.07.2026",
-    color: "#ea580c",
-    colorBg: "#fff7ed",
-    colorBorder: "#fed7aa"
+    color: "#16a34a",
+    colorBg: "#f0fdf4",
+    colorBorder: "#bbf7d0"
   },
   {
     id: 5,
@@ -152,9 +152,9 @@ const jobData = [
     location: "Ahmedabad, Surat",
     state: "Gujarat",
     deadline: "10.09.2026",
-    color: "#ea580c",
-    colorBg: "#fff7ed",
-    colorBorder: "#fed7aa"
+    color: "#16a34a",
+    colorBg: "#f0fdf4",
+    colorBorder: "#bbf7d0"
   },
   {
     id: 14,
@@ -249,8 +249,8 @@ function renderJobs() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div class="no-results" style="padding: 36px 20px; background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; text-align: center;">
-        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #1e293b;">🔍 No matching opportunities found</h3>
-        <p style="font-size: 13.5px; color: #64748b; margin-bottom: 12px;">Try adjusting your keywords or clearing the location filter.</p>
+        <h3 style="font-size: 17.5px; font-weight: 600; margin-bottom: 6px; color: #1e293b;">🔍 No matching opportunities found</h3>
+        <p style="font-size: 15px; color: #64748b; margin-bottom: 12px;">Try adjusting your keywords or clearing the location filter.</p>
         <button class="btn btn-outline btn-sm" onclick="clearAllFilters()">Clear Filters</button>
       </div>
     `;
