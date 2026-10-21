@@ -496,7 +496,6 @@ button, input, textarea, select {
 .job-row-card {
   background: var(--accent-bg, #eff6ff);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--accent-color, #2563eb);
   border-radius: var(--radius-sm);
   padding: 12px 18px;
   display: grid;
@@ -511,7 +510,6 @@ button, input, textarea, select {
 .job-row-card:hover {
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
   border-color: #cbd5e1;
-  border-left-color: var(--accent-color, #2563eb);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -541,7 +539,7 @@ button, input, textarea, select {
   border-radius: var(--radius-xs);
   background: var(--accent-bg, #eff6ff);
   color: var(--accent-color, #2563eb);
-  border: 1px solid var(--accent-border, #bfdbfe);
+  border: 1px solid var(--border);
   font-weight: 600;
   font-size: 15.5px;
   white-space: nowrap;
