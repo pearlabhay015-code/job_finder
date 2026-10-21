@@ -248,9 +248,9 @@ function renderJobs() {
 
   if (filtered.length === 0) {
     grid.innerHTML = `
-      <div class="no-results" style="padding: 36px 20px; background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 6px; text-align: center;">
-        <h3 style="font-size: 17.5px; font-weight: 600; margin-bottom: 6px; color: #1e293b;">🔍 No matching opportunities found</h3>
-        <p style="font-size: 15px; color: #64748b; margin-bottom: 12px;">Try adjusting your keywords or clearing the location filter.</p>
+      <div class="no-results">
+        <h3>🔍 No matching opportunities found</h3>
+        <p>Try adjusting your keywords or clearing the location filter.</p>
         <button class="btn btn-outline btn-sm" onclick="clearAllFilters()">Clear Filters</button>
       </div>
     `;

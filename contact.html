@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Mera Job Saathi</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function() {
+      try {
+        var t = sessionStorage.getItem('job-saathi-theme');
+        if (!t) {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          t = isDark ? 'dark' : 'light';
+          sessionStorage.setItem('job-saathi-theme', t);
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="theme.js" defer></script>
 </head>
 <body>
 
@@ -12,7 +26,8 @@
   <header class="topbar">
     <div class="topbar-container">
       <a class="brand" href="index.html" title="Mera Job Saathi">
-        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo" />
+        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-light" />
+        <img src="logo-dark.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-dark" />
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
@@ -34,6 +49,26 @@
           </a>
         </nav>
 
+        <!-- Single Theme Toggle: Light / Dark -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <!-- Sun Icon (Active in Light Theme) -->
+          <svg class="theme-toggle-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (Active in Dark Theme) -->
+          <svg class="theme-toggle-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
         <div class="nav-cta">
           <a href="index.html#auth-modal" class="btn btn-primary btn-sm">Log in / Sign up</a>
         </div>
@@ -44,7 +79,7 @@
   <main>
     <div class="contact-container">
       <div class="contact-hero">
-        <div class="hero-pill" style="color: var(--job-green); border-color: #bbf7d0; background: #f0fdf4;">
+        <div class="hero-pill contact-hero-pill">
           <span>💬</span> We're Here to Help
         </div>
         <h1>Get in Touch with Mera Job Saathi</h1>
@@ -57,35 +92,33 @@
         <!-- Contact Information Cards -->
         <div class="contact-cards-column">
           <div class="contact-card">
-            <div class="contact-icon-box" style="background: #e0f2fe; color: #0284c7;">
+            <div class="contact-icon-box icon-box-blue">
               ✉️
             </div>
             <div>
-              <h4>Email Support</h4>
-              <p>For job seekers, application issues & general inquiries:</p>
-              <a href="mailto:support@merajobsaathi.in">support@merajobsaathi.in</a>
+              <h4>Industry</h4>
+              <p>Job Placement | Manpower Services | Advertising</p>
+              <a href="mailto:myappointers@gmail.com">myappointers@gmail.com</a>
             </div>
           </div>
 
           <div class="contact-card">
-            <div class="contact-icon-box" style="background: #dcfce7; color: #16a34a;">
+            <div class="contact-icon-box icon-box-green">
               📞
             </div>
             <div>
-              <h4>Phone & WhatsApp Helpline</h4>
-              <p>Monday to Saturday, 9:00 AM – 6:00 PM IST:</p>
-              <a href="tel:+918005550199">+91 800 555 0199</a>
+              <h4>Contact</h4>
+              <a href="tel:9060717287">9060717287</a>
             </div>
           </div>
 
           <div class="contact-card">
-            <div class="contact-icon-box" style="background: #dcfce7; color: #16a34a;">
+            <div class="contact-icon-box icon-box-green">
               📍
             </div>
             <div>
-              <h4>Central Office</h4>
-              <p>Mera Job Saathi Career Center</p>
-              <p style="color: #64748b; font-size: 14.5px; margin-top: 4px;">4th Floor, Innovation Park, Indiranagar, Bengaluru, Karnataka 560038</p>
+              <h4>Registered Office</h4>
+              <p>Near-Ramchandra Utsav Bhawan Road No.-1, Kisan Colony, Phulwari, Patna-800003</p>
             </div>
           </div>
         </div>
@@ -132,7 +165,7 @@
       <!-- Official Community Channels: WhatsApp & Telegram -->
       <section class="community-channels-section">
         <div class="community-section-header">
-          <div class="hero-pill" style="color: var(--job-green); border-color: #bbf7d0; background: #f0fdf4;">
+          <div class="hero-pill contact-hero-pill">
             <span>📢</span> Official Community Channels
           </div>
           <h2>Join Our Official WhatsApp & Telegram Channels</h2>
@@ -160,10 +193,12 @@
               </p>
 
               <div class="qr-preview-wrapper">
-                <img src="whatsapp-qr.png" alt="Mera Job Saathi WhatsApp Channel QR" class="qr-image" />
                 <div class="qr-caption">
                   <strong>Scan with WhatsApp</strong>
                   <span>Open WhatsApp Camera & scan this QR code to join our official channel instantly</span>
+                </div>
+                <div class="qr-frame">
+                  <img src="whatsapp-qr.png" alt="Mera Job Saathi WhatsApp Channel QR" class="qr-image" />
                 </div>
               </div>
             </div>
@@ -193,10 +228,12 @@
               </p>
 
               <div class="qr-preview-wrapper">
-                <img src="telegram-qr.png" alt="Mera Job Saathi Telegram Channel QR" class="qr-image" />
                 <div class="qr-caption">
                   <strong>Scan with Telegram</strong>
                   <span>Scan this QR code with Telegram or phone camera to join @MERAJOBSAATHI</span>
+                </div>
+                <div class="qr-frame">
+                  <img src="telegram-qr.png" alt="Mera Job Saathi Telegram Channel QR" class="qr-image" />
                 </div>
               </div>
             </div>
@@ -217,7 +254,8 @@
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo" />
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo footer-logo-light" />
+        <img src="logo-dark.png" alt="Mera Job Saathi" class="footer-logo footer-logo-dark" />
       </div>
       <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
       <div class="footer-links">

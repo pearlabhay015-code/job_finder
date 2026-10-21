@@ -1,0 +1,125 @@
+/**
+ * Mera Job Saathi - Theme Manager
+ * System theme automatically applies on first load (new session).
+ * Preserves the active/toggled theme across site navigation (Home, Contact, etc.).
+ * Single toggle button switches between Light and Dark mode with fluid transition.
+ */
+(function () {
+  const STORAGE_KEY = 'job-saathi-theme';
+  const MANUAL_KEY = 'job-saathi-manual';
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  let transitionTimer = null;
+
+  function getSystemTheme() {
+    return (mediaQuery && mediaQuery.matches) ? 'dark' : 'light';
+  }
+
+  function getInitialTheme() {
+    try {
+      const stored = sessionStorage.getItem(STORAGE_KEY);
+      if (stored === 'light' || stored === 'dark') {
+        return stored;
+      }
+    } catch (e) {}
+
+    // First time loaded in this session: adapt to device system theme
+    const system = getSystemTheme();
+    try {
+      sessionStorage.setItem(STORAGE_KEY, system);
+    } catch (e) {}
+    return system;
+  }
+
+  let currentTheme = getInitialTheme();
+
+  function applyTheme(theme, animate = false, isUserAction = false) {
+    currentTheme = theme;
+    const root = document.documentElement;
+
+    if (animate) {
+      root.classList.add('theme-transitioning');
+    }
+
+    root.setAttribute('data-theme', theme);
+
+    try {
+      sessionStorage.setItem(STORAGE_KEY, theme);
+      if (isUserAction) {
+        sessionStorage.setItem(MANUAL_KEY, '1');
+      }
+    } catch (e) {}
+
+    // Keep mobile browser toolbar/status bar color matched
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.name = 'theme-color';
+      document.head.appendChild(metaThemeColor);
+    }
+    metaThemeColor.content = theme === 'dark' ? '#0d121d' : '#f4f4f2';
+
+    // Update toggle button accessibility and tooltip
+    updateToggleButtons(theme);
+
+    if (animate) {
+      if (transitionTimer) clearTimeout(transitionTimer);
+      transitionTimer = setTimeout(() => {
+        root.classList.remove('theme-transitioning');
+      }, 420);
+    }
+  }
+
+  function updateToggleButtons(theme) {
+    const buttons = document.querySelectorAll('.theme-toggle-btn');
+    const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    buttons.forEach((btn) => {
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+      btn.dataset.currentTheme = theme;
+    });
+  }
+
+  function toggleTheme() {
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme, true, true);
+  }
+
+  // Auto-adapt when system changes color scheme live, provided user hasn't manually overridden
+  function onSystemThemeChange(e) {
+    try {
+      if (sessionStorage.getItem(MANUAL_KEY) === '1') {
+        return; // Respect user's explicit toggle selection
+      }
+    } catch (err) {}
+    applyTheme(e.matches ? 'dark' : 'light', true, false);
+  }
+
+  if (mediaQuery.addEventListener) {
+    mediaQuery.addEventListener('change', onSystemThemeChange);
+  } else if (mediaQuery.addListener) {
+    mediaQuery.addListener(onSystemThemeChange);
+  }
+
+  function initThemeUI() {
+    updateToggleButtons(currentTheme);
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.theme-toggle-btn');
+      if (btn) {
+        toggleTheme();
+      }
+    });
+  }
+
+  // Ensure current theme is applied cleanly
+  applyTheme(currentTheme, false, false);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeUI);
+  } else {
+    initThemeUI();
+  }
+
+  window.toggleAppTheme = toggleTheme;
+  window.setAppTheme = (t) => applyTheme(t, true, true);
+  window.getAppTheme = () => currentTheme;
+})();

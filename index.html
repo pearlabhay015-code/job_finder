@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mera Job Saathi | Your Career, Our Commitment</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function() {
+      try {
+        var t = sessionStorage.getItem('job-saathi-theme');
+        if (!t) {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          t = isDark ? 'dark' : 'light';
+          sessionStorage.setItem('job-saathi-theme', t);
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="theme.js" defer></script>
 </head>
 <body>
 
@@ -12,7 +26,8 @@
   <header class="topbar">
     <div class="topbar-container">
       <a class="brand" href="index.html" title="Mera Job Saathi">
-        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo" />
+        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-light" />
+        <img src="logo-dark.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-dark" />
       </a>
 
       <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
@@ -33,6 +48,26 @@
             <span>Contact</span>
           </a>
         </nav>
+
+        <!-- Single Theme Toggle: Light / Dark -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <!-- Sun Icon (Active in Light Theme) -->
+          <svg class="theme-toggle-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (Active in Dark Theme) -->
+          <svg class="theme-toggle-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
 
         <div class="nav-cta">
           <button class="btn btn-primary btn-sm" type="button" onclick="openAuthModal('login')">Log in / Sign up</button>
@@ -180,7 +215,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
             </svg>
             <p><strong>Click to browse</strong> or drag & drop your resume file</p>
-            <p style="font-size: 13.5px; color: #94a3b8; margin-top: 4px;">Supports PDF, DOC, DOCX up to 5MB</p>
+            <p class="file-dropzone-hint">Supports PDF, DOC, DOCX up to 5MB</p>
             <input type="file" id="file-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="if(this.files[0]) this.previousElementSibling.textContent = 'Selected: ' + this.files[0].name;" />
           </div>
         </div>
@@ -270,7 +305,8 @@
   <footer>
     <div class="footer-content">
       <div class="footer-brand">
-        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo" />
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo footer-logo-light" />
+        <img src="logo-dark.png" alt="Mera Job Saathi" class="footer-logo footer-logo-dark" />
       </div>
       <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
       <div class="footer-links">
