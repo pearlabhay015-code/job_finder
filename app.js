@@ -318,7 +318,150 @@ function initFilters() {
   const locationSelect = document.getElementById('location-select');
 
   if (locationSelect) {
+    let syncLocationSelection = () => {};
+    const wrapper = locationSelect.closest('.location-select-wrapper');
+    const label = document.getElementById('location-label');
+    if (wrapper && label) {
+      const trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'location-select location-select-trigger';
+      trigger.setAttribute('aria-labelledby', label.id);
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+
+      const optionsList = document.createElement('div');
+      optionsList.className = 'location-options';
+      optionsList.id = 'location-options';
+      optionsList.setAttribute('role', 'listbox');
+      optionsList.setAttribute('aria-labelledby', label.id);
+      optionsList.hidden = true;
+
+      Array.from(locationSelect.options).forEach(option => {
+        const item = document.createElement('button');
+        item.type = 'button';
+        item.className = 'location-option';
+        item.setAttribute('role', 'option');
+        item.dataset.value = option.value;
+        item.textContent = option.textContent;
+        optionsList.appendChild(item);
+      });
+
+      trigger.setAttribute('aria-controls', optionsList.id);
+      wrapper.insertBefore(trigger, locationSelect);
+      wrapper.appendChild(optionsList);
+      locationSelect.tabIndex = -1;
+      locationSelect.setAttribute('aria-hidden', 'true');
+      locationSelect.classList.add('location-select-hidden');
+
+      const optionItems = Array.from(optionsList.querySelectorAll('.location-option'));
+      let typeaheadBuffer = '';
+      let typeaheadTimeout;
+
+      const syncSelection = () => {
+        const selectedOption = locationSelect.options[locationSelect.selectedIndex];
+        trigger.textContent = selectedOption ? selectedOption.textContent : 'Location';
+        trigger.setAttribute('aria-label', `Location: ${trigger.textContent}`);
+        optionItems.forEach(item => {
+          const selected = item.dataset.value === locationSelect.value;
+          item.setAttribute('aria-selected', String(selected));
+        });
+      };
+      syncLocationSelection = syncSelection;
+
+      const closeOptions = (returnFocus = false) => {
+        optionsList.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        if (returnFocus) trigger.focus();
+      };
+
+      const openOptions = () => {
+        optionsList.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        const selectedItem = optionItems.find(item => item.dataset.value === locationSelect.value);
+        (selectedItem || optionItems[0])?.focus();
+      };
+
+      const focusOption = index => {
+        const nextIndex = Math.max(0, Math.min(index, optionItems.length - 1));
+        optionItems[nextIndex].focus();
+        optionItems[nextIndex].scrollIntoView({ block: 'nearest' });
+      };
+
+      const selectOption = item => {
+        locationSelect.value = item.dataset.value;
+        syncSelection();
+        closeOptions(true);
+        locationSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      };
+
+      syncSelection();
+
+      trigger.addEventListener('click', () => {
+        if (optionsList.hidden) openOptions();
+        else closeOptions();
+      });
+
+      label.addEventListener('click', openOptions);
+
+      trigger.addEventListener('keydown', event => {
+        if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+          event.preventDefault();
+          openOptions();
+        }
+      });
+
+      optionsList.addEventListener('click', event => {
+        const item = event.target.closest('.location-option');
+        if (item) selectOption(item);
+      });
+
+      optionsList.addEventListener('keydown', event => {
+        const item = event.target.closest('.location-option');
+        if (!item) return;
+
+        const index = optionItems.indexOf(item);
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          focusOption(index + 1);
+        } else if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          focusOption(index - 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          focusOption(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          focusOption(optionItems.length - 1);
+        } else if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectOption(item);
+        } else if (event.key === 'Escape') {
+          event.preventDefault();
+          closeOptions(true);
+        } else if (event.key.length === 1 && event.key.trim()) {
+          typeaheadBuffer += event.key.toLowerCase();
+          window.clearTimeout(typeaheadTimeout);
+          typeaheadTimeout = window.setTimeout(() => {
+            typeaheadBuffer = '';
+          }, 500);
+          const matchIndex = optionItems.findIndex(option =>
+            option.textContent.toLowerCase().startsWith(typeaheadBuffer)
+          );
+          if (matchIndex >= 0) focusOption(matchIndex);
+        }
+      });
+
+      document.addEventListener('click', event => {
+        if (!wrapper.contains(event.target)) closeOptions();
+      });
+
+      optionsList.addEventListener('focusout', event => {
+        if (!wrapper.contains(event.relatedTarget)) closeOptions();
+      });
+    }
+
     locationSelect.addEventListener('change', (e) => {
+      syncLocationSelection();
       currentLocationFilter = e.target.value;
       renderJobs();
     });
@@ -338,9 +481,11 @@ window.filterByState = function(stateName) {
   const locationSelect = document.getElementById('location-select');
   if (locationSelect) {
     locationSelect.value = stateName;
+    locationSelect.dispatchEvent(new Event('change', { bubbles: true }));
+  } else {
+    currentLocationFilter = stateName;
+    renderJobs();
   }
-  currentLocationFilter = stateName;
-  renderJobs();
   showToast(`📍 Showing jobs in ${stateName}`);
 };
 
@@ -349,10 +494,14 @@ window.clearAllFilters = function() {
   const searchInput = document.getElementById('search-input');
   const locationSelect = document.getElementById('location-select');
   if (searchInput) searchInput.value = '';
-  if (locationSelect) locationSelect.value = '';
   currentSearchQuery = '';
-  currentLocationFilter = '';
-  renderJobs();
+  if (locationSelect) {
+    locationSelect.value = '';
+    locationSelect.dispatchEvent(new Event('change', { bubbles: true }));
+  } else {
+    currentLocationFilter = '';
+    renderJobs();
+  }
 };
 
 // Interactive Helper: Toggle Save / Bookmark

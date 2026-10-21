@@ -1,22 +1,22 @@
 /* Global CSS Variables & Solid Clean Palette from Official Logo */
 :root {
   /* Logo Palette */
-  --mera-blue: #1034a6;
+  --mera-blue: #256ff8;
   --job-green: #16a34a;    /* JOB (Green) */
   --saathi-pink: #e11d48;  /* S (Pink/Magenta) */
-  --saathi-parrot-green: #2edf3c;
+  --saathi-parrot-green: #10eb22;
   --saathi-teal: #0891b2;  /* A (Teal/Cyan) */
   --saathi-amber: #d97706; /* T (Amber/Gold) */
   --saathi-purple: #7c3aed;/* H (Purple/Violet) */
   --saathi-indigo: #2563eb;/* I (Indigo/Blue) */
   
   --primary: var(--mera-blue);
-  --primary-hover: #0b2475;
+  --primary-hover: #154af8;
   --primary-light: #f0f9ff;
   --secondary: var(--job-green);
   --secondary-hover: #15803d;
   --action-green: var(--saathi-parrot-green);
-  --action-green-hover: #02ca13;
+  --action-green-hover: #0efa22;
   --action-green-light: #f0fdf4;
   --emerald: var(--job-green);
   --emerald-hover: #15803d;
@@ -411,6 +411,7 @@ button, input, textarea, select {
   gap: 8px;
   border-left: 1px solid var(--border);
   padding-left: 14px;
+  position: relative;
 }
 
 .location-label {
@@ -443,8 +444,71 @@ button, input, textarea, select {
   transition: border-color 0.15s;
 }
 
+.location-select-hidden {
+  display: none;
+}
+
+.location-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+}
+
+.location-select-trigger::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
 .location-select:focus {
   border-color: var(--primary);
+}
+
+.location-options {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 220px;
+  width: min(320px, calc(100vw - 28px));
+  max-height: min(50vh, 320px);
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-md);
+}
+
+.location-options[hidden] {
+  display: none;
+}
+
+.location-option {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-dark);
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.location-option:hover,
+.location-option:focus-visible,
+.location-option[aria-selected="true"] {
+  background: var(--primary-light);
+  outline: none;
 }
 
 /* Main Job Listings Container */
