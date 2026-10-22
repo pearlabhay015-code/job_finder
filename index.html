@@ -35,7 +35,9 @@
         <img src="logo-dark.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-dark" width="264" height="88" fetchpriority="high" decoding="async" />
       </a>
 
-      <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
+      <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
 
       <div class="nav-controls">
         <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
@@ -86,7 +88,7 @@
     <section class="hero">
       <div class="hero-container">
         <div class="hero-pill">
-          <span>✨</span> India's Simple & Friendly Career Platform
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#f59e0b;vertical-align:-2px;margin-right:2px;"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"></path></svg> India's Simple &amp; Friendly Career Platform
         </div>
         <h1 class="hero-title">
           Discover Opportunities & <span class="highlight">Grow Your Career</span>
@@ -98,7 +100,15 @@
         <!-- Prominent Resume Post Callout Banner -->
         <div class="resume-banner">
           <div class="resume-content">
-            <div class="resume-icon-bubble">📄</div>
+            <div class="resume-icon-bubble" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
             <div>
               <h3>Looking for your next opportunity?</h3>
               <p>Upload your resume once and get matched with top employers actively hiring.</p>
@@ -192,7 +202,14 @@
     <div class="modal-box">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-header">
-        <div style="font-size: 28px; margin-bottom: 8px;">🚀</div>
+        <div class="modal-icon-bubble" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+          </svg>
+        </div>
         <h3>Post Your Resume</h3>
         <p>Introduce yourself to hundreds of hiring teams looking for talent.</p>
       </div>
@@ -234,33 +251,278 @@
 
   <!-- Login / Sign Up Modal -->
   <div id="auth-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="auth-title">
-    <div class="modal-box">
+    <div class="modal-box auth-modal-box">
       <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
-      <div class="modal-header">
+      
+      <div class="modal-header auth-modal-header">
+        <div class="auth-brand-badge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Mera Job Saathi Account</span>
+        </div>
         <h3 id="auth-title">Welcome back</h3>
-        <p id="auth-copy">Log in to your Job Saathi account.</p>
+        <p id="auth-copy">Log in to track applications, save job alerts & connect with verified employers.</p>
       </div>
 
-      <div class="auth-mode-tabs" role="group" aria-label="Choose login or sign up">
-        <button id="auth-login-tab" class="auth-mode-tab active" type="button" onclick="setAuthMode('login')">Log in</button>
-        <button id="auth-signup-tab" class="auth-mode-tab" type="button" onclick="setAuthMode('signup')">Sign up</button>
+      <!-- Segmented Tabs -->
+      <div class="auth-mode-tabs" role="tablist" aria-label="Authentication mode">
+        <button id="auth-login-tab" class="auth-mode-tab active" type="button" role="tab" aria-selected="true" onclick="setAuthMode('login')">
+          Log in
+        </button>
+        <button id="auth-signup-tab" class="auth-mode-tab" type="button" role="tab" aria-selected="false" onclick="setAuthMode('signup')">
+          Create Account
+        </button>
       </div>
 
-      <form id="auth-form">
+      <!-- Google Social Login Button -->
+      <button type="button" class="btn-google-auth" id="btn-google-login" onclick="handleGoogleAuth()">
+        <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+        </svg>
+        <span id="google-btn-text">Continue with Google</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="auth-divider">
+        <span>or continue with email</span>
+      </div>
+
+      <!-- Auth Form -->
+      <form id="auth-form" novalidate>
+        <!-- Full Name (Sign Up only) -->
         <div id="auth-name-group" class="form-group" hidden>
-          <label for="auth-name">Full Name</label>
-          <input type="text" id="auth-name" class="form-control" autocomplete="name" />
+          <label for="auth-name">
+            Full Name <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input type="text" id="auth-name" class="form-control with-icon" placeholder="e.g. Rahul Sharma" autocomplete="name" />
+          </div>
+          <p class="field-hint" id="auth-name-hint">3–30 characters, letters and spaces only.</p>
         </div>
+
+        <!-- Email Address -->
         <div class="form-group">
-          <label for="auth-email">Email Address</label>
-          <input type="email" id="auth-email" class="form-control" autocomplete="email" required />
+          <label for="auth-email">
+            Email Address <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </span>
+            <input type="email" id="auth-email" class="form-control with-icon" placeholder="name@example.com" autocomplete="email" required />
+          </div>
+          <p class="field-hint error-hint" id="auth-email-hint" hidden></p>
         </div>
-        <div class="form-group">
-          <label for="auth-password">Password</label>
-          <input type="password" id="auth-password" class="form-control" autocomplete="current-password" minlength="8" required />
+
+        <!-- Login Password Field (Login only) -->
+        <div id="auth-login-password-group" class="form-group">
+          <div class="label-row">
+            <label for="auth-login-password">
+              Password <span class="required-star">*</span>
+            </label>
+            <button type="button" class="btn-text-link" id="auth-forgot-link" onclick="handleForgotPassword()">
+              Forgot password?
+            </button>
+          </div>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-login-password" name="login_password" class="form-control with-icon with-eye" placeholder="Enter your password" autocomplete="current-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-login-password" aria-label="Toggle password visibility">
+              <!-- Eye Open SVG -->
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye Off SVG -->
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
         </div>
+
+        <!-- Sign Up Password Field (Sign Up only) -->
+        <div id="auth-signup-password-group" class="form-group" hidden>
+          <label for="auth-signup-password">
+            Create Password <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-signup-password" name="signup_password" class="form-control with-icon with-eye" placeholder="Create a strong password" autocomplete="new-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-signup-password" aria-label="Toggle password visibility">
+              <!-- Eye Open SVG -->
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye Off SVG -->
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Password Requirements & Strength (Sign Up mode) -->
+          <div id="auth-password-requirements" class="password-requirements">
+            <div class="strength-meter-wrap">
+              <div class="strength-meter-bar">
+                <div class="strength-meter-fill" id="strength-meter-fill"></div>
+              </div>
+              <span class="strength-meter-label" id="strength-meter-label">Password strength: Weak</span>
+            </div>
+
+            <ul class="requirements-list">
+              <li id="req-len" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 8 characters</span>
+              </li>
+              <li id="req-upper" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 uppercase (A–Z)</span>
+              </li>
+              <li id="req-num" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 number (0–9)</span>
+              </li>
+              <li id="req-spec" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 special char (!@#$%)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Confirm Password (Sign Up only) -->
+        <div id="auth-confirm-group" class="form-group" hidden>
+          <label for="auth-confirm-password">
+            Confirm Password <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-confirm-password" class="form-control with-icon with-eye" placeholder="Re-enter your password" autocomplete="new-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-confirm-password" aria-label="Toggle confirm password visibility">
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+          <p class="field-hint" id="auth-confirm-hint"></p>
+        </div>
+
+        <!-- Remember Me & Terms Checkbox (Strict Click: Box Only) -->
+        <div class="auth-extra-row">
+          <div class="checkbox-row" id="auth-remember-wrap">
+            <label class="checkbox-box-target" for="auth-remember-me" aria-label="Keep me logged in on this device">
+              <input type="checkbox" id="auth-remember-me" checked />
+              <span class="checkbox-custom-square">
+                <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+            </label>
+            <span class="checkbox-label-text">Keep me logged in on this device</span>
+          </div>
+          <div class="checkbox-row" id="auth-terms-wrap" hidden>
+            <label class="checkbox-box-target" for="auth-terms" aria-label="Agree to terms and privacy policy">
+              <input type="checkbox" id="auth-terms" />
+              <span class="checkbox-custom-square">
+                <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+            </label>
+            <span class="checkbox-label-text">I agree to the <a href="contact.html">Terms of Service</a> &amp; <a href="contact.html">Privacy Policy</a></span>
+          </div>
+        </div>
+
         <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
-        <button id="auth-submit" type="submit" class="btn btn-coral" style="width: 100%; margin-top: 10px;">Log in</button>
+
+        <!-- Submit Button -->
+        <button id="auth-submit" type="submit" class="btn btn-coral auth-submit-btn">
+          <span id="auth-submit-text">Log in to Mera Job Saathi</span>
+          <svg class="btn-arrow-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <!-- Footer switch prompt -->
+        <div class="auth-footer-prompt">
+          <span id="auth-footer-text">Don't have an account yet?</span>
+          <button type="button" class="btn-text-link bold-link" id="auth-footer-action" onclick="toggleAuthMode()">
+            Create free account
+          </button>
+        </div>
       </form>
     </div>
   </div>
@@ -270,7 +532,12 @@
     <div class="modal-box">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-header">
-        <div style="font-size: 28px; margin-bottom: 8px;">💼</div>
+        <div class="modal-icon-bubble" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
         <h3 id="apply-modal-job-title">Job Application</h3>
         <p id="apply-modal-company">Applying to company</p>
       </div>
@@ -320,6 +587,42 @@
       </div>
     </div>
   </footer>
+
+  <!-- Native-Style Mobile Bottom Navigation Bar (Visible only on mobile screens) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-item active" aria-current="page">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path>
+      </svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+
+    <button type="button" class="mobile-nav-item" onclick="openResumeModal()">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="12" y1="18" x2="12" y2="12"></line>
+        <polyline points="9 15 12 12 15 15"></polyline>
+      </svg>
+      <span class="mobile-nav-label">Post Resume</span>
+    </button>
+
+    <a href="contact.html" class="mobile-nav-item">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="m3 7 9 6 9-6"></path>
+      </svg>
+      <span class="mobile-nav-label">Contact</span>
+    </a>
+
+    <button type="button" class="mobile-nav-item" onclick="openAuthModal('login')">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span class="mobile-nav-label">Account</span>
+    </button>
+  </nav>
 
   <script src="app.js"></script>
 </body>

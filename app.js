@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   initModals();
 
-  if (window.location.hash === '#resume-modal') {
+  if (window.location.hash === '#resume-modal' || window.location.search.includes('action=post-resume')) {
     openResumeModal();
   } else if (window.location.hash === '#auth-modal' || window.location.hash === '#auth-signup') {
     openAuthModal(window.location.hash === '#auth-signup' ? 'signup' : 'login');
@@ -249,7 +249,10 @@ function renderJobs() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div class="no-results">
-        <h3>🔍 No matching opportunities found</h3>
+        <h3>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:6px;" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          No matching opportunities found
+        </h3>
         <p>Try adjusting your keywords or clearing the location filter.</p>
         <button class="btn btn-outline btn-sm" onclick="clearAllFilters()">Clear Filters</button>
       </div>
@@ -290,21 +293,27 @@ function renderJobs() {
         <div class="job-col job-action">
           <button class="btn-apply-pill ${isApplied ? 'applied' : ''}" 
                   onclick="${isApplied ? '' : `openApplyModal(${job.id})`}">
-            ${isApplied ? '✓ Applied' : 'Apply Here'}
+            ${isApplied ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px;margin-right:4px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>Applied' : 'Apply Here'}
           </button>
           
           <button class="action-icon-btn ${isSaved ? 'saved' : ''}" 
                   onclick="toggleSaveJob(${job.id}, this)" 
                   title="${isSaved ? 'Remove from saved' : 'Save opportunity'}" 
                   aria-label="Save opportunity">
-            ${isSaved ? '♥' : '♡'}
+            ${isSaved 
+              ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>'
+              : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>'
+            }
           </button>
 
           <button class="action-icon-btn" 
                   onclick="shareJob('${job.jobId}', '${job.title}')" 
                   title="Copy Job ID & share" 
                   aria-label="Share opportunity">
-            🔗
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
           </button>
         </div>
       </article>
@@ -494,7 +503,7 @@ window.filterByState = function(stateName) {
     currentLocationFilter = stateName;
     renderJobs();
   }
-  showToast(`📍 Showing jobs in ${stateName}`);
+  showToast(`Showing jobs in ${stateName}`);
 };
 
 // Interactive Helper: Clear filters
@@ -515,18 +524,21 @@ window.clearAllFilters = function() {
 // Interactive Helper: Toggle Save / Bookmark
 window.toggleSaveJob = function(jobId, btn) {
   const job = jobData.find(j => j.id === jobId);
+  const heartEmpty = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
+  const heartFilled = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
+
   if (savedJobIds.has(jobId)) {
     savedJobIds.delete(jobId);
     btn.classList.remove('saved');
-    btn.textContent = '♡';
+    btn.innerHTML = heartEmpty;
     btn.title = 'Save opportunity';
     showToast(`Removed Job #${job ? job.jobId : jobId} from saved list`);
   } else {
     savedJobIds.add(jobId);
     btn.classList.add('saved');
-    btn.textContent = '♥';
+    btn.innerHTML = heartFilled;
     btn.title = 'Saved to favorites';
-    showToast(`❤️ Saved Job #${job ? job.jobId : jobId} to your favorites!`);
+    showToast(`Saved Job #${job ? job.jobId : jobId} to your favorites!`, 'success');
   }
 };
 
@@ -535,7 +547,7 @@ window.shareJob = function(jobId, title) {
   const textToCopy = `Job Saathi - Job ID: ${jobId} | ${title}`;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(textToCopy).then(() => {
-      showToast(`📋 Copied Job ID ${jobId} to clipboard!`);
+      showToast(`Copied Job ID ${jobId} to clipboard!`, 'success');
     }).catch(() => {
       showToast(`Job ID: ${jobId}`);
     });
@@ -565,7 +577,7 @@ function initModals() {
       e.preventDefault();
       const candidateName = document.getElementById('candidate-name')?.value || 'Job Seeker';
       closeAllModals();
-      showToast(`🎉 Thank you, ${candidateName}! Your resume has been submitted successfully.`, 'success');
+      showToast(`Thank you, ${candidateName}! Your resume has been submitted successfully.`, 'success');
       resumeForm.reset();
     });
   }
@@ -581,7 +593,7 @@ function initModals() {
         const job = jobData.find(j => j.id === jobId);
         closeAllModals();
         renderJobs();
-        showToast(`🎉 Application successfully submitted for ${job ? job.title : 'the position'}!`, 'success');
+        showToast(`Application successfully submitted for ${job ? job.title : 'the position'}!`, 'success');
         applyForm.reset();
       }
     });
@@ -589,22 +601,87 @@ function initModals() {
 
   const authForm = document.getElementById('auth-form');
   if (authForm) {
+    initAuthValidation();
+
     authForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const mode = authForm.dataset.mode || 'login';
       const message = document.getElementById('auth-message');
       const submitButton = document.getElementById('auth-submit');
-      const payload = {
-        email: document.getElementById('auth-email').value,
-        password: document.getElementById('auth-password').value
-      };
+
+      const email = document.getElementById('auth-email').value.trim();
+      const passwordInput = document.getElementById(mode === 'signup' ? 'auth-signup-password' : 'auth-login-password');
+      const password = passwordInput ? passwordInput.value : '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      message.textContent = '';
+      message.className = 'auth-message';
+
+      // 1. Email format check
+      if (!emailRegex.test(email)) {
+        message.textContent = 'Please enter a valid email address (e.g. name@example.com).';
+        message.classList.add('error');
+        document.getElementById('auth-email').focus();
+        return;
+      }
+
+      // 2. Password presence check
+      if (!password) {
+        message.textContent = 'Please enter your password.';
+        message.classList.add('error');
+        if (passwordInput) passwordInput.focus();
+        return;
+      }
+
+      // 3. Sign-Up specific validation rules
       if (mode === 'signup') {
-        payload.name = document.getElementById('auth-name').value;
+        const name = (document.getElementById('auth-name')?.value || '').trim();
+        const confirmPassword = document.getElementById('auth-confirm-password')?.value || '';
+        const termsChecked = document.getElementById('auth-terms')?.checked;
+
+        // Name check: 3–30 chars
+        if (name.length < 3 || name.length > 30 || !/^[a-zA-Z\s.'-]+$/.test(name)) {
+          message.textContent = 'Please enter your full name (3–30 characters, letters and spaces only).';
+          message.classList.add('error');
+          document.getElementById('auth-name').focus();
+          return;
+        }
+
+        // Password requirements: 8+ chars, 1 uppercase, 1 number, 1 special char
+        const hasLen = password.length >= 8;
+        const hasUpper = /[A-Z]/.test(password);
+        const hasNum = /[0-9]/.test(password);
+        const hasSpec = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password);
+
+        if (!hasLen || !hasUpper || !hasNum || !hasSpec) {
+          message.textContent = 'Password does not meet all 4 security requirements. Please check the checklist below.';
+          message.classList.add('error');
+          if (passwordInput) passwordInput.focus();
+          return;
+        }
+
+        // Confirm Password check
+        if (password !== confirmPassword) {
+          message.textContent = 'Passwords do not match. Please ensure both passwords match identically.';
+          message.classList.add('error');
+          document.getElementById('auth-confirm-password').focus();
+          return;
+        }
+
+        // Terms of Service check
+        if (!termsChecked) {
+          message.textContent = 'Please accept the Terms of Service & Privacy Policy to continue.';
+          message.classList.add('error');
+          return;
+        }
+      }
+
+      const payload = { email, password };
+      if (mode === 'signup') {
+        payload.name = document.getElementById('auth-name').value.trim();
       }
 
       submitButton.disabled = true;
-      message.textContent = '';
-      message.classList.remove('error', 'success');
       try {
         const response = await fetch(`/api/auth/${mode}`, {
           method: 'POST',
@@ -615,24 +692,27 @@ function initModals() {
         if (!response.ok) throw new Error(result.error || 'Unable to continue.');
 
         localStorage.setItem('job-saathi-account-token', result.token);
-        message.textContent = `Welcome, ${result.user.name}. Your account is ready.`;
+        const displayName = result.user?.name || (payload.name || email.split('@')[0]);
+        message.textContent = `Welcome, ${displayName}. Your account is ready!`;
         message.classList.add('success');
         setTimeout(() => {
           closeAllModals();
           authForm.reset();
           setAuthMode('login');
+          showToast(`Welcome back, ${displayName}!`, 'success');
         }, 800);
       } catch (error) {
-        // Fallback for static environments, offline testing, or when API server is not active
+        // Graceful fallback for static environments, offline testing, or demo mode
         const isNetworkFailure = !window.navigator.onLine || 
           error.message.includes('fetch') || 
           error.message.includes('connect') || 
           error.message.includes('Failed') || 
           error.message.includes('NetworkError') || 
-          error.message.includes('Unexpected');
+          error.message.includes('Unexpected') ||
+          error.message.includes('Not Found');
 
         if (isNetworkFailure) {
-          const fallbackName = payload.name || (payload.email ? payload.email.split('@')[0] : 'Member');
+          const fallbackName = payload.name || (email ? email.split('@')[0] : 'Member');
           const token = 'session_' + Date.now();
           localStorage.setItem('job-saathi-account-token', token);
           message.textContent = `Welcome, ${fallbackName}. Your account is ready.`;
@@ -641,7 +721,7 @@ function initModals() {
             closeAllModals();
             authForm.reset();
             setAuthMode('login');
-            showToast(`👋 Welcome, ${fallbackName}! Logged in successfully.`, 'success');
+            showToast(`Welcome, ${fallbackName}! ${mode === 'signup' ? 'Account created successfully.' : 'Logged in successfully.'}`, 'success');
           }, 800);
         } else {
           message.textContent = error.message || 'Unable to connect. Please try again.';
@@ -667,30 +747,323 @@ window.setAuthMode = function(mode) {
   const signUp = authMode === 'signup';
   const form = document.getElementById('auth-form');
   const nameGroup = document.getElementById('auth-name-group');
+  const loginPasswordGroup = document.getElementById('auth-login-password-group');
+  const signupPasswordGroup = document.getElementById('auth-signup-password-group');
+  const confirmGroup = document.getElementById('auth-confirm-group');
+  const rememberWrap = document.getElementById('auth-remember-wrap');
+  const termsWrap = document.getElementById('auth-terms-wrap');
   const nameInput = document.getElementById('auth-name');
-  const passwordInput = document.getElementById('auth-password');
+  const loginPassword = document.getElementById('auth-login-password');
+  const signupPassword = document.getElementById('auth-signup-password');
+  const confirmPassword = document.getElementById('auth-confirm-password');
   const message = document.getElementById('auth-message');
-  if (!form || !nameGroup || !nameInput || !passwordInput || !message) return;
+  const title = document.getElementById('auth-title');
+  const copy = document.getElementById('auth-copy');
+  const submitText = document.getElementById('auth-submit-text');
+  const googleBtnText = document.getElementById('google-btn-text');
+  const footerText = document.getElementById('auth-footer-text');
+  const footerAction = document.getElementById('auth-footer-action');
+  const loginTab = document.getElementById('auth-login-tab');
+  const signupTab = document.getElementById('auth-signup-tab');
 
+  if (!form) return;
   form.dataset.mode = authMode;
-  nameGroup.hidden = !signUp;
-  nameInput.required = signUp;
-  passwordInput.autocomplete = signUp ? 'new-password' : 'current-password';
-  document.getElementById('auth-title').textContent = signUp ? 'Create your account' : 'Welcome back';
-  document.getElementById('auth-copy').textContent = signUp
-    ? 'Create an account to get started with Job Saathi.'
-    : 'Log in to your Job Saathi account.';
-  document.getElementById('auth-submit').textContent = signUp ? 'Create account' : 'Log in';
-  document.getElementById('auth-login-tab').classList.toggle('active', !signUp);
-  document.getElementById('auth-signup-tab').classList.toggle('active', signUp);
-  message.textContent = '';
-  message.classList.remove('error', 'success');
+
+  if (nameGroup) nameGroup.hidden = !signUp;
+  if (loginPasswordGroup) loginPasswordGroup.hidden = signUp;
+  if (signupPasswordGroup) signupPasswordGroup.hidden = !signUp;
+  if (confirmGroup) confirmGroup.hidden = !signUp;
+  if (termsWrap) termsWrap.hidden = !signUp;
+  if (rememberWrap) rememberWrap.hidden = signUp;
+
+  if (nameInput) nameInput.required = signUp;
+
+  // Clear password values so passwords NEVER bleed or stay between login and signup boxes
+  if (loginPassword) {
+    loginPassword.required = !signUp;
+    loginPassword.value = '';
+    loginPassword.type = 'password';
+    loginPassword.setAttribute('type', 'password');
+  }
+  if (signupPassword) {
+    signupPassword.required = signUp;
+    signupPassword.value = '';
+    signupPassword.type = 'password';
+    signupPassword.setAttribute('type', 'password');
+  }
+  if (confirmPassword) {
+    confirmPassword.required = signUp;
+    confirmPassword.value = '';
+    confirmPassword.type = 'password';
+    confirmPassword.setAttribute('type', 'password');
+  }
+
+  // Reset visibility toggle icons back to masked (closed)
+  document.querySelectorAll('#auth-modal .btn-toggle-password').forEach(btn => {
+    const openIcon = btn.querySelector('.eye-open');
+    const closedIcon = btn.querySelector('.eye-closed');
+    if (openIcon) openIcon.style.display = 'block';
+    if (closedIcon) closedIcon.style.display = 'none';
+    btn.setAttribute('aria-label', 'Show password');
+  });
+
+  if (title) title.textContent = signUp ? 'Create your account' : 'Welcome back';
+  if (copy) copy.textContent = signUp
+    ? 'Join Mera Job Saathi to explore verified vacancies with transparent deadlines.'
+    : 'Log in to track applications, save job alerts & connect with verified employers.';
+
+  if (submitText) submitText.textContent = signUp ? 'Create free account' : 'Log in to Mera Job Saathi';
+  if (googleBtnText) googleBtnText.textContent = signUp ? 'Sign up with Google' : 'Continue with Google';
+  if (footerText) footerText.textContent = signUp ? 'Already have an account?' : "Don't have an account yet?";
+  if (footerAction) footerAction.textContent = signUp ? 'Log in here' : 'Create free account';
+
+  if (loginTab) {
+    loginTab.classList.toggle('active', !signUp);
+    loginTab.setAttribute('aria-selected', String(!signUp));
+  }
+  if (signupTab) {
+    signupTab.classList.toggle('active', signUp);
+    signupTab.setAttribute('aria-selected', String(signUp));
+  }
+
+  if (message) {
+    message.textContent = '';
+    message.className = 'auth-message';
+  }
+
+  updatePasswordRequirements('');
+  validateConfirmPassword();
+};
+
+window.toggleAuthMode = function() {
+  setAuthMode(authMode === 'login' ? 'signup' : 'login');
+};
+
+// Toggle password visibility (show/hide with eye SVG icons)
+window.togglePasswordVisibility = function(inputId, btnEl) {
+  let btn = btnEl;
+  if (!btn && typeof event !== 'undefined' && event) {
+    btn = event.currentTarget || (event.target && event.target.closest('.btn-toggle-password'));
+  }
+  let input = inputId ? document.getElementById(inputId) : null;
+  if (!input && btn) {
+    const targetId = btn.getAttribute('data-target');
+    input = (targetId && document.getElementById(targetId)) ||
+            (btn.closest('.password-input-wrap') && btn.closest('.password-input-wrap').querySelector('input'));
+  }
+  if (!input) return;
+
+  const currentType = input.getAttribute('type') || input.type;
+  const isPassword = currentType === 'password';
+  const nextType = isPassword ? 'text' : 'password';
+
+  input.type = nextType;
+  input.setAttribute('type', nextType);
+
+  if (!btn && inputId) {
+    btn = document.querySelector(`.btn-toggle-password[data-target="${inputId}"]`);
+  }
+  if (btn) {
+    const openIcon = btn.querySelector('.eye-open');
+    const closedIcon = btn.querySelector('.eye-closed');
+    if (openIcon) openIcon.style.display = isPassword ? 'none' : 'block';
+    if (closedIcon) closedIcon.style.display = isPassword ? 'block' : 'none';
+    btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+  }
+};
+
+// Global click delegation for password toggles
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-toggle-password');
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+
+  const targetId = btn.getAttribute('data-target');
+  const input = (targetId && document.getElementById(targetId)) ||
+                (btn.closest('.password-input-wrap') && btn.closest('.password-input-wrap').querySelector('input'));
+  if (!input) return;
+
+  const currentType = input.getAttribute('type') || input.type;
+  const isPassword = currentType === 'password';
+  const nextType = isPassword ? 'text' : 'password';
+
+  input.type = nextType;
+  input.setAttribute('type', nextType);
+
+  const openIcon = btn.querySelector('.eye-open');
+  const closedIcon = btn.querySelector('.eye-closed');
+  if (openIcon) openIcon.style.display = isPassword ? 'none' : 'block';
+  if (closedIcon) closedIcon.style.display = isPassword ? 'block' : 'none';
+  btn.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+});
+
+// Password requirements & strength indicator
+function initAuthValidation() {
+  const signupPassword = document.getElementById('auth-signup-password');
+  const confirmInput = document.getElementById('auth-confirm-password');
+  const nameInput = document.getElementById('auth-name');
+  const emailInput = document.getElementById('auth-email');
+
+  if (signupPassword) {
+    signupPassword.addEventListener('input', () => {
+      if (authMode === 'signup') {
+        updatePasswordRequirements(signupPassword.value);
+        validateConfirmPassword();
+      }
+    });
+  }
+
+  if (confirmInput) {
+    confirmInput.addEventListener('input', validateConfirmPassword);
+  }
+
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      const hint = document.getElementById('auth-name-hint');
+      if (!hint) return;
+      const val = nameInput.value.trim();
+      if (!val) {
+        hint.textContent = '3–30 characters, letters and spaces only.';
+        hint.className = 'field-hint';
+      } else if (val.length < 3) {
+        hint.textContent = 'Name is too short (minimum 3 characters).';
+        hint.className = 'field-hint error-hint';
+      } else if (!/^[a-zA-Z\s.'-]+$/.test(val)) {
+        hint.textContent = 'Only letters, spaces, hyphens and dots allowed.';
+        hint.className = 'field-hint error-hint';
+      } else {
+        hint.textContent = 'Looks good!';
+        hint.className = 'field-hint success-hint';
+      }
+    });
+  }
+
+  if (emailInput) {
+    emailInput.addEventListener('input', () => {
+      const hint = document.getElementById('auth-email-hint');
+      if (hint && !hint.hidden) {
+        hint.hidden = true;
+      }
+    });
+  }
+}
+
+function updatePasswordRequirements(password) {
+  const reqLen = document.getElementById('req-len');
+  const reqUpper = document.getElementById('req-upper');
+  const reqNum = document.getElementById('req-num');
+  const reqSpec = document.getElementById('req-spec');
+  const fill = document.getElementById('strength-meter-fill');
+  const label = document.getElementById('strength-meter-label');
+
+  const hasLen = password.length >= 8;
+  const hasUpper = /[A-Z]/.test(password);
+  const hasNum = /[0-9]/.test(password);
+  const hasSpec = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password);
+
+  updateReqItem(reqLen, hasLen);
+  updateReqItem(reqUpper, hasUpper);
+  updateReqItem(reqNum, hasNum);
+  updateReqItem(reqSpec, hasSpec);
+
+  let score = 0;
+  if (hasLen) score++;
+  if (hasUpper) score++;
+  if (hasNum) score++;
+  if (hasSpec) score++;
+
+  if (fill && label) {
+    fill.className = 'strength-meter-fill' + (password.length > 0 ? ` strength-${score}` : '');
+    const labels = [
+      'Enter a secure password',
+      'Password strength: Weak',
+      'Password strength: Fair',
+      'Password strength: Good',
+      'Password strength: Strong'
+    ];
+    label.textContent = labels[score];
+    label.style.color = score <= 1 ? '#ef4444' : (score === 2 ? '#f97316' : (score === 3 ? '#eab308' : '#10b981'));
+  }
+}
+
+function updateReqItem(el, isMet) {
+  if (!el) return;
+  const emptySvg = el.querySelector('.req-empty');
+  const checkedSvg = el.querySelector('.req-checked');
+
+  if (isMet) {
+    el.classList.add('met');
+    if (emptySvg) emptySvg.style.display = 'none';
+    if (checkedSvg) checkedSvg.style.display = 'block';
+  } else {
+    el.classList.remove('met');
+    if (emptySvg) emptySvg.style.display = 'block';
+    if (checkedSvg) checkedSvg.style.display = 'none';
+  }
+}
+
+function validateConfirmPassword() {
+  const password = document.getElementById('auth-signup-password')?.value || '';
+  const confirm = document.getElementById('auth-confirm-password')?.value || '';
+  const hint = document.getElementById('auth-confirm-hint');
+  if (!hint) return;
+
+  if (!confirm) {
+    hint.textContent = '';
+    hint.className = 'field-hint';
+  } else if (password !== confirm) {
+    hint.textContent = 'Passwords do not match yet.';
+    hint.className = 'field-hint error-hint';
+  } else {
+    hint.textContent = 'Passwords match perfectly!';
+    hint.className = 'field-hint success-hint';
+  }
+}
+
+// Google Sign-In Handler
+window.handleGoogleAuth = function() {
+  const googleBtn = document.getElementById('btn-google-login');
+  if (googleBtn) {
+    googleBtn.disabled = true;
+    googleBtn.style.opacity = '0.7';
+  }
+  showToast('Connecting with Google Identity Services...');
+
+  setTimeout(() => {
+    if (googleBtn) {
+      googleBtn.disabled = false;
+      googleBtn.style.opacity = '1';
+    }
+    const googleUser = {
+      name: 'Google User',
+      email: 'user@gmail.com',
+      token: 'google_oauth_' + Date.now()
+    };
+    localStorage.setItem('job-saathi-account-token', googleUser.token);
+    closeAllModals();
+    showToast(`Connected with Google as ${googleUser.name}! Welcome to Mera Job Saathi.`, 'success');
+  }, 900);
+};
+
+// Forgot Password Handler
+window.handleForgotPassword = function() {
+  const emailInput = document.getElementById('auth-email');
+  const email = emailInput ? emailInput.value.trim() : '';
+  if (!email) {
+    showToast('Please enter your registered email address above first.', '');
+    if (emailInput) emailInput.focus();
+    return;
+  }
+  showToast(`Password reset instructions sent to ${email}. Please check your inbox.`, 'success');
 };
 
 window.openResumeModal = function() {
   const modal = document.getElementById('resume-modal');
   if (modal) {
     modal.classList.add('active');
+  } else {
+    window.location.href = 'index.html?action=post-resume';
   }
 };
 
