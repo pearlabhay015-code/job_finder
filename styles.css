@@ -255,6 +255,7 @@ button, input, textarea, select {
   height: 88px;
   width: auto;
   max-width: 400px;
+  aspect-ratio: 1024 / 341;
   object-fit: contain;
   display: block;
 }
@@ -269,6 +270,7 @@ button, input, textarea, select {
   height: 48px;
   width: auto;
   max-width: 250px;
+  aspect-ratio: 1024 / 341;
   object-fit: contain;
   display: block;
 }
@@ -2046,180 +2048,141 @@ footer {
 }
 
 /* ==========================================================================
-   DESKTOP-ONLY SMOOTH LANDING ANIMATIONS (min-width: 769px)
-   Engineered with Apple-grade fluid deceleration curves & staggered reveals.
-   Runs strictly on desktop displays; zero impact on mobile devices.
+   APPLE-INSPIRED CRISP LANDING & BIDIRECTIONAL SCROLL ANIMATIONS
+   Fluid spring deceleration curves, pure transforms & opacity, bidirectional scroll.
+   Works smoothly on scroll DOWN and scroll UP across all screen sizes.
    ========================================================================== */
-@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  /* Ultra-smooth GPU accelerated entrance keyframes */
-  @keyframes desktopLandingFadeDown {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, -14px, 0);
-    }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
+/* Topbar Floating Reveal */
+.topbar.anim-topbar-reveal {
+  opacity: 0;
+  transform: translate3d(0, -18px, 0);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
 
-  @keyframes desktopLandingFadeUp {
-    0% {
-      opacity: 0;
-      transform: translate3d(0, 20px, 0);
-    }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
+.topbar.anim-topbar-reveal.is-in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
 
-  /* Backface visibility & GPU layer preparation */
-  .topbar,
-  .hero-pill,
-  .hero-title,
-  .hero-subtitle,
-  .resume-banner,
-  .toolbar-section,
-  .listings-section .section-header,
-  .listings-section .job-list-container,
-  .contact-hero .hero-pill,
-  .contact-hero h1,
-  .contact-hero p,
-  .contact-cards-column .contact-card,
-  .contact-form-card,
-  .community-section-header,
-  .community-channel-card,
-  footer .footer-content {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
+/* Base Animatable Elements (when animation engine is ready) */
+.anim-ready .anim-reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0) scale(0.985);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.25s ease,
+              background-color 0.25s ease;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
 
-  /* Top Navigation Bar */
-  .topbar {
-    animation: desktopLandingFadeDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s both;
-  }
+/* Active in-view state (triggers on scroll down and scroll up) */
+.anim-ready .anim-reveal.is-in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: auto;
+}
 
-  /* --- Page 1: Home (index.html) Staggered Landing --- */
-  .hero-pill {
-    animation: desktopLandingFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
-  }
+/* Specific refined landing variations */
+.anim-ready .hero-pill.anim-reveal {
+  transform: translate3d(0, 16px, 0) scale(0.96);
+  transition-duration: 0.58s;
+  transition-delay: 0.05s;
+}
 
-  .hero-title {
-    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-  }
+.anim-ready .hero-title.anim-reveal {
+  transform: translate3d(0, 30px, 0) scale(0.975);
+  transition-duration: 0.74s;
+  transition-delay: 0.12s;
+}
 
-  .hero-subtitle {
-    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both;
-  }
+.anim-ready .hero-subtitle.anim-reveal {
+  transform: translate3d(0, 24px, 0) scale(0.985);
+  transition-duration: 0.68s;
+  transition-delay: 0.20s;
+}
 
-  .resume-banner {
-    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
-  }
+.anim-ready .resume-banner.anim-reveal {
+  transform: translate3d(0, 26px, 0) scale(0.98);
+  transition-duration: 0.72s;
+  transition-delay: 0.26s;
+}
 
-  .toolbar-section {
-    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.33s both;
-  }
+.anim-ready .toolbar-section.anim-reveal {
+  transform: translate3d(0, 22px, 0) scale(0.985);
+  transition-duration: 0.68s;
+  transition-delay: 0.32s;
+}
 
-  .listings-section .section-header {
-    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
-  }
+/* Soft shimmer sweep on hero pill on entrance */
+.hero-pill {
+  position: relative;
+  overflow: hidden;
+}
 
-  .listings-section .job-list-container {
-    animation: desktopLandingFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
-  }
+.hero-pill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
 
-  /* --- Page 2: Contact (contact.html) Staggered Landing --- */
-  .contact-hero .hero-pill {
-    animation: desktopLandingFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
-  }
+[data-theme="dark"] .hero-pill::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
 
-  .contact-hero h1 {
-    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-  }
+.anim-ready .hero-pill.is-in-view::after {
+  animation: pillShimmer 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s 1 forwards;
+}
 
-  .contact-hero p {
-    animation: desktopLandingFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.19s both;
-  }
+@keyframes pillShimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
 
-  .contact-cards-column .contact-card:nth-child(1) {
-    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.26s both;
-  }
-
-  .contact-cards-column .contact-card:nth-child(2) {
-    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.33s both;
-  }
-
-  .contact-cards-column .contact-card:nth-child(3) {
-    animation: desktopLandingFadeUp 0.62s cubic-bezier(0.16, 1, 0.3, 1) 0.40s both;
-  }
-
-  .contact-form-card {
-    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
-  }
-
-  .community-section-header {
-    animation: desktopLandingFadeUp 0.68s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both;
-  }
-
-  .community-channel-card.whatsapp-card {
-    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
-  }
-
-  .community-channel-card.telegram-card {
-    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
-  }
-
-  /* Footer Reveal */
-  footer .footer-content {
-    animation: desktopLandingFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both;
+/* Mobile & Tablet refinement: crisp, fast transform animations without sluggish delay */
+@media (max-width: 768px) {
+  .anim-ready .anim-reveal {
+    transform: translate3d(0, 14px, 0) scale(0.992);
+    transition-duration: 0.44s;
   }
 }
 
-/* ==========================================================================
-   MOBILE PERFORMANCE & ANTI-JITTER OPTIMIZATIONS (max-width: 768px)
-   Completely removes touch stutter, animation lag, layout shifts & frame drops.
-   ========================================================================== */
-@media (max-width: 768px) {
-  /* 1. Strictly disable all landing animations & delays on mobile */
-  .topbar,
-  .hero,
-  .hero-container,
-  .hero-pill,
-  .hero-title,
-  .hero-subtitle,
-  .resume-banner,
-  .toolbar-section,
-  .listings-section,
-  .listings-section .section-header,
-  .listings-section .job-list-container,
-  .job-row-card,
-  .contact-container,
-  .contact-hero,
-  .contact-hero .hero-pill,
-  .contact-hero h1,
-  .contact-hero p,
-  .contact-grid,
-  .contact-cards-column,
-  .contact-card,
-  .contact-form-card,
-  .community-channels-section,
-  .community-section-header,
-  .community-grid,
-  .community-channel-card,
-  footer,
-  footer .footer-content {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+/* Hover elevation transitions remain smooth without conflicting with reveal */
+@media (hover: hover) and (pointer: fine) {
+  .job-row-card.is-in-view:hover {
+    transform: translate3d(0, -3px, 0) scale(1.002);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-border, var(--border-strong));
   }
 
-  /* 2. Eliminate touch hover jumping/jitter while scrolling or tapping */
+  .community-channel-card.is-in-view:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-strong);
+  }
+
+  .contact-card.is-in-view:hover {
+    transform: translate3d(0, -2px, 0);
+    border-color: var(--border-strong);
+  }
+}
+
+/* Touch Device Anti-Jitter */
+@media (hover: none) {
   .job-row-card:hover,
   .community-channel-card:hover,
   .contact-card:hover,
@@ -2230,57 +2193,23 @@ footer {
   .btn-primary:hover {
     transform: none !important;
   }
-
-  /* 3. Fast responsive touch response: eliminates 300ms mobile tap delay */
-  html, body {
-    -webkit-text-size-adjust: 100%;
-    touch-action: manipulation;
-  }
-
-  button, a, input, select, textarea, .btn, .btn-apply-pill, .action-icon-btn, .job-row-card {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  /* 4. Disable smooth scroll on mobile to avoid fighting native touch-momentum scrolling */
-  html {
-    scroll-behavior: auto !important;
-  }
-
-  /* 5. GPU render optimization for listings: browser skips offscreen layout calculation */
-  .job-row-card {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 120px;
-  }
-
-  /* 6. Hardware compositor isolation for fixed mobile bottom dock (prevents scroll blur lag) */
-  .nav-links {
-    contain: paint layout;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
-    background: var(--surface-card);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  [data-theme="dark"] .nav-links {
-    background: rgba(21, 29, 45, 0.96);
-  }
 }
 
-/* ==========================================================================
-   TOUCH DEVICE UNIVERSAL ANTI-JITTER
-   ========================================================================== */
-@media (hover: none) {
-  .job-row-card:hover,
-  .community-channel-card:hover,
-  .contact-card:hover,
-  .btn-apply-pill:hover,
-  .action-icon-btn:hover,
-  .btn:hover {
-    transform: none !important;
-  }
+/* Fast responsive touch response: eliminates 300ms mobile tap delay */
+html, body {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+button, a, input, select, textarea, .btn, .btn-apply-pill, .action-icon-btn, .job-row-card {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* GPU render optimization for listings: browser skips offscreen layout calculation with accurate height estimation */
+.job-row-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 185px;
 }
 
 /* ==========================================================================
