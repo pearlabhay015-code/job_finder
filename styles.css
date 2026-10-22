@@ -185,7 +185,7 @@ body {
     var(--bg-grid-line) 16.6667%
   );
   color: var(--text-body);
-  font-size: 22px;
+  font-size: 16px;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -653,7 +653,7 @@ html:not([data-theme="dark"]) .theme-toggle-btn .icon-sun {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 16.5px;
+  font-size: 15.5px;
   color: var(--text-dark);
   font-weight: 500;
   background: transparent;
@@ -671,17 +671,19 @@ html:not([data-theme="dark"]) .theme-toggle-btn .icon-sun {
   border-left: 1px solid var(--border);
   padding-left: 14px;
   position: relative;
+  flex-shrink: 0;
 }
 
 .location-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-dark);
   cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .location-icon {
@@ -693,13 +695,13 @@ html:not([data-theme="dark"]) .theme-toggle-btn .icon-sun {
   border: 1px solid var(--border);
   background: var(--surface-subtle);
   color: var(--text-dark);
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: 500;
   padding: 7px 12px;
   border-radius: var(--radius-xs);
   outline: none;
   cursor: pointer;
-  min-width: 220px;
+  min-width: 200px;
   transition: border-color 0.15s, background-color 0.25s ease;
 }
 
@@ -2408,19 +2410,40 @@ footer {
     gap: 0;
   }
 
+  .hero-pill {
+    font-size: clamp(12.5px, 3.4vw, 14px);
+    padding: 6px 14px;
+  }
+
   .hero-title {
-    font-size: clamp(26px, 7.8vw, 42px);
+    font-size: clamp(24px, 7vw, 38px);
+    line-height: 1.22;
   }
 
   .hero-subtitle {
-    margin-bottom: 18px;
+    font-size: clamp(14px, 3.8vw, 16px);
+    margin-bottom: 16px;
+    line-height: 1.45;
   }
 
   .resume-banner {
     grid-column: 1;
     grid-row: auto;
-    padding: 18px;
-    gap: 14px;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .resume-content h3 {
+    font-size: clamp(16px, 4.4vw, 20px);
+  }
+
+  .resume-content p {
+    font-size: clamp(13px, 3.4vw, 14.5px);
+  }
+
+  .resume-banner .btn {
+    font-size: clamp(13px, 3.4vw, 14.5px);
+    padding: 8px 14px;
   }
 
   .toolbar-section {
@@ -2431,26 +2454,86 @@ footer {
   .search-box {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
-    padding: 10px 12px;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 14px;
+    box-sizing: border-box;
   }
 
   .search-input-wrapper {
     min-width: 0;
     width: 100%;
+    gap: 8px;
+    padding: 2px 0;
   }
 
+  .search-input {
+    font-size: clamp(13.5px, 3.6vw, 15px);
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Fixed Location Filter Layout: Label and Dropdown Never Overlap */
   .location-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     border-left: none;
     padding-left: 0;
     border-top: 1px solid var(--border);
     padding-top: 8px;
     width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    min-width: 0;
+  }
+
+  .location-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: clamp(13px, 3.5vw, 14.5px);
+    font-weight: 600;
+    flex-shrink: 0; /* CRITICAL: Never shrinks, preventing text collision */
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .location-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 
   .location-select {
+    flex: 1 1 auto; /* Fills available width without overflowing container */
+    min-width: 0; /* Allows button to flex naturally */
+    width: auto; /* Overrides rigid 100% which caused the overlap */
+    font-size: clamp(13px, 3.5vw, 14.5px);
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: var(--radius-xs);
+    box-sizing: border-box;
+  }
+
+  .location-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-width: 0;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .location-options {
     width: 100%;
-    min-width: unset;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    font-size: clamp(13px, 3.4vw, 14.5px);
   }
 
   .qr-preview-wrapper {
@@ -2517,6 +2600,23 @@ footer {
     padding: 0 14px;
   }
 
+  .section-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(18px, 4.8vw, 22px);
+  }
+
+  .section-header .section-count {
+    font-size: clamp(12.5px, 3.2vw, 14px);
+  }
+
+  .filter-info-pill {
+    font-size: clamp(12.5px, 3.2vw, 14px);
+  }
+
   .job-row-card {
     display: flex;
     flex-direction: column;
@@ -2524,6 +2624,15 @@ footer {
     gap: 8px;
     padding: 12px 14px;
     box-sizing: border-box;
+  }
+
+  .job-col {
+    font-size: clamp(13px, 3.4vw, 15px);
+  }
+
+  .job-id-pill {
+    font-size: clamp(12px, 3.2vw, 13.5px);
+    padding: 2px 7px;
   }
 
   .job-col.job-action {
@@ -2555,8 +2664,9 @@ footer {
 
 @media (max-width: 480px) {
   body {
-    width: calc(100% - 16px);
-    margin: 8px auto;
+    width: calc(100% - 14px);
+    margin: 6px auto;
+    font-size: 14.5px;
   }
 
   .topbar-container {
@@ -2574,9 +2684,45 @@ footer {
     margin: 0 2px;
   }
 
-  .nav-cta .btn {
-    padding: 5px 8px;
-    font-size: 13px;
+  .search-box {
+    padding: 7px 10px;
+    gap: 7px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .location-select-wrapper {
+    padding-top: 7px;
+    gap: 7px;
+  }
+
+  .location-label {
+    font-size: 13.5px;
+  }
+
+  .location-select {
+    font-size: 13.5px;
+    padding: 6px 8px;
+  }
+
+  .job-row-card {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+
+  .job-title {
+    font-size: 15px;
+  }
+
+  .job-org {
+    font-size: 13.5px;
+  }
+
+  .job-meta-row {
+    font-size: 12px;
+    gap: 4px;
   }
 
   .qr-frame {
@@ -2585,6 +2731,49 @@ footer {
     height: auto;
     aspect-ratio: 1;
     padding: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    width: calc(100% - 10px);
+    margin: 4px auto;
+  }
+
+  .search-box {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .location-select-wrapper {
+    gap: 6px;
+    padding-top: 6px;
+  }
+
+  .location-label span {
+    display: none; /* Show only pin icon next to dropdown on ultra-compact screens */
+  }
+
+  .location-label {
+    padding: 0;
+  }
+
+  .location-select {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+
+  .hero-title {
+    font-size: 23px;
+  }
+
+  .hero-subtitle {
+    font-size: 13.5px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 13px;
   }
 }
 

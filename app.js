@@ -372,7 +372,7 @@ function initFilters() {
 
       const syncSelection = () => {
         const selectedOption = locationSelect.options[locationSelect.selectedIndex];
-        trigger.textContent = selectedOption ? selectedOption.textContent : 'Location';
+        trigger.textContent = selectedOption ? selectedOption.textContent : 'All Locations';
         trigger.setAttribute('aria-label', `Location: ${trigger.textContent}`);
         optionItems.forEach(item => {
           const selected = item.dataset.value === locationSelect.value;
