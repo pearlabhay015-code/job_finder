@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mera Job Saathi | Your Career, Our Commitment</title>
+  <meta name="theme-color" content="#fdf7f0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#17110d" media="(prefers-color-scheme: dark)" />
+  <link rel="preload" href="logo.png" as="image" />
+  <link rel="preload" href="logo-dark.png" as="image" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="theme-saffron.css" />
+  <link rel="stylesheet" href="theme-presets.css" />
+  <script>
+    (function() {
+      try {
+        var t = sessionStorage.getItem('job-saathi-theme');
+        var colorTheme = sessionStorage.getItem('job-saathi-color-theme');
+        var validColorThemes = ['saffron', 'ocean', 'forest', 'rose', 'violet', 'sunset', 'mint', 'midnight', 'amber', 'mono'];
+        if (!t) {
+          var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          t = isDark ? 'dark' : 'light';
+          sessionStorage.setItem('job-saathi-theme', t);
+        }
+        if (validColorThemes.indexOf(colorTheme) === -1) {
+          colorTheme = 'saffron';
+          sessionStorage.setItem('job-saathi-color-theme', colorTheme);
+        }
+        document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-color-theme', colorTheme);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+  <script src="animations.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="topbar-container">
+      <a class="brand" href="index.html" title="Mera Job Saathi">
+        <img src="logo.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-light" width="264" height="88" fetchpriority="high" decoding="async" />
+        <img src="logo-dark.png" alt="Mera Job Saathi - Your Career, Our Commitment" class="brand-logo brand-logo-dark" width="264" height="88" fetchpriority="high" decoding="async" />
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <div class="nav-controls">
+        <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+          <a href="index.html" class="nav-link active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path>
+            </svg>
+            <span>Home</span>
+          </a>
+          <a href="contact.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m3 7 9 6 9-6"></path>
+            </svg>
+            <span>Contact</span>
+          </a>
+          <a href="admin.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 19 6v5c0 4.7-3 8.2-7 10-4-1.8-7-5.3-7-10V6l7-3Z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span>Admin</span>
+          </a>
+          <div id="account-menu" class="account-menu" hidden>
+            <button id="account-menu-button" class="account-icon-btn" type="button" aria-label="Open account menu" aria-expanded="false" title="Account">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21a8 8 0 0 0-16 0"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </button>
+            <div id="account-dropdown" class="account-dropdown" hidden>
+              <div class="account-dropdown-user">
+                <strong id="account-menu-name">Account</strong>
+                <span id="account-menu-email"></span>
+              </div>
+              <a href="account.html" class="account-dropdown-link">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"></circle><path d="M5.5 21a6.5 6.5 0 0 1 13 0"></path></svg>
+                My Account
+              </a>
+              <button type="button" class="account-dropdown-link account-logout-button" onclick="logoutUser()">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                Logout
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Single Theme Toggle: Light / Dark -->
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <!-- Sun Icon (Active in Light Theme) -->
+          <svg class="theme-toggle-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <!-- Moon Icon (Active in Dark Theme) -->
+          <svg class="theme-toggle-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <div class="theme-palette" id="theme-palette">
+          <button type="button" class="theme-palette-btn" id="theme-palette-btn" title="Choose color theme" aria-label="Choose color theme" aria-haspopup="menu" aria-expanded="false">
+            <svg class="theme-palette-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3a9 9 0 0 0 0 18h1.2a1.8 1.8 0 0 0 1.2-3.1 1.8 1.8 0 0 1 1.2-3.1H18a3 3 0 0 0 3-3C21 6.9 17 3 12 3Z"></path>
+              <circle cx="7.5" cy="10" r=".8" fill="currentColor"></circle>
+              <circle cx="10" cy="7" r=".8" fill="currentColor"></circle>
+              <circle cx="14" cy="7" r=".8" fill="currentColor"></circle>
+              <circle cx="17" cy="10" r=".8" fill="currentColor"></circle>
+            </svg>
+          </button>
+          <div class="theme-palette-menu" id="theme-palette-menu" role="menu" aria-label="Color themes" hidden>
+            <div class="theme-palette-title">Choose theme</div>
+            <button type="button" class="theme-option" data-color-theme="saffron" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-saffron" aria-hidden="true"></span><span>Saffron</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="ocean" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-ocean" aria-hidden="true"></span><span>Ocean</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="forest" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-forest" aria-hidden="true"></span><span>Forest</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="rose" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-rose" aria-hidden="true"></span><span>Rose</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="violet" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-violet" aria-hidden="true"></span><span>Violet</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="sunset" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-sunset" aria-hidden="true"></span><span>Sunset</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="mint" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-mint" aria-hidden="true"></span><span>Mint</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="midnight" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-midnight" aria-hidden="true"></span><span>Midnight</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="amber" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-amber" aria-hidden="true"></span><span>Amber</span>
+            </button>
+            <button type="button" class="theme-option" data-color-theme="mono" role="menuitemradio" aria-checked="false">
+              <span class="theme-swatch swatch-mono" aria-hidden="true"></span><span>Monochrome</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-cta-section" class="nav-cta">
+          <button id="login-cta" class="btn btn-primary btn-sm" type="button" onclick="openAuthModal('login')">Log in / Sign up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-pill">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:#f59e0b;vertical-align:-2px;margin-right:2px;"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"></path></svg> India's Simple &amp; Friendly Career Platform
+        </div>
+        <h1 class="hero-title">
+          Discover Opportunities & <span class="highlight">Grow Your Career</span>
+        </h1>
+        <p class="hero-subtitle">
+          Your Career, Our Commitment. Connect directly with verified recruiters, explore transparent vacancies with clear application deadlines.
+        </p>
+
+        <!-- Prominent Resume Post Callout Banner -->
+        <div class="resume-banner">
+          <div class="resume-content">
+            <div class="resume-icon-bubble" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Looking for your next opportunity?</h3>
+              <p>Upload your resume once and get matched with top employers actively hiring.</p>
+            </div>
+          </div>
+          <button class="btn btn-coral" onclick="openResumeModal()">
+            Post Your Resume →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Location Filter Toolbar -->
+    <section class="toolbar-section">
+      <div class="search-box">
+        <div class="search-input-wrapper">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input 
+            type="text" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Search by job title, organization, Job ID, or city..."
+            aria-label="Search job listings"
+          />
+        </div>
+
+        <div class="location-select-wrapper">
+          <label id="location-label" class="location-label">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="location-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span>Location:</span>
+          </label>
+          <select id="location-select" class="location-select" aria-label="Filter by state">
+            <option value="">All Locations</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Ladakh">Ladakh</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Puducherry">Puducherry</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
+          <label for="district-select" class="location-filter-caption">District:</label>
+          <select id="district-select" class="location-select" aria-label="Filter by district" disabled>
+            <option value="">Select a state first</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section class="listings-section" id="jobs-section">
+      <div class="section-header">
+        <div>
+          <h2 id="jobs-view-title">Available Opportunities</h2>
+          <p id="jobs-view-subtitle">Verified job notifications with transparent deadlines</p>
+        </div>
+        <div id="results-count" class="results-count">Showing active openings</div>
+      </div>
+
+      <!-- Job List container populated by app.js -->
+      <div id="job-grid" class="job-list-container">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+      <div id="view-all-jobs" class="view-all-jobs" hidden>
+        <a id="view-all-jobs-link" class="btn btn-outline view-all-jobs-button" href="index.html?view=all#jobs-section">
+          View all jobs
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Post Resume Modal -->
+  <div id="resume-modal" class="modal-overlay" aria-modal="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <div class="modal-icon-bubble" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+          </svg>
+        </div>
+        <h3>Post Your Resume</h3>
+        <p>Introduce yourself to hundreds of hiring teams looking for talent.</p>
+      </div>
+
+      <form id="resume-upload-form">
+        <div class="form-group">
+          <label for="candidate-name">Full Name</label>
+          <input type="text" id="candidate-name" class="form-control" placeholder="e.g. Rahul Sharma" required />
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-email">Email Address</label>
+          <input type="email" id="candidate-email" class="form-control" placeholder="e.g. rahul@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-phone">Phone Number</label>
+          <input type="tel" id="candidate-phone" class="form-control" placeholder="e.g. +91 98765 43210" required />
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-address">Address</label>
+          <textarea id="candidate-address" class="form-control" rows="3" placeholder="Enter your full address" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-state">State</label>
+          <select id="candidate-state" class="form-control" required>
+            <option value="">Select your state</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-district">District</label>
+          <select id="candidate-district" class="form-control" required disabled>
+            <option value="">Select a state first</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="candidate-pincode">Pincode</label>
+          <input type="text" id="candidate-pincode" class="form-control" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="e.g. 110001" required />
+        </div>
+
+        <div class="form-group">
+          <label>Upload Resume File (PDF / DOC)</label>
+          <div class="file-dropzone" onclick="document.getElementById('file-upload').click()">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p><strong>Click to browse</strong> or drag & drop your resume file</p>
+            <p class="file-dropzone-hint">Supports PDF, DOC, DOCX up to 5MB</p>
+            <input type="file" id="file-upload" accept=".pdf,.doc,.docx" style="display: none;" onchange="if(this.files[0]) this.previousElementSibling.textContent = 'Selected: ' + this.files[0].name;" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-coral" style="width: 100%; margin-top: 10px;">
+          Submit & Post Resume
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login / Sign Up Modal -->
+  <div id="auth-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="auth-title">
+    <div class="modal-box auth-modal-box">
+      <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-header auth-modal-header">
+        <div class="auth-brand-badge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          <span>Mera Job Saathi Account</span>
+        </div>
+        <h3 id="auth-title">Welcome back</h3>
+        <p id="auth-copy">Log in to track applications, save job alerts & connect with verified employers.</p>
+      </div>
+
+      <!-- Segmented Tabs -->
+      <div class="auth-mode-tabs" role="tablist" aria-label="Authentication mode">
+        <button id="auth-login-tab" class="auth-mode-tab active" type="button" role="tab" aria-selected="true" onclick="setAuthMode('login')">
+          Log in
+        </button>
+        <button id="auth-signup-tab" class="auth-mode-tab" type="button" role="tab" aria-selected="false" onclick="setAuthMode('signup')">
+          Create Account
+        </button>
+      </div>
+
+      <!-- Google Social Login Button -->
+      <button type="button" class="btn-google-auth" id="btn-google-login" onclick="handleGoogleAuth()">
+        <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+          <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+          <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.97 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+          <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+        </svg>
+        <span id="google-btn-text">Continue with Google</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="auth-divider">
+        <span>or continue with email</span>
+      </div>
+
+      <!-- Auth Form -->
+      <form id="auth-form" novalidate>
+        <!-- Full Name (Sign Up only) -->
+        <div id="auth-name-group" class="form-group" hidden>
+          <label for="auth-name">
+            Full Name <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input type="text" id="auth-name" class="form-control with-icon" placeholder="e.g. Rahul Sharma" autocomplete="name" />
+          </div>
+          <p class="field-hint" id="auth-name-hint">3–30 characters, letters and spaces only.</p>
+        </div>
+
+        <!-- Email Address -->
+        <div class="form-group">
+          <label for="auth-email">
+            Email Address <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </span>
+            <input type="email" id="auth-email" class="form-control with-icon" placeholder="name@example.com" autocomplete="email" required />
+          </div>
+          <p class="field-hint error-hint" id="auth-email-hint" hidden></p>
+        </div>
+
+        <!-- Email Verification OTP (Sign Up only) -->
+        <div id="auth-signup-otp-group" class="form-group" hidden>
+          <label for="auth-signup-otp">
+            Email Verification OTP <span class="required-star">*</span>
+          </label>
+          <input type="text" id="auth-signup-otp" class="form-control" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="Enter the 6-digit OTP" autocomplete="one-time-code" />
+          <p class="field-hint">We sent a verification code to your email address.</p>
+        </div>
+
+        <!-- Login Password Field (Login only) -->
+        <div id="auth-login-password-group" class="form-group">
+          <div class="label-row">
+            <label for="auth-login-password">
+              Password <span class="required-star">*</span>
+            </label>
+            <button type="button" class="btn-text-link" id="auth-forgot-link" onclick="handleForgotPassword()">
+              Forgot password?
+            </button>
+          </div>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-login-password" name="login_password" class="form-control with-icon with-eye" placeholder="Enter your password" autocomplete="current-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-login-password" aria-label="Toggle password visibility">
+              <!-- Eye Open SVG -->
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye Off SVG -->
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sign Up Password Field (Sign Up only) -->
+        <div id="auth-signup-password-group" class="form-group" hidden>
+          <label for="auth-signup-password">
+            Create Password <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-signup-password" name="signup_password" class="form-control with-icon with-eye" placeholder="Create a strong password" autocomplete="new-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-signup-password" aria-label="Toggle password visibility">
+              <!-- Eye Open SVG -->
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <!-- Eye Off SVG -->
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Password Requirements & Strength (Sign Up mode) -->
+          <div id="auth-password-requirements" class="password-requirements">
+            <div class="strength-meter-wrap">
+              <div class="strength-meter-bar">
+                <div class="strength-meter-fill" id="strength-meter-fill"></div>
+              </div>
+              <span class="strength-meter-label" id="strength-meter-label">Password strength: Weak</span>
+            </div>
+
+            <ul class="requirements-list">
+              <li id="req-len" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 8 characters</span>
+              </li>
+              <li id="req-upper" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 uppercase (A–Z)</span>
+              </li>
+              <li id="req-num" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 number (0–9)</span>
+              </li>
+              <li id="req-spec" class="req-item">
+                <span class="req-icon-wrap" aria-hidden="true">
+                  <svg class="req-svg req-empty" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                  </svg>
+                  <svg class="req-svg req-checked" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </span>
+                <span>At least 1 special char (!@#$%)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Confirm Password (Sign Up only) -->
+        <div id="auth-confirm-group" class="form-group" hidden>
+          <label for="auth-confirm-password">
+            Confirm Password <span class="required-star">*</span>
+          </label>
+          <div class="input-with-icon password-input-wrap">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input type="password" id="auth-confirm-password" class="form-control with-icon with-eye" placeholder="Re-enter your password" autocomplete="new-password" />
+            <button type="button" class="btn-toggle-password" data-target="auth-confirm-password" aria-label="Toggle confirm password visibility">
+              <svg class="eye-icon eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-icon eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" y1="2" x2="22" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+          <p class="field-hint" id="auth-confirm-hint"></p>
+        </div>
+
+        <!-- Remember Me & Terms Checkbox (Strict Click: Box Only) -->
+        <div class="auth-extra-row">
+          <div class="checkbox-row" id="auth-remember-wrap">
+            <label class="checkbox-box-target" for="auth-remember-me" aria-label="Keep me logged in on this device">
+              <input type="checkbox" id="auth-remember-me" checked />
+              <span class="checkbox-custom-square">
+                <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+            </label>
+            <span class="checkbox-label-text">Keep me logged in on this device</span>
+          </div>
+          <div class="checkbox-row" id="auth-terms-wrap" hidden>
+            <label class="checkbox-box-target" for="auth-terms" aria-label="Agree to terms and privacy policy">
+              <input type="checkbox" id="auth-terms" />
+              <span class="checkbox-custom-square">
+                <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+            </label>
+            <span class="checkbox-label-text">I agree to the <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a> &amp; <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></span>
+          </div>
+        </div>
+
+        <p id="auth-message" class="auth-message" role="status" aria-live="polite"></p>
+
+        <!-- Submit Button -->
+        <button id="auth-submit" type="submit" class="btn btn-coral auth-submit-btn">
+          <span id="auth-submit-text">Log in to Mera Job Saathi</span>
+          <svg class="btn-arrow-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <!-- Footer switch prompt -->
+        <div class="auth-footer-prompt">
+          <span id="auth-footer-text">Don't have an account yet?</span>
+          <button type="button" class="btn-text-link bold-link" id="auth-footer-action" onclick="toggleAuthMode()">
+            Create free account
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Google Terms & Privacy Consent Modal -->
+  <div id="google-consent-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="google-consent-title">
+    <div class="modal-box google-consent-box">
+      <button class="modal-close" type="button" aria-label="Cancel Google sign-in" onclick="cancelGoogleConsent()">&times;</button>
+      <div class="modal-header auth-modal-header">
+        <div class="auth-brand-badge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3 4 6v5c0 5 3.4 8.8 8 10 4.6-1.2 8-5 8-10V6l-8-3Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span>One final step</span>
+        </div>
+        <h3 id="google-consent-title">Complete your account setup</h3>
+        <p>Before we finish your Google sign-in, please review and accept the terms for using Mera Job Saathi.</p>
+      </div>
+
+      <div class="auth-extra-row google-consent-options">
+        <div class="checkbox-row">
+          <label class="checkbox-box-target" for="google-consent-terms" aria-label="Agree to terms and privacy policy">
+            <input type="checkbox" id="google-consent-terms" />
+            <span class="checkbox-custom-square">
+              <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+          </label>
+          <span class="checkbox-label-text">I agree to the <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a> &amp; <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a> <span class="required-star">*</span></span>
+        </div>
+        <div class="checkbox-row">
+          <label class="checkbox-box-target" for="google-consent-remember" aria-label="Keep me logged in on this device">
+            <input type="checkbox" id="google-consent-remember" checked />
+            <span class="checkbox-custom-square">
+              <svg class="checkbox-check-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+          </label>
+          <span class="checkbox-label-text">Keep me logged in on this device</span>
+        </div>
+      </div>
+
+      <p id="google-consent-message" class="auth-message" role="status" aria-live="polite"></p>
+      <button id="google-consent-submit" type="button" class="btn btn-coral auth-submit-btn" disabled onclick="completeGoogleConsent()">
+        Continue securely
+        <svg class="btn-arrow-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Apply Modal -->
+  <div id="apply-modal" class="modal-overlay" aria-modal="true" role="dialog">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <div class="modal-icon-bubble" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h3 id="apply-modal-job-title">Job Application</h3>
+        <p id="apply-modal-company">Applying to company</p>
+      </div>
+
+      <form id="quick-apply-form">
+        <div class="form-group">
+          <label for="applicant-name">Your Full Name</label>
+          <input type="text" id="applicant-name" class="form-control" placeholder="e.g. Priya Patel" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-email">Email Address</label>
+          <input type="email" id="applicant-email" class="form-control" placeholder="e.g. priya@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-phone">Phone Number</label>
+          <input type="tel" id="applicant-phone" class="form-control" placeholder="e.g. +91 98765 43210" required />
+        </div>
+
+        <div class="form-group">
+          <label for="applicant-notes">Short Note / Why you're a fit (Optional)</label>
+          <textarea id="applicant-notes" class="form-control" rows="3" placeholder="Briefly describe your relevant experience..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          Submit Application →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Application Payment Modal -->
+  <div id="application-payment-modal" class="modal-overlay" aria-modal="true" role="dialog" aria-labelledby="application-payment-title">
+    <div class="modal-box payment-modal-box">
+      <button class="modal-close" type="button" aria-label="Close payment modal">&times;</button>
+      <div class="modal-header">
+        <div class="modal-icon-bubble payment-icon-bubble" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><line x1="6" y1="15" x2="10" y2="15"></line></svg>
+        </div>
+        <h3 id="application-payment-title">Complete your application</h3>
+        <p id="application-payment-job">Application payment</p>
+      </div>
+      <div class="payment-summary">
+        <span>Application fee</span>
+        <strong id="application-payment-amount">₹200.00</strong>
+      </div>
+      <p id="application-payment-message" class="payment-message" role="status" aria-live="polite"></p>
+      <form id="application-payment-form">
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 12px;">
+          <span id="application-payment-button-text">Confirm payment</span> →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo footer-logo-light" width="144" height="48" loading="lazy" decoding="async" />
+        <img src="logo-dark.png" alt="Mera Job Saathi" class="footer-logo footer-logo-dark" width="144" height="48" loading="lazy" decoding="async" />
+      </div>
+      <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="refund-policy.html">Refund Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Native-Style Mobile Bottom Navigation Bar (Visible only on mobile screens) -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mobile-nav-item active" aria-current="page">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"></path>
+      </svg>
+      <span class="mobile-nav-label">Home</span>
+    </a>
+
+    <button type="button" class="mobile-nav-item" onclick="openResumeModal()">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="12" y1="18" x2="12" y2="12"></line>
+        <polyline points="9 15 12 12 15 15"></polyline>
+      </svg>
+      <span class="mobile-nav-label">Post Resume</span>
+    </button>
+
+    <a href="contact.html" class="mobile-nav-item">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="m3 7 9 6 9-6"></path>
+      </svg>
+      <span class="mobile-nav-label">Contact</span>
+    </a>
+
+    <a href="admin.html" class="mobile-nav-item">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3 19 6v5c0 4.7-3 8.2-7 10-4-1.8-7-5.3-7-10V6l7-3Z"></path>
+        <path d="m9 12 2 2 4-4"></path>
+      </svg>
+      <span class="mobile-nav-label">Admin</span>
+    </a>
+
+    <button type="button" class="mobile-nav-item" id="mobile-account-action" onclick="openAuthModal('login')">
+      <svg class="mobile-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span class="mobile-nav-label" id="mobile-account-label">Account</span>
+    </button>
+  </nav>
+
+  <script src="app.js?v=20261026-database-only"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "job-saathi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Job Saathi portal backend",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.11.5",
+    "nodemailer": "^6.9.16"
+  }
+}

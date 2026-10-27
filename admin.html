@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Saathi Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Mera Job Saathi" />
+      <span>Admin Panel</span>
+    </a>
+    <button id="logout-button" class="button button-secondary" type="button" hidden>Log out</button>
+  </header>
+
+  <main class="admin-main">
+    <section id="login-panel" class="panel login-panel">
+      <p class="eyebrow">Job Saathi</p>
+      <h1>Admin login</h1>
+      <p class="muted">Log in to add and manage job listings.</p>
+      <form id="login-form" class="stack-form">
+        <label for="admin-identifier">Admin ID or email</label>
+        <input id="admin-identifier" type="text" autocomplete="username" placeholder="admin or admin@example.com" required />
+        <label for="admin-password">Password</label>
+        <input id="admin-password" type="password" autocomplete="current-password" required />
+        <button class="button button-primary" type="submit">Log in</button>
+        <button id="forgot-link" class="text-button" type="button">Forgot password?</button>
+        <a class="button button-secondary back-home-button" href="index.html">← Back to Home</a>
+        <p id="login-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="forgot-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Account recovery</p>
+      <h1>Forgot password?</h1>
+      <p class="muted">Enter your admin ID or email. We will send a one-time password to the admin email address.</p>
+      <form id="forgot-form" class="stack-form">
+        <label for="forgot-identifier">Admin ID or email</label>
+        <input id="forgot-identifier" type="text" autocomplete="username" required />
+        <button class="button button-primary" type="submit">Send OTP</button>
+        <button id="back-to-login-from-forgot" class="text-button" type="button">Back to login</button>
+        <p id="forgot-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="otp-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Account recovery</p>
+      <h1>Enter OTP</h1>
+      <p id="otp-copy" class="muted">Enter the six-digit OTP sent to your admin email.</p>
+      <form id="otp-form" class="stack-form">
+        <label for="admin-otp">One-time password</label>
+        <input id="admin-otp" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required />
+        <button class="button button-primary" type="submit">Verify OTP</button>
+        <button id="back-to-login-from-otp" class="text-button" type="button">Back to login</button>
+        <p id="otp-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="reset-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Account recovery</p>
+      <h1>Create new password</h1>
+      <p class="muted">Use at least 8 characters, including one uppercase letter, one number, and one special character.</p>
+      <form id="reset-form" class="stack-form">
+        <label for="new-admin-password">New password</label>
+        <input id="new-admin-password" type="password" autocomplete="new-password" required />
+        <label for="confirm-admin-password">Confirm password</label>
+        <input id="confirm-admin-password" type="password" autocomplete="new-password" required />
+        <button class="button button-primary" type="submit">Update password</button>
+        <p id="reset-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="dashboard-panel" hidden>
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1>Admin dashboard</h1>
+          <p class="muted">Add new opportunities and manage the jobs stored in your database.</p>
+        </div>
+      </div>
+
+      <nav class="dashboard-nav" aria-label="Admin dashboard sections">
+        <button class="dashboard-nav-button active" type="button" data-dashboard-section="overview-section">Overview</button>
+        <button class="dashboard-nav-button" type="button" data-dashboard-section="manage-applications-section">Applications</button>
+        <button id="withdrawal-requests-nav-button" class="dashboard-nav-button" type="button" data-dashboard-section="withdrawal-requests-section">
+          Withdrawal requests
+          <span id="withdrawal-request-notification" class="nav-notification" aria-live="polite" hidden>
+            <span class="nav-notification-bell" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+            </span>
+            <span id="withdrawal-request-count" class="nav-notification-count">0</span>
+          </span>
+        </button>
+        <button class="dashboard-nav-button" type="button" data-dashboard-section="create-job-section">Create a job</button>
+        <button class="dashboard-nav-button" type="button" data-dashboard-section="manage-jobs-section">Manage jobs</button>
+        <button class="dashboard-nav-button" type="button" data-dashboard-section="create-admin-section">Create an admin</button>
+      </nav>
+
+      <section id="overview-section" class="dashboard-section">
+        <div class="overview-grid">
+          <article class="overview-card overview-card-highlight">
+            <p class="eyebrow">Quick action</p>
+            <h2>Add a job</h2>
+            <p class="muted">Create a new job listing with the title, organization, location, state, district, and last date.</p>
+            <button id="open-create-job" class="button button-primary" type="button">Create a job</button>
+          </article>
+          <article class="overview-card">
+            <p class="eyebrow">Database</p>
+            <p id="total-jobs" class="stat-number">0</p>
+            <p class="muted">Jobs currently saved</p>
+            <button id="open-manage-jobs" class="button button-secondary" type="button">View jobs</button>
+          </article>
+          <article id="application-alert-card" class="overview-card application-alert-card" hidden>
+            <p class="eyebrow">New application</p>
+            <h2 id="application-alert-title">A new application was submitted</h2>
+            <p id="application-alert-text" class="muted">A submitted application is waiting for review.</p>
+            <p id="application-alert-time" class="application-alert-time"></p>
+          </article>
+          <article id="withdrawal-alert-card" class="overview-card withdrawal-alert-card" hidden>
+            <p class="eyebrow">Withdrawal request</p>
+            <h2 id="withdrawal-alert-title">A withdrawal request needs approval</h2>
+            <p id="withdrawal-alert-text" class="muted">A jobseeker is waiting for admin confirmation.</p>
+            <p id="withdrawal-alert-time" class="application-alert-time"></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="manage-applications-section" class="dashboard-section" hidden>
+        <section class="panel listings-panel">
+          <div class="listings-heading">
+            <div>
+              <h2>Applications</h2>
+              <p class="muted">Review applications and update their progress. Jobseekers will see the latest status in their account.</p>
+            </div>
+            <button id="refresh-applications-button" class="button button-secondary" type="button">Refresh</button>
+          </div>
+          <p id="application-message" class="message" role="status"></p>
+          <div class="table-wrapper">
+            <table class="applications-table">
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Job</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>Payment</th>
+                  <th>Submitted</th>
+                </tr>
+              </thead>
+              <tbody id="applications-body">
+                <tr><td colspan="6" class="empty-cell">No applications yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="withdrawal-requests-section" class="dashboard-section" hidden>
+        <section class="panel listings-panel">
+          <div class="listings-heading">
+            <div>
+              <h2>Withdrawal requests</h2>
+              <p class="muted">Review pending requests and keep a history of approved withdrawals. Paid applications are refunded after approval; free applications are not refunded.</p>
+            </div>
+            <button id="refresh-withdrawals-button" class="button button-secondary" type="button">Refresh</button>
+          </div>
+          <p id="withdrawal-message" class="message" role="status"></p>
+          <div class="table-wrapper">
+            <table class="applications-table withdrawal-table">
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Job</th>
+                  <th>Current status</th>
+                  <th>Payment</th>
+                  <th>Requested</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="withdrawals-body">
+                <tr><td colspan="6" class="empty-cell">No withdrawal requests yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="create-job-section" class="dashboard-section" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Add a job section</p>
+            <h2>Create a job</h2>
+            <p class="muted">Enter the information shown on the job card. Job ID is generated automatically.</p>
+          </div>
+        </div>
+        <section class="panel">
+          <form id="job-form" class="job-form">
+            <div class="form-field form-field-wide">
+              <label for="job-title">Job title</label>
+              <input id="job-title" name="title" type="text" placeholder="Primary Teachers" required />
+            </div>
+
+            <div class="form-field">
+              <label for="job-organization">Organization</label>
+              <input id="job-organization" name="organization" type="text" placeholder="Private Schools" required />
+            </div>
+
+            <div class="form-field">
+              <label for="job-location">Location</label>
+              <input id="job-location" name="location" type="text" placeholder="Aurangabad, Gaya, Nawada" required />
+            </div>
+
+            <div class="form-field">
+              <label for="job-state">State</label>
+              <select id="job-state" name="state" required>
+                <option value="">Select state or UT</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="job-district">District</label>
+              <select id="job-district" name="district" required disabled>
+                <option value="">Select a state first</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="job-last-date">Last date</label>
+              <input id="job-last-date" name="last_date" type="date" required />
+            </div>
+
+            <div class="form-actions form-field-wide">
+              <button class="button button-primary" type="submit">Add job</button>
+              <button id="clear-button" class="button button-secondary" type="button">Clear</button>
+              <span id="job-message" class="message" role="status"></span>
+            </div>
+          </form>
+        </section>
+      </section>
+
+      <section id="manage-jobs-section" class="dashboard-section" hidden>
+        <section class="panel listings-panel">
+        <div class="listings-heading">
+          <div>
+            <h2>Saved jobs</h2>
+            <p class="muted">Jobs currently stored in the database.</p>
+          </div>
+          <button id="refresh-button" class="button button-secondary" type="button">Refresh</button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Job ID</th>
+                <th>Title</th>
+                <th>Organization</th>
+                <th>Location</th>
+                <th>State</th>
+                <th>District</th>
+                <th>Last date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="jobs-body">
+              <tr><td colspan="8" class="empty-cell">No jobs added yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        </section>
+      </section>
+
+      <section id="create-admin-section" class="dashboard-section" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Administration</p>
+            <h2>Create an admin</h2>
+            <p class="muted">Send an invitation link to the person who should create the admin profile.</p>
+          </div>
+        </div>
+
+        <section class="panel">
+          <form id="admin-invite-form" class="job-form">
+            <div class="form-field form-field-wide">
+              <label for="admin-invite-email">Admin email ID</label>
+              <input id="admin-invite-email" name="email" type="email" autocomplete="email" placeholder="admin2@example.com" required />
+            </div>
+
+            <div class="form-actions form-field-wide">
+              <button class="button button-primary" type="submit">Send invitation link</button>
+              <button id="clear-admin-invite-button" class="button button-secondary" type="button">Clear</button>
+              <span id="admin-invite-message" class="message" role="status"></span>
+            </div>
+          </form>
+          <p class="hint">The link is single-use and expires after the configured invitation period. The invited person will create the password.</p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

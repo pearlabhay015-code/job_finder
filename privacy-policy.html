@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How Mera Job Saathi collects and uses personal information." />
+  <meta name="theme-color" content="#f4f4f2" />
+  <title>Privacy Policy | Mera Job Saathi</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="theme-saffron.css" />
+  <link rel="stylesheet" href="theme-presets.css" />
+  <script>
+    (function() {
+      try {
+        var theme = sessionStorage.getItem('job-saathi-theme');
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var colorTheme = sessionStorage.getItem('job-saathi-color-theme');
+        var validColorThemes = ['saffron', 'ocean', 'forest', 'rose', 'violet', 'sunset', 'mint', 'midnight', 'amber', 'mono'];
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-color-theme', validColorThemes.indexOf(colorTheme) !== -1 ? colorTheme : 'saffron');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header class="policy-site-header">
+    <div class="policy-site-header-inner">
+      <a class="policy-brand" href="index.html" aria-label="Mera Job Saathi home">
+        <img src="logo.png" alt="Mera Job Saathi" class="brand-logo brand-logo-light" width="264" height="88" />
+        <img src="logo-dark.png" alt="" class="brand-logo brand-logo-dark" width="264" height="88" />
+      </a>
+      <nav class="policy-nav" aria-label="Policy navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund-policy.html">Refunds</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="policy-page">
+    <div class="policy-heading">
+      <p class="policy-eyebrow">Mera Job Saathi</p>
+      <h1>Privacy Policy</h1>
+      <p class="policy-updated">Last updated: 23 October 2026</p>
+    </div>
+
+    <article class="policy-card">
+      <section>
+        <h2>Information we collect</h2>
+        <p>Depending on how you use the website, we may collect information you provide, including your name, email address, phone number, account details, job application answers, application notes, resume or other documents you upload, saved vacancies, and messages sent to support.</p>
+        <p>We may also receive basic technical and session information needed to keep your account signed in, protect the service, and diagnose errors.</p>
+      </section>
+
+      <section>
+        <h2>How we use your information</h2>
+        <ul>
+          <li>Create and secure your account.</li>
+          <li>Prepare and process job applications or resume submissions you request.</li>
+          <li>Show saved jobs and account activity.</li>
+          <li>Respond to support requests, prevent misuse, and maintain the website.</li>
+          <li>Confirm payment status and maintain transaction records where a fee applies.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>When information is shared</h2>
+        <p>When you apply for a vacancy, the details and documents needed for that application may be shared with the relevant employer or recruiter. Payments are handled by Razorpay; payment credentials such as your full card number, security code, or UPI PIN are entered with the payment provider and are not stored by Mera Job Saathi.</p>
+        <p>We may use hosting, database, email, and security providers to operate the service, and may disclose information when required by law or to protect users and the website.</p>
+      </section>
+
+      <section>
+        <h2>Storage, security, and your choices</h2>
+        <p>We use reasonable safeguards to protect account and application information. No online service can guarantee absolute security. Keep your password private and contact us promptly if you believe your account has been accessed without permission.</p>
+        <p>Contact us to request access to, correction of, or deletion of your account information. We may need to retain limited records where required for security, payment reconciliation, or legal obligations.</p>
+      </section>
+
+      <section>
+        <h2>Changes and contact</h2>
+        <p>We may update this policy as the service changes. We will post the latest version on this page and update the revision date above.</p>
+        <p>For privacy questions or requests, contact <a href="mailto:myappointers@gmail.com">myappointers@gmail.com</a> or visit our <a href="contact.html">Contact Us</a> page.</p>
+      </section>
+
+      <div class="policy-contact-box">
+        <p><strong>Mera Job Saathi</strong></p>
+        <p>Email: <a href="mailto:myappointers@gmail.com">myappointers@gmail.com</a><br />Phone: <a href="tel:9060717287">9060717287</a><br />Registered office: Near-Ramchandra Utsav Bhawan Road No.-1, Kisan Colony, Phulwari, Patna-800003</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo footer-logo-light" width="144" height="48" loading="lazy" />
+        <img src="logo-dark.png" alt="" class="footer-logo footer-logo-dark" width="144" height="48" loading="lazy" />
+      </div>
+      <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

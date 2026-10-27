@@ -1,0 +1,5 @@
+node_modules/
+.env
+uploads/
+data/cms.json
+data/jobs.json

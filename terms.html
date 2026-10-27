@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Terms and conditions for using Mera Job Saathi." />
+  <meta name="theme-color" content="#f4f4f2" />
+  <title>Terms &amp; Conditions | Mera Job Saathi</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="theme-saffron.css" />
+  <link rel="stylesheet" href="theme-presets.css" />
+  <script>
+    (function() {
+      try {
+        var theme = sessionStorage.getItem('job-saathi-theme');
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var colorTheme = sessionStorage.getItem('job-saathi-color-theme');
+        var validColorThemes = ['saffron', 'ocean', 'forest', 'rose', 'violet', 'sunset', 'mint', 'midnight', 'amber', 'mono'];
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-color-theme', validColorThemes.indexOf(colorTheme) !== -1 ? colorTheme : 'saffron');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header class="policy-site-header">
+    <div class="policy-site-header-inner">
+      <a class="policy-brand" href="index.html" aria-label="Mera Job Saathi home">
+        <img src="logo.png" alt="Mera Job Saathi" class="brand-logo brand-logo-light" width="264" height="88" />
+        <img src="logo-dark.png" alt="" class="brand-logo brand-logo-dark" width="264" height="88" />
+      </a>
+      <nav class="policy-nav" aria-label="Policy navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="policy-page">
+    <div class="policy-heading">
+      <p class="policy-eyebrow">Mera Job Saathi</p>
+      <h1>Terms &amp; Conditions</h1>
+      <p class="policy-updated">Last updated: 23 October 2026</p>
+    </div>
+
+    <article class="policy-card">
+      <section>
+        <h2>Using the service</h2>
+        <p>Mera Job Saathi provides job vacancy information and tools that may let you create an account, save vacancies, submit job applications, and share a resume. By using the website, you agree to these terms and to our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <p>You must provide accurate information, keep your account credentials secure, and use the website only for lawful purposes. Do not impersonate another person, submit information without permission, or misuse the website or its content.</p>
+      </section>
+
+      <section>
+        <h2>Vacancies and applications</h2>
+        <p>Check the employer's official notice and application instructions before relying on a vacancy. Job details, deadlines, eligibility, and recruitment decisions are set by the relevant employer and may change. Submitting an application through this website does not guarantee shortlisting, an interview, or employment.</p>
+        <p>You are responsible for reviewing your application details before submitting them and for ensuring that the information and documents you provide are truthful and authorized for use.</p>
+      </section>
+
+      <section>
+        <h2>Application fees and payments</h2>
+        <p>The first successfully submitted job application on an account is free. Each later application is charged at ₹200.00, unless a different amount is clearly shown before payment. The applicable fee is displayed before you open checkout.</p>
+        <p>Paid applications are submitted after the payment is confirmed by our server. Payments are processed through Razorpay. We do not ask you to share your card, UPI PIN, or banking password with us. See the <a href="refund-policy.html">Refund Policy</a> for payment issues.</p>
+      </section>
+
+      <section>
+        <h2>Website availability and third-party services</h2>
+        <p>We work to keep the website available and information current, but maintenance, technical problems, or changes made by employers and third-party services may affect access or content. Links to third-party websites are provided for convenience; their services and privacy practices are governed by their own terms.</p>
+      </section>
+
+      <section>
+        <h2>Changes and contact</h2>
+        <p>We may update these terms when the service or its requirements change. The updated date above indicates the latest revision. Continued use after an update means you have had the opportunity to review the revised terms.</p>
+        <p>Questions about these terms? Contact us using the details below or through our <a href="contact.html">Contact Us</a> page.</p>
+      </section>
+
+      <div class="policy-contact-box">
+        <p><strong>Mera Job Saathi</strong></p>
+        <p>Email: <a href="mailto:myappointers@gmail.com">myappointers@gmail.com</a><br />Phone: <a href="tel:9060717287">9060717287</a><br />Registered office: Near-Ramchandra Utsav Bhawan Road No.-1, Kisan Colony, Phulwari, Patna-800003</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Mera Job Saathi" class="footer-logo footer-logo-light" width="144" height="48" loading="lazy" />
+        <img src="logo-dark.png" alt="" class="footer-logo footer-logo-dark" width="144" height="48" loading="lazy" />
+      </div>
+      <p>© 2026 Mera Job Saathi. Your Career, Our Commitment.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="refund-policy.html">Refunds</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

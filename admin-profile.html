@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Admin Profile | Job Saathi</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Mera Job Saathi" />
+      <span>Admin Profile</span>
+    </a>
+  </header>
+
+  <main class="admin-main">
+    <section id="loading-panel" class="panel login-panel">
+      <p class="eyebrow">Job Saathi</p>
+      <h1>Checking invitation</h1>
+      <p class="muted">Please wait while we verify your admin profile link.</p>
+    </section>
+
+    <section id="profile-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Create admin profile</p>
+      <h1>Set up your admin access</h1>
+      <p class="muted">Create a User ID, verify the invited email with an OTP, then create a secure password.</p>
+
+      <form id="userid-form" class="stack-form">
+        <label for="profile-userid">Create User ID</label>
+        <input id="profile-userid" type="text" autocomplete="username" placeholder="admin2" pattern="[A-Za-z0-9._-]{3,50}" required />
+        <label for="profile-email">Email ID</label>
+        <input id="profile-email" type="email" readonly />
+        <button class="button button-primary" type="submit">Send OTP to email</button>
+        <p class="hint">User ID can contain letters, numbers, dot, underscore, and hyphen.</p>
+        <p id="userid-message" class="message" role="status"></p>
+      </form>
+
+      <form id="otp-form" class="stack-form" hidden>
+        <label for="profile-otp">Email verification OTP</label>
+        <input id="profile-otp" type="text" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="Enter 6-digit OTP" required />
+        <button class="button button-primary" type="submit">Verify email</button>
+        <button id="back-to-userid-button" class="text-button" type="button">Back to User ID</button>
+        <p id="otp-message" class="message" role="status"></p>
+      </form>
+
+      <form id="profile-password-form" class="stack-form" hidden>
+        <label for="profile-password">Create password</label>
+        <input id="profile-password" type="password" autocomplete="new-password" required />
+        <label for="profile-confirm-password">Confirm password</label>
+        <input id="profile-confirm-password" type="password" autocomplete="new-password" required />
+        <p class="hint">Use at least 8 characters, including one uppercase letter, one number, and one special character.</p>
+        <button class="button button-primary" type="submit">Create admin profile</button>
+        <button id="back-to-otp-button" class="text-button" type="button">Back to OTP</button>
+        <p id="profile-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="success-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Success</p>
+      <h1>Admin profile created</h1>
+      <p class="muted">Your admin profile was created successfully. You will be moved to the admin login page.</p>
+      <button id="go-to-login-button" class="button button-primary" type="button">Go to admin login</button>
+    </section>
+
+    <section id="invalid-panel" class="panel login-panel" hidden>
+      <p class="eyebrow">Invitation unavailable</p>
+      <h1>Link expired</h1>
+      <p id="invalid-message" class="muted">This admin invitation link is invalid or expired. Ask an existing admin to send a new invitation.</p>
+      <a class="button button-secondary" href="admin.html">Go to admin login</a>
+    </section>
+  </main>
+
+  <script src="admin-profile.js"></script>
+</body>
+</html>
